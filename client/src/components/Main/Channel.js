@@ -2,7 +2,8 @@ import React from 'react';
 
 const Channel = ({}) => (
   <div>
-    Hello World!
+    <button>Channel 1</button>
+    <button>Channel 2</button>
   </div>
 );
 

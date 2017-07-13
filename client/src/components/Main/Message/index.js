@@ -1,8 +1,12 @@
 import React from 'react';
 
+import ChatLog from './ChatLog.js';
+import InputBar from './InputBar.js';
+
 const Message = ({}) => (
   <div>
-    Hello World!
+    <ChatLog />
+    <InputBar />
   </div>
 );
 
