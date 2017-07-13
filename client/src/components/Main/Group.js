@@ -1,8 +1,9 @@
 import React from 'react';
 
-const Group = () => (
+const Group = ({}) => (
   <div>
-    Hello World!
+    <button>Group 1</button>
+    <button>Group 2</button>
   </div>
 );
 

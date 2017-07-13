@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Channel = () => (
+const Channel = ({}) => (
   <div>
     Hello World!
   </div>

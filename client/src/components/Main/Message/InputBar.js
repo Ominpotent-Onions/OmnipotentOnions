@@ -1,6 +1,6 @@
 import React from 'react';
 
-const InputBar = () => (
+const InputBar = ({}) => (
   <div>
     Hello World!
   </div>

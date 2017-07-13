@@ -1,8 +1,14 @@
 import React from 'react';
 
-const Main = () => (
+import Group from './Group.js';
+import Channel from './Channel.js';
+import Message from './Message/index.js';
+
+const Main = ({}) => (
   <div>
-    Hello World!
+    <Group />
+    <Channel />
+    <Message />
   </div>
 );
 
