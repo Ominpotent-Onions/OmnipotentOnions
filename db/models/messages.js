@@ -1,7 +1,7 @@
 const db = require('../');
 
-const User_Group = db.Model.extend({
-  tableName: 'users_groups',
+const Message = db.Model.extend({
+  tableName: 'messages',
 });
 
-module.exports = db.Model('User_Group', User_Group);
+module.exports = db.Model('Message', Message);
