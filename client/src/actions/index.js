@@ -71,7 +71,7 @@ export let createChannel = function(group) {
     type: CREATE_CHANNEL,
     payload: request
   };
-};
+}; 
 
 /* -----------------------MESSAGES ------------------------------------- */
 
