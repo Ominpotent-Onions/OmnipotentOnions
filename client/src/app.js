@@ -12,6 +12,7 @@ import reducers from './reducers';
 // import Login from './components/Login/index.js';
 import Main from './components/index';
 
+<<<<<<< HEAD
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
 const Routes = () => (
@@ -27,3 +28,15 @@ const Routes = () => (
 );
 
 ReactDOM.render(<Routes />, document.getElementById('root'));
+=======
+// import Main from './components/Main/index.js';
+
+const Routes = () => (
+  <div>
+    {/*<Route path="/" component={Main} />*/}
+    Hello World
+  </div>
+);
+
+ReactDOM.render(<Routes />, document.getElementById("root"));
+>>>>>>> Clean up server code
