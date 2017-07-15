@@ -10,7 +10,7 @@ const Routes = () => (
   <BrowserRouter>
     <div>
       <Route exact path="/" component={Login}/>
-      <Route path="/Main" component={Main} />
+      <PrivateRoute path="/api/main" component={Main} />
     </div>
   </BrowserRouter>
 );
