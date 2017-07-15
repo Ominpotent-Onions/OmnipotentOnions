@@ -17,9 +17,9 @@ class MessageBoard extends Component {
           <h4> {message.user} </h4>
           <div> {message.text} </div>
         </div>
-      )
-    })
-    
+      );
+    });
+
     return (
       <div>
         {messages}
