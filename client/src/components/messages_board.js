@@ -15,7 +15,6 @@ class MessageBoard extends Component {
 
     const messages = _.map(this.props.messages, message => {
       return (
-<<<<<<< 632e1b211700ed4331730cc0d174a413085e50c7
         <Segment key={message.id}> 
           <h4>{message.user}</h4>
           <div>{message.text}</div>
@@ -23,15 +22,6 @@ class MessageBoard extends Component {
       );
     });
 
-=======
-        <div key={message.id}> 
-          <h4> {message.user} </h4>
-          <div> {message.text} </div>
-        </div>
-      )
-    })
-    
->>>>>>> implement Redux front-end with dummy data, incomplete message input
     return (
       <div>
         {messages}
