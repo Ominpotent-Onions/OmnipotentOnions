@@ -21,9 +21,11 @@ class MessageBoard extends Component {
         </Segment>
       );
     });
-
+    
     return (
-      <div>{messages}</div>
+      <div>
+        {messages}
+      </div>
     );
   }
 }
