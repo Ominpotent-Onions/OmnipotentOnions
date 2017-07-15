@@ -6,10 +6,10 @@ WORKDIR /usr/src/app
 
 # Install app dependencies
 COPY package.json /usr/src/app/
-RUN npm install
+RUN yarn install
 
 COPY . /usr/src/app
 
 EXPOSE 8080
 
-CMD ["yarn", "run", "server-dev"]
+CMD ["yarn", "start"]
