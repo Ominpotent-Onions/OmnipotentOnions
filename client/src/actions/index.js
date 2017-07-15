@@ -78,6 +78,7 @@ export let createChannel = function(group) {
 export let fetchMessages = function(channelId) {
   // replace with real ajax request
   const request = axios.get(`/messages/${channelId}`);
+  
   return {
     type: FETCH_MESSAGES,
     payload: request
