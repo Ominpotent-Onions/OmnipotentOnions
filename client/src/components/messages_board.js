@@ -8,7 +8,7 @@ class MessageBoard extends Component {
 
   render() {
     if (Object.keys(this.props.messages).length === 0) {
-      return <div>Loading... </div>
+      return <div>Loading... </div>;
     } 
 
     const messages = _.map(this.props.messages, message => {
@@ -17,9 +17,9 @@ class MessageBoard extends Component {
           <h4> {message.user} </h4>
           <div> {message.text} </div>
         </div>
-      )
-    })
-    
+      );
+    });
+
     return (
       <div>
         {messages}

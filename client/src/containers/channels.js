@@ -12,8 +12,8 @@ class Channels extends Component {
         <div key={channel.id}>
           <h3> {channel.name} </h3>
         </div>
-      )
-    })
+      );
+    });
   }
 
   render() {
@@ -26,8 +26,8 @@ class Channels extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return { channels: state.channels }
-}
+const mapStateToProps = function(state) {
+  return { channels: state.channels };
+};
 
 export default connect(mapStateToProps, { fetchChannels })(Channels);

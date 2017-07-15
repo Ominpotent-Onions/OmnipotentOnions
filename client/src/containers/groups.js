@@ -25,12 +25,12 @@ class Groups extends Component {
         <h1>Groups List</h1>
         {this.renderGroups()}
       </div>
-    )
+    );
   }
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = function(state) {
   return { groups: state.groups };
-}
+};
 
 export default connect(mapStateToProps, { fetchGroups })(Groups);

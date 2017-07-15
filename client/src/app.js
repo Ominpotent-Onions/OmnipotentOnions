@@ -26,4 +26,4 @@ const Routes = () => (
   </Provider>
 );
 
-ReactDOM.render(<Routes />, document.getElementById("root"));
+ReactDOM.render(<Routes />, document.getElementById('root'));
