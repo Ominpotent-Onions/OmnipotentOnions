@@ -39,22 +39,22 @@ export let fetchChannels = function(group) {
   // dummy request
   const request = [
     {
-        id: 1,
-        name: 'Shi-Hao\'s Smashing Channel'
+      id: 1,
+      name: 'Shi-Hao\'s Smashing Channel'
     },
     {
-        id: 2,
-        name: 'Dylan\'s Dynamic Channel'
+      id: 2,
+      name: 'Dylan\'s Dynamic Channel'
     },
     {
-        id: 3,
-        name: 'Peter\'s Poetic Channel'
+      id: 3,
+      name: 'Peter\'s Poetic Channel'
     },
     {
-        id: 4,
-        name: 'Gideon\'s Gallant Channel'
+      id: 4,
+      name: 'Gideon\'s Gallant Channel'
     }
-  ]
+  ];
 
   return {
     type: FETCH_CHANNELS,
@@ -69,26 +69,26 @@ export let fetchMessages = function(channel) {
   // dummy request
   const request = [
     {
-        id: 1,
-        user: 'Shi-Hao',
-        text: 'Hello friends!'
+      id: 1,
+      user: 'Shi-Hao',
+      text: 'Hello friends!'
     },
     {
-        id: 2,
-        user: 'Peter',
-        text: 'What\'s up!'
+      id: 2,
+      user: 'Peter',
+      text: 'What\'s up!'
     },
     {
-        id: 3,
-        user: 'Dylan',
-        text: 'I got the app deployed on Digital Ocean!' 
+      id: 3,
+      user: 'Dylan',
+      text: 'I got the app deployed on Digital Ocean!' 
     },
     {
-        id: 4,
-        user: 'Gideon',
-        text: 'That\'s awesome! Here, have some spam!'  
+      id: 4,
+      user: 'Gideon',
+      text: 'That\'s awesome! Here, have some spam!'  
     }
-  ]
+  ];
 
   return {
     type: FETCH_MESSAGES,
