@@ -8,10 +8,26 @@ router.route('/')
     res.render('index.ejs');
   });
 
+
+// router.route('/login')
+//   .post(middleware.passport.authenticate('local-login', {
+//     successReturnToOrRedirect: '/connections',
+//     failureRedirect: '/login',
+//     failureFlash: true,
+//   }));
+
+// router.route('/signup')
+//   .post(middleware.passport.authenticate('local-signup', {
+//     successReturnToOrRedirect: '/connections',
+//     failureRedirect: '/signup',
+//     failureFlash: true,
+// }));
+
 router.route('/login')
   .get((req, res) => {
     // res.render('login.ejs', { message: req.flash('loginMessage') });
-    res.render('login.ejs', { message: 'hello, world' });    
+    res.render('login.ejs');
+    // res.render('login.ejs', { message: 'hello, world' });
   })
   .post(middleware.passport.authenticate('local-login', {
     successRedirect: '/profile',
@@ -19,23 +35,12 @@ router.route('/login')
     failureFlash: true
   }));
 
-// router.route('/signup')
-//   .get((req, res) => {
-//     // res.render('signup.ejs', { message: req.flash('signupMessage') });
-//     res.render('signup.ejs', { message: 'bye' });    
-//   })
-//   .post(middleware.passport.authenticate('local-signup', {
-//     successRedirect: '/profile',
-//     failureRedirect: '/signup',
-//     failureFlash: true
-//   }));
-
-// router.route('/profile')
-//   .get(middleware.auth.verify, (req, res) => {
-//     res.render('profile.ejs', {
-//       user: req.user // get the user out of session and pass to template
-//     });
-//   });
+router.route('/profile')
+  .get(middleware.auth.verify, (req, res) => {
+    res.render('profile.ejs', {
+      user: req.user // get the user out of session and pass to template
+    });
+  });
 
 router.route('/logout')
   .get((req, res) => {
@@ -43,12 +48,13 @@ router.route('/logout')
     res.redirect('/');
   });
 
+
 router.get('/auth/google', middleware.passport.authenticate('google', {
   scope: ['email', 'profile']
 }));
 
 router.get('/auth/google/callback', middleware.passport.authenticate('google', {
-  successRedirect: '/auth/google/callback',
+  successRedirect: '/api/main',
   failureRedirect: '/login'
 }));
 
