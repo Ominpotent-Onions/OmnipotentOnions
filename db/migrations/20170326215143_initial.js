@@ -40,7 +40,7 @@ exports.up = function (knex, Promise) {
     knex.schema.createTableIfNotExists('messages', (t) => {
       t.increments('id').unsigned().primary();
       t.text('text').notNullable();
-      t.timestamps('create_at').defaultTo(knex.fn.now());
+      t.timestamp('create_at').defaultTo(knex.fn.now());
       t.integer('user_id').references('users.id').onDelete('CASCADE');
       t.integer('channel_id').references('channels.id').onDelete('CASCADE');
     })
