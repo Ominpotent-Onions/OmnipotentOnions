@@ -27,7 +27,11 @@
     "express": "^4.15.2",
     "express-session": "^1.15.1",
     "grunt-pg": "https://github.com/watsoncj/grunt-pg.git",
+<<<<<<< 7ed7b03dea6cfb26b72b00a77eb0f172a3d43662
     "knex": "^0.13.0",
+=======
+    "knex": "^0.12.9",
+>>>>>>> added necessary redux dependencies
     "lodash": "^4.17.4",
     "morgan": "^1.8.1",
     "nodemon": "^1.11.0",
