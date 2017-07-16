@@ -16,6 +16,7 @@ router.route('/profile')
   
 router.route('/login')
   .get((req, res) => {
+    console.log('auth login route');
     res.render('login.ejs', { message: req.flash('loginMessage') });
   })
   .post(middleware.passport.authenticate('local-login', {
@@ -56,4 +57,4 @@ router.get('/auth/facebook/callback', middleware.passport.authenticate('facebook
 //   failureRedirect: '/login'
 // }));
 
-module.exports = router;
+// module.exports = router;

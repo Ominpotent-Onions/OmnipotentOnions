@@ -4,9 +4,18 @@ var Peer = require('simple-peer');
 var peer = new Peer({
   //What this does is who is the first peer?
   initiator: location.hash === '#init',
-  trickle: false
-  // stream: stream
+  trickle: false,
 });
+
+getUserMedia({ video: false, audio: false }, function (err, stream) {
+  if (err) {
+    return console.error(err);
+  }
+  peer.stream = stream;
+  console.log('peer', peer.stream);
+});
+
+
 
 class ChatLog extends React.Component {
   constructor(props) {
@@ -17,7 +26,8 @@ class ChatLog extends React.Component {
       yourValue: '',
       theirValue: '',
       message: '',
-      sentMessage: ''
+      sentMessage: '',
+      src: ''
     };
     this.connectHandler = this.connectHandler.bind(this);
     this.sendChangeHandler = this.sendChangeHandler.bind(this);
@@ -36,6 +46,15 @@ class ChatLog extends React.Component {
         });
         //this.props.onData(JSON.stringify(raw.toString()))
       }));
+      peer.on('stream', function (stream) {
+        // var video = document.createElement('video');
+        // document.body.appendChild(video);
+        console.log('src', src);
+        this.setState({
+          src: window.URL.createObjectURL(stream)
+        });
+        video.play();
+      });
     };
   }
 
@@ -96,11 +115,9 @@ class ChatLog extends React.Component {
         <textarea id="yourMessage" onChange={this.sendChangeHandler} ></textarea>
         <button id="send" onClick={this.sendHandler}>send</button>
         <div id="messages">{this.state.sentMessage}</div>
+        <video src={this.state.src}> </video>
       </div>
     );
   }
 }
-
-export default ChatLog;
-
 
