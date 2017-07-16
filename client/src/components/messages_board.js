@@ -23,9 +23,7 @@ class MessageBoard extends Component {
     });
     
     return (
-      <div>
-        {messages}
-      </div>
+      <div>{messages}</div>
     );
   }
 }
