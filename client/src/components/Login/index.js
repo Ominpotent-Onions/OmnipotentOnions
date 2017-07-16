@@ -61,7 +61,7 @@ class Login extends React.Component {
         Et mundi exerci nam, an bonorum petentium vel. Qui eu case tota constituto. An facilisi principes vim, te quo habeo perfecto quaestio, an mel senserit disputationi. Nec no ubique posidonium. Quas altera et sit.
         </p>
         <div>
-        <input type="text" value={this.state.user} onChange={this.handleUserChange}/>
+          <input type="text" value={this.state.user} onChange={this.handleUserChange}/>
         </div>
         <div>
           <div id="chatbox">
