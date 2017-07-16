@@ -54,10 +54,10 @@ class MessageInput extends Component {
       </div>
     );
   }
-}
+};
 
 export default reduxForm({
-  form: 'MessageForm'
+  form:'MessageForm'
 })(
   connect(null, { createMessage })(MessageInput)
 );
