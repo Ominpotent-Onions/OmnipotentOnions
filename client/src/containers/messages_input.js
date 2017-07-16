@@ -57,7 +57,7 @@ export class MessageInput extends Component {
       </div>
     );
   }
-};
+}
 
 const mapStateToProps = (state) => {
   return {
@@ -67,7 +67,7 @@ const mapStateToProps = (state) => {
 };
 
 export default reduxForm({
-  form:'MessageForm'
+  form: 'MessageForm'
 })(
   connect(mapStateToProps, { createMessage })(MessageInput)
 );
