@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchMessages } from '../actions';
 import MessageBoard from '../components/messages_board';
+import MessageInput from './messages_input';
 
 class Messages extends Component {
   componentDidMount() {
@@ -15,6 +16,7 @@ class Messages extends Component {
         <MessageBoard 
           messages={this.props.messages}
         />
+        <MessageInput/>
       </div>
     );
   }

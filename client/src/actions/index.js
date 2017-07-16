@@ -3,6 +3,7 @@ import axios from 'axios';
 export const FETCH_GROUPS = 'fetch_groups';
 export const FETCH_CHANNELS = 'fetch_channels';
 export const FETCH_MESSAGES = 'fetch_messages';
+export const CREATE_MESSAGE = 'create_message';
 
 export const fetchGroups = function(user) {
   // replace with real ajax request
@@ -90,6 +91,17 @@ export let fetchMessages = function(channel) {
 
   return {
     type: FETCH_MESSAGES,
+    payload: request
+  };
+};
+
+export let createMessage = function(message) {
+  // replace with real ajax request
+  // const request = axios.post(``);
+  const request = {};
+
+  return {
+    type: CREATE_MESSAGE,
     payload: request
   };
 };

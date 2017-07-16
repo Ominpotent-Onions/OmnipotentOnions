@@ -1,4 +1,4 @@
-import { FETCH_MESSAGES } from '../actions';
+import { FETCH_MESSAGES, CREATE_MESSAGE } from '../actions';
 import _ from 'lodash';
 
 export default function(state = {}, action) {

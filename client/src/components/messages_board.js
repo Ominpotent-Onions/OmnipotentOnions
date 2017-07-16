@@ -14,16 +14,14 @@ class MessageBoard extends Component {
     const messages = _.map(this.props.messages, message => {
       return (
         <div key={message.id}> 
-          <h4> {message.user} </h4>
-          <div> {message.text} </div>
+          <h4>{message.user}</h4>
+          <div>{message.text}</div>
         </div>
       );
     });
 
     return (
-      <div>
-        {messages}
-      </div>
+      <div>{messages}</div>
     );
   }
 }
