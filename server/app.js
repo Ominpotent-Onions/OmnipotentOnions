@@ -23,7 +23,8 @@ app.use(middleware.flash());
 app.use(express.static(path.join(__dirname, '../public')));
 
 app.use('/', routes.auth);
-
+// took away the api/profiles and use /profiles
+app.use('/profiles', routes.profiles);
 // route for ushers
 app.use('/users', routes.users);
 
