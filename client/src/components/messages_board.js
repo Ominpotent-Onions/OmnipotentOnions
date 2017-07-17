@@ -3,7 +3,6 @@ import _ from 'lodash';
 
 import { Segment } from 'semantic-ui-react';
 
-
 class MessageBoard extends Component {
   constructor(props) {
     super(props);
