@@ -8,7 +8,6 @@ const app = express();
 var server = app.listen(8080);
 const io = require('socket.io').listen(server);
 
-
 app.use(middleware.morgan('dev'));
 app.use(middleware.cookieParser());
 app.use(middleware.bodyParser.urlencoded({extended: false}));
