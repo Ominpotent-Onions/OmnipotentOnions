@@ -24,4 +24,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 app.use('/', routes.auth);
 
+// route for ushers
+app.use('/users', routes.users);
+
 module.exports = app;
