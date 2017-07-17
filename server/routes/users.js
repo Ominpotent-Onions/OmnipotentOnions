@@ -1,8 +1,15 @@
 'use strict';
 const express = require('express');
 const router = express.Router();
-const ProfileController = require('../controllers').Users;
+const UserController = require('../controllers').Users;
 
-router.route('/users');
+router.route('/users')
+  .post(UserController.create)
+;
+
+router.route('/users/:id')
+  .get(UserController.getOne)
+;
+
 
 module.exports = router;

@@ -1,5 +1,7 @@
 consts = require('../../db/models');
 
+// is this the proper way to add the salt and token?
+
 module.exports.create = (req, res) => {
   models.User.forge({ name: req.body.name, 
     token: req.body.token, 

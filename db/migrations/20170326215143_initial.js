@@ -22,7 +22,7 @@ exports.up = function (knex, Promise) {
       t.increments('id').unsigned().primary();
       t.string('name').notNullable();
       t.string('token', 100).notNullable();
-      t.string('salt', 100).nullable();
+      t.string('salt', 100).notNullable().references('auths.salt').onDelete('CASCADE');
     }),
     knex.schema.createTableIfNotExists('groups', (t) => {
       t.increments('id').unsigned().primary();
