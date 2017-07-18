@@ -25,9 +25,9 @@ class MessageInput extends Component {
   onSubmit(message) {
     // currently only sends { message: 'the message' }
     const data = {
-      id: 1,
+      id: 5,
       user: 'Shi-Hao',
-      message: message.message
+      text: message.message
     };
 
     console.log('submit called');

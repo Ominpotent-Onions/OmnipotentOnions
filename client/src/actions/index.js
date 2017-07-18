@@ -64,7 +64,7 @@ export let fetchChannels = function(group) {
 export let fetchMessages = function(channel) {
   // replace with real ajax request
   // const request = axios.get(``);
-  
+
   // dummy request
   const request = [
     {
@@ -99,11 +99,9 @@ export let createMessage = function(message) {
   // replace with real ajax request
   // const request = axios.post(``);
   const request = {};
-
-
-
+  // change this back later
   return {
     type: CREATE_MESSAGE,
-    payload: request
+    payload: message
   };
 };
