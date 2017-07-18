@@ -2107,7 +2107,10 @@ faye-websocket@~0.11.0:
   dependencies:
     websocket-driver ">=0.5.1"
 
+<<<<<<< 2646cec9122d06f191cb0f32ed6aed2440adc843
 <<<<<<< 2ee77380b7ac46514d7677126422349b2903f2d8
+=======
+>>>>>>> added sample tests for front end and back end
 fb-watchman@^1.8.0:
   version "1.9.2"
   resolved "https://registry.yarnpkg.com/fb-watchman/-/fb-watchman-1.9.2.tgz#a24cf47827f82d38fb59a69ad70b76e3b6ae7383"
@@ -2120,6 +2123,7 @@ fb-watchman@^2.0.0:
   dependencies:
     bser "^2.0.0"
 
+<<<<<<< 2646cec9122d06f191cb0f32ed6aed2440adc843
 =======
 <<<<<<< 0f2552493bb576d59c5f7e25628dec18ef2e0efa
 =======
@@ -2137,6 +2141,8 @@ fbjs@^0.8.1, fbjs@^0.8.4:
 
 >>>>>>> implement Redux front-end with dummy data, incomplete message input
 >>>>>>> implement Redux front-end with dummy data, incomplete message input
+=======
+>>>>>>> added sample tests for front end and back end
 fbjs@^0.8.9:
   version "0.8.12"
   resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.12.tgz#10b5d92f76d45575fd63a217d4ea02bea2f8ed04"
