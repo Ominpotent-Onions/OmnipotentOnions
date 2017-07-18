@@ -6,7 +6,6 @@ config/default.json
 config/test.json
 config/default.json
 
-
 # OS X
 .DS_Store
 
