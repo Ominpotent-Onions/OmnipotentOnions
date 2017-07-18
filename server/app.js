@@ -33,13 +33,13 @@ app.use('/groups/:id', routes.profilesGroups);
 //  add channels router
 app.use('/channels', routes.channels);
 
-io.on('connection', function(socket){
+io.on('connection', function(socket) {
   console.log('a user has connected');
   socket.on('send', (message) => {
     console.log('received message:', message);
     socket.emit('return-message', message);
-  })
-})
+  });
+});
 
 
 module.exports = app;

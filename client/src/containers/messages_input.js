@@ -28,7 +28,7 @@ class MessageInput extends Component {
       id: 1,
       user: 'Shi-Hao',
       message: message.message
-    }
+    };
 
     console.log('submit called');
 
