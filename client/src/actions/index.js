@@ -64,7 +64,7 @@ export let fetchChannels = function(group) {
 export let fetchMessages = function(channel) {
   // replace with real ajax request
   // const request = axios.get(``);
-  
+
   // dummy request
   const request = [
     {
