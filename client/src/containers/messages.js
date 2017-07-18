@@ -14,7 +14,7 @@ class Messages extends Component {
     this.props.fetchMessages();
     socket.on('return-message', message => {
       this.props.createMessage(message);
-    })
+    });
   }
 
   render() {
