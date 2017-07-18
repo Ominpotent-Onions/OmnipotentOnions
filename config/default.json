@@ -1,0 +1,39 @@
+{
+ "knex": {
+   "client": "postgresql",
+
+   "connection": {
+     "database": "thesis",
+     "user": "postgres",
+     "password": "postgres",
+     "host": "localhost",
+     "port": 5432
+   },
+   "pool": {
+     "min": 1,
+     "max": 2
+   },
+   "migrations": {
+     "tableName": "knex_migrations",
+     "directory": "db/migrations"
+   },
+   "seeds": {
+     "directory": "db/seeds"
+   }
+ },
+
+ "passport": {
+   "Google": {
+     "clientID": "52861114701-b5h0pqdgemq7i2v5tjuufdn5la4rapsn.apps.googleusercontent.com",
+     "clientSecret": "kDIoRTZWLTG-_5ivqW7ZKOqs",
+     "callbackURL": "http://localhost:3000/auth/google/callback"
+   },
+   "Facebook": {
+     "clientID": "675361529340975",
+     "clientSecret": "1f48718a53b794887e70b32434f7d278",
+     "callbackURL": "http://localhost:3000/auth/facebook/callback"
+   }
+   // ,
+   // "Twitter": {}
+ }
+}
