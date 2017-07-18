@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { createMessage } from '../actions';
+import io from 'socket.io-client';
 
 class MessageInput extends Component {
 

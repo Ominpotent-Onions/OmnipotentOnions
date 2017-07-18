@@ -1,7 +1,6 @@
 import React from 'react';
 import io from 'socket.io-client';
 import ChatBox from '../Main/Message/ChatBox.js';
-import UsernameForm from '../Main/Message/UsernameForm.js';
 
 class Login extends React.Component {
   constructor(props) {
