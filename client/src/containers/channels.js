@@ -25,6 +25,10 @@ class Channels extends Component {
     return (
       <div>
         <h2>Channels</h2>
+        <button>
+          <i className="add circle icon"></i>
+        </button>
+        <input></input>
         <Segment.Group>
           {this.renderChannels()}
         </Segment.Group>
