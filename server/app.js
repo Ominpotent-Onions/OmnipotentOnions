@@ -41,5 +41,7 @@ io.on('connection', function(socket) {
   });
 });
 
+// add messages router
+app.use('/messages/:id', routes.messages);
 
 module.exports = app;
