@@ -1,14 +1,14 @@
 const models = require('../../db/models');
 
-module.exports.getAll = (req, res) => {
-  models.Group.fetchAll()
-    .then(groups => {
-      res.status(200).send(profiles);
-    })
-    .catch(err => {
-      res.status(503).send(err);
-    });
-};
+// module.exports.getAll = (req, res) => {
+//   models.Group.fetchAll()
+//     .then(groups => {
+//       res.status(200).send(profiles);
+//     })
+//     .catch(err => {
+//       res.status(503).send(err);
+//     });
+// };
 
 module.exports.create = (req, res) => {
   models.Group.forge({ name: req.body.name })

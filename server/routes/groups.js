@@ -4,7 +4,7 @@ const router = express.Router();
 const GroupController = require('../controllers').Groups;
 
 router.route('/groups')
-  .get(GroupController.getAll)
+  // .get(GroupController.getAll)
   .post(GroupController.create)
 ;
 
