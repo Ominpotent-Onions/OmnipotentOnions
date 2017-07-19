@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-import { createGroup, createInvite} from '../actions';
+import { fetchProfilesGroups, joinGroup } from '../actions';
 
 class NewGroup extends Component {
 
@@ -13,7 +13,7 @@ class NewGroup extends Component {
     const { meta: { touched, error } } = field; 
 
     return (
-      <div className='group'>
+      <div className='shortID'>
         <input
           type='text'
           {...field.input} 
@@ -22,8 +22,20 @@ class NewGroup extends Component {
     );
   }
 
-  onSubmit(group) {
-    console.log(group);
+  onSubmit(event) {
+    let message = _.filter(this.props.groups, (group) => (group.shortID === event.shortID));
+    let groupId = message[0].id;
+
+    let data = {
+      //id will be incremented 
+      id: 3,
+      //profile_id will be the id of whoever is logged in 
+      profile_id: 1,
+      group_id: groupId
+    };
+    
+    this.props.joinGroup(data);
+    console.log(this.props.fetchProfilesGroups());
   }
 
   render() {
@@ -34,10 +46,10 @@ class NewGroup extends Component {
         <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
           <Field
             label='Add new group'
-            name='group'
+            name='shortID'
             component={this.renderField}
           />
-          <button type='submit'>Create Group</button>
+          <button type='submit'>Join Group</button>
         </form>
       </div>
     );
@@ -45,7 +57,7 @@ class NewGroup extends Component {
 }
 
 export default reduxForm({
-  form: 'MessageForm'
+  form: 'GroupForm'
 })(
-  connect(null, { createGroup, createInvite })(NewGroup)
+  connect(null, { fetchProfilesGroups, joinGroup})(NewGroup)
 );

@@ -6,7 +6,7 @@ export const FETCH_GROUPS = 'fetch_groups';
 export const FETCH_CHANNELS = 'fetch_channels';
 export const FETCH_MESSAGES = 'fetch_messages';
 export const CREATE_GROUP = 'create_group';
-export const CREATE_INVITE = 'create_invite';
+export const JOIN_GROUP = 'join_group';
 export const CREATE_MESSAGE = 'create_message';
 export const FETCH_PROFILE = 'fetch_profile';
 
@@ -41,11 +41,6 @@ export const fetchProfilesGroups = function(user) {
     },
     {
       id: 2,
-      profile_id: 1,  
-      group_id: 2
-    },
-    {
-      id: 3,
       profile_id: 1,     
       group_id: 3 
     }
@@ -91,11 +86,11 @@ export let createGroup = function(group) {
   };
 };
 
-export let createInvite = function(invite) {
+export let joinGroup = function(invite) {
   const shortID = {};
 
   return {
-    type: CREATE_INVITE,
+    type: JOIN_GROUP,
     payload: shortID
   };
 };

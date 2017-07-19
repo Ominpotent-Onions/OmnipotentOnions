@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchGroups, createGroup, createInvite } from '../actions';
+import { fetchGroups, createGroup } from '../actions';
 
+import InviteLink from './invite_link';
 import NewGroup from './new_group';
-import InviteLink from './invite_link.js';
+import JoinGroup from './join_group';
 import { Segment } from 'semantic-ui-react';
 
 class Groups extends Component { 
@@ -36,6 +37,7 @@ class Groups extends Component {
         <Segment.Group>
           {this.renderGroups()}
           <NewGroup />
+          <JoinGroup groups={this.props.groups}/>
         </Segment.Group>
          
       </div>
@@ -47,4 +49,4 @@ const mapStateToProps = function(state) {
   return { groups: state.groups, profile: state.profile };
 };
 
-export default connect(mapStateToProps, { fetchGroups, createGroup, createInvite })(Groups);
+export default connect(mapStateToProps, { fetchGroups, createGroup })(Groups);
