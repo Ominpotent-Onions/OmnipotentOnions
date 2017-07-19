@@ -16,7 +16,7 @@ class InviteLink extends Component {
     const message = 'Share this code with others to join the group! :';
     const shortID = this.props.group.shortID;
 
-    alert(message + '\n' + shortID);
+    console.log(message + '\n' + shortID);
   }
 
   render() {    
