@@ -26,6 +26,9 @@ export const fetchGroups = function(user) {
   //   },
   // ];
 
+  axios.get(`/groups/${user.id}`).then(groups => {
+    
+  });
   return {
     type: FETCH_GROUPS,
     payload: request
