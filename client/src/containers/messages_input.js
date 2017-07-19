@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { createMessage } from '../actions';
+import io from 'socket.io-client';
 
 class MessageInput extends Component {
 
@@ -10,8 +11,7 @@ class MessageInput extends Component {
   }
 
   renderField(field) {
-    const { meta: { touched, error } } = field; 
-
+    console.log('this is field, ' + field);
     return (
       <div className='message'>
         <input
@@ -23,6 +23,7 @@ class MessageInput extends Component {
   }
 
   onSubmit(message) {
+    console.log(message);
     // currently only sends { message: 'the message' }
     const data = {
       id: 5,
@@ -46,7 +47,7 @@ class MessageInput extends Component {
             label='Please enter your message here'
             name='message'
             component={this.renderField}
-          />
+          /> 
           <button type='submit'>Submit</button>
         </form>
       </div>

@@ -4,7 +4,17 @@ export const FETCH_GROUPS = 'fetch_groups';
 export const FETCH_CHANNELS = 'fetch_channels';
 export const FETCH_MESSAGES = 'fetch_messages';
 export const CREATE_MESSAGE = 'create_message';
-export const FETCH_PROFILE = 'fetch_profile';
+export const FETCH_USER = 'fetch_user';
+export const ADD_CHANNEL = 'add_channel';
+
+
+export const addChannel = (channel) => {
+  console.log(channel);
+  return {
+    type: ADD_CHANNEL,
+    payload: channel
+  };
+};
 
 export const fetchGroups = function(user) {
   // replace with real ajax request
