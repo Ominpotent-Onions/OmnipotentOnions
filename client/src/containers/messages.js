@@ -9,8 +9,6 @@ import MessageBoard from '../components/messages_board';
 import MessageInput from './messages_input';
 import { Segment } from 'semantic-ui-react';
 
-import { Segment } from 'semantic-ui-react';
-
 class Messages extends Component {
   componentDidMount() {
     this.props.fetchMessages();
