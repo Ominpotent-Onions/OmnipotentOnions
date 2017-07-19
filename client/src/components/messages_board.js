@@ -10,7 +10,7 @@ class MessageBoard extends Component {
   }
 
   renderMessages(messages) {
-    console.log(messages, 'messages');
+    console.log('MESSAGES in compo/message_board: ', messages);
     return _.map(messages, message => {
       return (
         <Segment key={message.id}> 

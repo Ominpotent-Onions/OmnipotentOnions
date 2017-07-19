@@ -108,7 +108,6 @@ export let createMessage = function(message) {
 };
 
 export let fetchProfile = function(profile) {
-  console.log('profile', profile);
   return {
     type: FETCH_PROFILE,
     payload: profile
