@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 import React from 'react';
 import MessageBoard from '../src/components/messages_board';
@@ -32,4 +32,4 @@ it('renders correctly', () => {
     messages={messages}
   />).toJSON();
   expect(tree).toMatchSnapshot();
-})
+});
