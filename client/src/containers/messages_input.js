@@ -11,8 +11,7 @@ class MessageInput extends Component {
   }
 
   renderField(field) {
-    const { meta: { touched, error } } = field; 
-
+    console.log('this is field, ' + field);
     return (
       <div className='message'>
         <input
@@ -24,6 +23,7 @@ class MessageInput extends Component {
   }
 
   onSubmit(message) {
+    console.log(message);
     // currently only sends { message: 'the message' }
     const data = {
       id: 5,
@@ -43,11 +43,11 @@ class MessageInput extends Component {
       <div>
         <h4>Message Input</h4>
         <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-          <Field
+           <Field
             label='Please enter your message here'
             name='message'
             component={this.renderField}
-          />
+          /> 
           <button type='submit'>Submit</button>
         </form>
       </div>

@@ -42,6 +42,9 @@ io.on('connection', function(socket) {
     console.log('received message:', message);
     socket.emit('return-message', message);
   });
+  socket.on('newChannel', (channel) => {
+    console.log('recieved new channel name:', channel);
+  });
 });
 
 module.exports = app;

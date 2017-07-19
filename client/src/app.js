@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import promise from 'redux-promise';
 import reducers from './reducers';
-import Login from './components/Login/index';
+// import Login from './components/Login/index';
 
 import Router from './components/router';
 
