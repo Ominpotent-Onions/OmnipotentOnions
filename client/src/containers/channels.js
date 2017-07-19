@@ -56,11 +56,11 @@ class Channels extends Component {
           <button type='submit'>
             <i className="add circle icon"></i>
           </button>
-            <Field 
-              label='Please enter your message here'
-              name='channel'
-              component={this.renderField}
-            />
+          <Field 
+            label='Please enter your message here'
+            name='channel'
+            component={this.renderField}
+          />
         </form>
         <Segment.Group>
           {this.renderChannels()}

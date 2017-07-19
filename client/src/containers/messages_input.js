@@ -43,7 +43,7 @@ class MessageInput extends Component {
       <div>
         <h4>Message Input</h4>
         <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-           <Field
+          <Field
             label='Please enter your message here'
             name='message'
             component={this.renderField}
