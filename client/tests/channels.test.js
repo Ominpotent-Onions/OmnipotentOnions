@@ -1,11 +1,11 @@
 import React from 'react';
-import { Channels } from '../src/containers/channels'
+import { Channels } from '../src/containers/channels';
 import renderer from 'react-test-renderer';
 import _ from 'lodash';
 
 const fetchChannels = function(group) {
   return;
-}
+};
 
 const channels = [
   {
@@ -34,4 +34,4 @@ it('renders correctly', () => {
   />);
 
   expect(tree).toMatchSnapshot();
-})
+});
