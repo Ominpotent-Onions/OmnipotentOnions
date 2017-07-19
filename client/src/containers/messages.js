@@ -11,18 +11,6 @@ import MessageInput from './messages_input';
 import { Segment } from 'semantic-ui-react';
 
 class Messages extends Component {
-  constructor(props) {
-    super(props);
-    this.socket = io();
-    this.state = {
-      messages: [{user: 'Jasper', text: 'hello'}, {user: 'Shi-hao', text: 'baka'}]
-    };
-    this.socket.on('chat message', (msg) => {
-      this.setState({
-        messages: msg
-      });
-    });
-  }
   componentDidMount() {
     this.props.fetchMessages();
     socket.on('return-message', message => {
