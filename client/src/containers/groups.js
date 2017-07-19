@@ -7,7 +7,8 @@ import { Segment } from 'semantic-ui-react';
 class Groups extends Component { 
 
   componentDidMount() {
-    this.props.fetchGroups();
+    console.log('compo/groups.js ', this.props.profile);
+    this.props.fetchGroups(this.props.profile);
   }
 
   renderGroups() {
@@ -33,7 +34,7 @@ class Groups extends Component {
 }
 
 const mapStateToProps = function(state) {
-  return { groups: state.groups };
+  return { groups: state.groups, profile: state.profile };
 };
 
 export default connect(mapStateToProps, { fetchGroups })(Groups);
