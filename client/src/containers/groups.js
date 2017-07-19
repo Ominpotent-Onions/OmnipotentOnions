@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchGroups } from '../actions';
+import { fetchGroups, createGroup, createInvite } from '../actions';
 
+import NewGroup from './new_group';
+import InviteLink from './invite_link.js';
 import { Segment } from 'semantic-ui-react';
 
 class Groups extends Component { 
@@ -16,10 +18,15 @@ class Groups extends Component {
     return _.map(this.props.groups, group => {
       return (
         <Segment key={group.id}>
-          <div> {group.groups.name} </div>
+          <div> {group.name} </div>
+          <InviteLink group={group}/>
         </Segment>
       );
     });
+  }
+
+  addNewGroup() {
+    console.log('hello');
   }
 
   render() {
@@ -28,7 +35,9 @@ class Groups extends Component {
         <h2>Groups</h2>
         <Segment.Group>
           {this.renderGroups()}
+          <NewGroup />
         </Segment.Group>
+         
       </div>
     );
   }
@@ -38,4 +47,4 @@ const mapStateToProps = function(state) {
   return { groups: state.groups, profile: state.profile };
 };
 
-export default connect(mapStateToProps, { fetchGroups })(Groups);
+export default connect(mapStateToProps, { fetchGroups, createGroup, createInvite })(Groups);

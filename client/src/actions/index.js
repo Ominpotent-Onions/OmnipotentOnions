@@ -3,6 +3,8 @@ import axios from 'axios';
 export const FETCH_GROUPS = 'fetch_groups';
 export const FETCH_CHANNELS = 'fetch_channels';
 export const FETCH_MESSAGES = 'fetch_messages';
+export const CREATE_GROUP = 'create_group';
+export const CREATE_INVITE = 'create_invite';
 export const CREATE_MESSAGE = 'create_message';
 export const FETCH_PROFILE = 'fetch_profile';
 
@@ -28,6 +30,24 @@ export let fetchMessages = function(channelId) {
   return {
     type: FETCH_MESSAGES,
     payload: request
+  };
+};
+
+export let createGroup = function(group) {
+  const name = {};
+
+  return {
+    type: CREATE_GROUP,
+    payload: name
+  };
+};
+
+export let createInvite = function(invite) {
+  const shortID = {};
+
+  return {
+    type: CREATE_INVITE,
+    payload: shortID
   };
 };
 
