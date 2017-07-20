@@ -10,16 +10,30 @@ const models = require('../../db/models');
 //     });
 // };
 
-module.exports.create = (req, res) => {
+module.exports.createGroup = (req, res) => {
   models.Group.forge({ name: req.body.name })
-  .save()
-  .then(result => {
-    res.status(201).send(result);
-  })
-  .catch(err => {
-    if (err.constraint === 'groups_name_unique') {
-      return res.status(403);
-    }
-    res.status(500).send(err);
-  });
+    .save()
+    .then(result => {
+      res.status(201).send(result);
+    })
+    .catch(err => {
+      if (err.constraint === 'groups_name_unique') {
+        return res.status(403);
+      }
+      res.status(500).send(err);
+    });
+};
+
+module.exports.createInvite = (req, res) => {
+  models.Group.forge({ id: req.params.id })
+    .save({ shortID: req.query.id })
+    .then(result => {
+      res.status(201).send(result);
+    })
+    .catch(err => {
+      if (err.constraint === 'groups_name_unique') {
+        return res.status(403);
+      }
+      res.status(500).send(err);
+    });
 };

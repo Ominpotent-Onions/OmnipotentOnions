@@ -19,8 +19,8 @@ class Groups extends Component {
     return _.map(this.props.groups, group => {
       return (
         <Segment key={group.id}>
-          <div> {group.name} </div>
-          <InviteLink group={group} />
+          <div> {group.groups.name} </div>
+          <InviteLink group={group.groups} profile={this.props.profile}/>
         </Segment>
       );
     });

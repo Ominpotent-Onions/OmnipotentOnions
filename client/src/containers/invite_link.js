@@ -6,16 +6,13 @@ import shortid from 'shortid';
 
 class InviteLink extends Component {
   componentDidMount() {
-    if(!this.props.group.shortID){
-      this.props.group.shortID = shortid.generate();
-    }
+    let shortID = shortid.generate();
+    this.props.createInvite(this.props.group, shortID);
   }
 
 
   handleGroupInviteButton() {
     const message = 'Share this code with others to join the group! :';
-    const shortID = this.props.group.shortID;
-
     alert(message + '\n' + shortID);
   }
 
@@ -28,4 +25,8 @@ class InviteLink extends Component {
   }
 }
 
-export default InviteLink;
+const mapStateToProps = function(state) {
+  return { groups: state.groups, profile: state.profile };
+};
+
+export default connect(mapStateToProps, { createInvite })(InviteLink);
