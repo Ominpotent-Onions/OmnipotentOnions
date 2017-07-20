@@ -7,14 +7,12 @@ export const CREATE_MESSAGE = 'create_message';
 export const FETCH_PROFILE = 'fetch_profile';
 
 export const fetchGroups = function(user) {
-  console.log('action/index USER!!!!!!! ', user);
-  axios.get(`/groups/${user.id}`).then(groups => {
-    console.log('GROUPS', groups);
-    // return {
-    //   type: FETCH_GROUPS,
-    //   payload: groups
-    // };
-  });
+  console.log('action/index USER', user.id);
+  const request = axios.get(`/profileGroups/${user.id}`);
+  return {
+    type: FETCH_GROUPS,
+    payload: request
+  };
 };
 
 export let fetchChannels = function(group) {
@@ -94,7 +92,6 @@ export let createMessage = function(message) {
 };
 
 export let fetchProfile = function(profile) {
-  console.log('actioins/index.js ', profile);
   return {
     type: FETCH_PROFILE,
     payload: profile

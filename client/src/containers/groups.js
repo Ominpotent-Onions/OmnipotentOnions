@@ -5,17 +5,18 @@ import { fetchGroups } from '../actions';
 import { Segment } from 'semantic-ui-react';
 
 class Groups extends Component { 
-
-  componentDidMount() {
-    console.log('compo/groups.js ', this.props.profile);
-    this.props.fetchGroups(this.props.profile);
+  // constructor(props) {
+  //   super(props);
+  //   this.props.fetchGroups(this.props.profile);
+  // }
+  componentWillMount() {
+    this.props.fetchGroups(this.props.profile);    
   }
-
   renderGroups() {
     return _.map(this.props.groups, group => {
       return (
         <Segment key={group.id}>
-          <div> {group.name} </div>
+          <div> {group.groups.name} </div>
         </Segment>
       );
     });
