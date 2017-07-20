@@ -7,7 +7,6 @@ export const CREATE_MESSAGE = 'create_message';
 export const FETCH_PROFILE = 'fetch_profile';
 
 export const fetchGroups = function(user) {
-  console.log('action/index USER', user.id);
   const request = axios.get(`/profileGroups/${user.id}`);
   return {
     type: FETCH_GROUPS,
