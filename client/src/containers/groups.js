@@ -8,13 +8,11 @@ import JoinGroup from './join_group';
 import { Segment } from 'semantic-ui-react';
 
 class Groups extends Component { 
-  // constructor(props) {
-  //   super(props);
-  //   this.props.fetchGroups(this.props.profile);
-  // }
-  componentWillMount() {
-    this.props.fetchGroups(this.props.profile);    
+
+  componentDidMount() {
+    this.props.fetchGroups(this.props.profile);
   }
+
   renderGroups() {
     return _.map(this.props.groups, group => {
       return (
