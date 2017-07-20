@@ -45,7 +45,7 @@ class NewGroup extends Component {
 }
 
 export default reduxForm({
-  form: 'MessageForm'
+  groups: 'GroupForm'
 })(
   connect(null, { createGroup, createInvite })(NewGroup)
 );

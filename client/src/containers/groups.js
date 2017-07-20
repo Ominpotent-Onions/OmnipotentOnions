@@ -20,7 +20,7 @@ class Groups extends Component {
       return (
         <Segment key={group.id}>
           <div> {group.name} </div>
-          <InviteLink group={group}/>
+          <InviteLink group={group} />
         </Segment>
       );
     });
@@ -37,9 +37,9 @@ class Groups extends Component {
         <Segment.Group>
           {this.renderGroups()}
           <NewGroup />
-          <JoinGroup groups={this.props.groups}/>
+          <JoinGroup groups={this.props.groups} profile={this.props.profile} />
         </Segment.Group>
-         
+             
       </div>
     );
   }

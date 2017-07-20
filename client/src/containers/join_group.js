@@ -24,18 +24,23 @@ class NewGroup extends Component {
 
   onSubmit(event) {
     let message = _.filter(this.props.groups, (group) => (group.shortID === event.shortID));
+
+    if(message[0] === undefined){
+      alert('Group not found!');
+    } 
+
     let groupId = message[0].id;
+    let profileId = this.props.profile.id;
 
     let data = {
-      //id will be incremented 
+      //id will be auto-incremented 
       id: 3,
-      //profile_id will be the id of whoever is logged in 
-      profile_id: 1,
+      profile_id: profileId,
       group_id: groupId
     };
     
     this.props.joinGroup(data);
-    console.log(this.props.fetchProfilesGroups());
+    console.log(data);
   }
 
   render() {
@@ -57,7 +62,7 @@ class NewGroup extends Component {
 }
 
 export default reduxForm({
-  form: 'GroupForm'
+  form: 'JoinGroupForm'
 })(
-  connect(null, { fetchProfilesGroups, joinGroup})(NewGroup)
+  connect(null, { fetchProfilesGroups, joinGroup })(NewGroup)
 );

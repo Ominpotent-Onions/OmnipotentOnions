@@ -87,11 +87,11 @@ export let createGroup = function(group) {
 };
 
 export let joinGroup = function(invite) {
-  const shortID = {};
+  const joinGroup = {};
 
   return {
     type: JOIN_GROUP,
-    payload: shortID
+    payload: invite
   };
 };
 

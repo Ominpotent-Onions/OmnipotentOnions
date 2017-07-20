@@ -18,14 +18,14 @@ class Main extends Component {
   }
   render() {
     return (
-    <div>
-      <h1>Welcome to Connect, {window.myUser.display}</h1>
-      <Segment.Group horizontal>
-        <Segment><Groups /></Segment>
-        <Segment><Channels /></Segment>
-        <Segment><Messages /></Segment>
-      </Segment.Group>
-    </div>
+      <div>
+        <h1>Welcome to Connect, {window.myUser.display}</h1>
+        <Segment.Group horizontal>
+          <Segment><Groups profile={window.myUser}/></Segment>
+          <Segment><Channels /></Segment>
+          <Segment><Messages /></Segment>
+        </Segment.Group>
+      </div>
     );
   }  
 }
