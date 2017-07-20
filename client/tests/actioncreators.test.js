@@ -1,20 +1,18 @@
 import * as actions from '../src/actions/index.js';
   
 describe('actions', () => {
-  it('should fetch your profile', () => {
-    const profile = {
-      id: 2,
-      first: 'Shi Hao',
-      last: 'Hong',
-      display: 'Shi Hao Hong',
-      email: 'shihaohong94@gmail.com'
+  it('should create a message', () => {
+    const data = {
+      id: 5,
+      user: 'Shi-Hao',
+      text: 'hello'
     };
 
     const expectedAction = {
       type: actions.CREATE_MESSAGE,
-      payload: profile
+      payload: data
     };
 
-    expect(actions.createMessage(profile)).toEqual(expectedAction);
+    expect(actions.createMessage(data)).toEqual(expectedAction);
   });
 });
