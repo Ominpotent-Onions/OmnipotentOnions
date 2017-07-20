@@ -6,7 +6,6 @@ export const FETCH_GROUPS = 'fetch_groups';
 export const FETCH_CHANNELS = 'fetch_channels';
 export const FETCH_MESSAGES = 'fetch_messages';
 export const CREATE_GROUP = 'create_group';
-export const JOIN_GROUP = 'join_group';
 export const CREATE_MESSAGE = 'create_message';
 export const FETCH_PROFILE = 'fetch_profile';
 
@@ -83,15 +82,6 @@ export let createGroup = function(group) {
   return {
     type: CREATE_GROUP,
     payload: name
-  };
-};
-
-export let joinGroup = function(invite) {
-  const joinGroup = {};
-
-  return {
-    type: JOIN_GROUP,
-    payload: invite
   };
 };
 
