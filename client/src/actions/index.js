@@ -24,7 +24,6 @@ export const fetchProfiles = function(user) {
 };
 
 export let fetchProfile = function(profile) {
-  console.log('actioins/index.js ', profile);
   return {
     type: FETCH_PROFILE,
     payload: profile
