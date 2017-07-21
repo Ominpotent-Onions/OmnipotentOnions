@@ -22,12 +22,10 @@ class JoinGroup extends Component {
     );
   }
 
-  grabGroup(shortID, callback) {
-    
-  }
-
-  onSubmit(shortID) {
-    this.props.fetchOneGroup(shortID);
+  onSubmit(group) {
+    let shortID = group.shortID;
+    let profile_id = this.props.profile.id;
+    this.props.fetchOneGroup(shortID, profile_id);
     //   .then(group => {
     //     console.log(group.payload.data)
     // })
@@ -36,7 +34,6 @@ class JoinGroup extends Component {
     // })
     // this.grabGroup(shortID, group => group)
 
-    console.log('this.props.group:',this.props.group);
     //ryw0Y3CBb
     // let message = _.filter(this.props.groups, (group) => (group.shortID === event.shortID));
 
@@ -66,7 +63,7 @@ class JoinGroup extends Component {
         <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
           <Field
             label='Add new group'
-            name='group'
+            name='shortID'
             component={this.renderField}
           />
           <button type='submit'>Join Group</button>

@@ -9,7 +9,7 @@ router.route('/:id')
 ;
 
 router.route('/fetchOneGroup/:id')
-  .get(ProfileGroupController.fetchOneGroup)
+  .post(ProfileGroupController.fetchOneGroup)
 ;
 
 router.route('/addProfileGroup')

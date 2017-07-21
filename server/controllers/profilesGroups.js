@@ -14,21 +14,29 @@ module.exports.getAllGroups = (req, res) => {
 
 //TODO: Grab group id at shortID 
 module.exports.fetchOneGroup = (req, res) => {
-  console.log('asdfa', req.params.id);
   models.Group.where({ shortID: req.params.id })
     .fetch()
     .then(group => {
-      if (!group) {
-        throw group;
-      }
-      res.status(200).send(group);
-    })
-    .error(err => {
-      res.status(500).send(err);
-    })
-    .catch(err => {
-      res.status(404).send(err);
+      models.ProfileGroup.forge()
+        .save({
+          profile_id: req.query.id,
+          group_id: group.id
+        })
+        .then((groups) => {      
+          models.ProfileGroup.where({ profile_id: req.query.id })
+            .fetchAll({ withRelated: ['groups'] })
+            .then(groups => {
+              console.log(groups);
+              res.status(201).send(groups);
+            });
+        });
     });
+  // .error(err => {
+  //   res.status(500).send(err);
+  // })
+  // .catch(err => {
+  //   res.status(404).send(err);
+  // });
 };
 
 module.exports.addProfileGroup = (req, res) => {

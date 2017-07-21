@@ -63,21 +63,14 @@ export const fetchGroups = function(user) {
   };
 };
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-export let fetchChannels = function(groupId) {
-  const request = axios.get(`/channels/${groupId}`);
-=======
-=======
-export const fetchOneGroup = function(user) {
-  const request = axios.get(`/profileGroups/fetchOneGroup/${user}`);
+export const fetchOneGroup = function(shortid, profile) {
+  const request = axios.post(`/profileGroups/fetchOneGroup/${shortid}?id=${profile}`);
   return {
     type: FETCH_ONE_GROUP,
     payload: request
   };
 };
 
->>>>>>> Add create group function and render dynamically
 export let fetchChannels = function(group) {
   // replace with real ajax request
   // const request = axios.get(``);
@@ -102,7 +95,6 @@ export let fetchChannels = function(group) {
     }
   ];
 
->>>>>>> Add function to persist group invite shortID
   return {
     type: FETCH_CHANNELS,
     payload: request
@@ -134,8 +126,6 @@ export let addProfileGroup = function(profile, group) {
   };
 };
 
-<<<<<<< HEAD
-=======
 export let createInvite = function(group, shortID) {
   //?id=${shortID}
   const request = axios.post(`/groups/createInvite/${group.id}?id=${shortID}`);
@@ -145,15 +135,6 @@ export let createInvite = function(group, shortID) {
   };
 };
 
-// export let joinGroup = function(user, shortID) {
-//   const request = axios.post(`/profileGroups/${user.id}?id=${shortID}`);
-//   return {
-//     type: JOIN_GROUP,
-//     payload: request
-//   };
-// };
-
->>>>>>> Add function to persist group invite shortID
 export let createMessage = function(message) {
   // replace with real ajax request
   // const request = axios.post(``);
