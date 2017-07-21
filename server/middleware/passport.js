@@ -63,7 +63,6 @@ const getOrCreateOAuthProfile = (type, oauthProfile, done) => {
     withRelated: ['profile']
   })
     .then(oauthAccount => {
-      console.log('middleware/passport OAUTHPROFILE', oauthProfile.photos[0].value);      
       if (oauthAccount) {
         throw oauthAccount;
       }
@@ -75,11 +74,15 @@ const getOrCreateOAuthProfile = (type, oauthProfile, done) => {
       return models.Profile.where({ email: oauthProfile.emails[0].value }).fetch();
     })
     .then(profile => {
+      // console.log('middleware/passport OAUTHPROFILE', oauthProfile.photos[0].value);      
+      let profilePic = oauthProfile.photos[0].value;
+      profilePic = profilePic.slice(0, profilePic.length - 2).concat('250');
       let profileInfo = {
         first: oauthProfile.name.givenName,
         last: oauthProfile.name.familyName,
         display: oauthProfile.displayName || `${oauthProfile.name.givenName} ${oauthProfile.name.familyName}`,
-        email: oauthProfile.emails[0].value
+        email: oauthProfile.emails[0].value,
+        profilePic: profilePic
       };
 
       if (profile) {
