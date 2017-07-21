@@ -63,7 +63,6 @@ const getOrCreateOAuthProfile = (type, oauthProfile, done) => {
     withRelated: ['profile']
   })
     .then(oauthAccount => {
-      console.log('middleware/passport OAUTHPROFILE', oauthProfile.photos[0].value);      
       if (oauthAccount) {
         throw oauthAccount;
       }
