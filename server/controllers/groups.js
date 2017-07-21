@@ -12,7 +12,10 @@ const models = require('../../db/models');
 
 module.exports.createGroup = (req, res) => {
   models.Group.forge()
-    .save({ name: req.params.id })
+    .save({ 
+      name: req.params.id,
+      shortID: req.query.shortID
+    })
     .then(group => {
       models.ProfileGroup.forge()
         .save({

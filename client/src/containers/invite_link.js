@@ -5,16 +5,21 @@ import { createInvite } from '../actions';
 import shortid from 'shortid';
 
 class InviteLink extends Component {
-  componentDidMount() {
-    if(!this.props.group.shortID){
-      let shortID = shortid.generate();
-      this.props.createInvite(this.props.group, shortID);
-    }  
-  }
+  // componentWillMount() {
+  //   if(!this.props.group.shortID){
+  //   this.createShortID();
+  //   }      
+  // }
+
+  // createShortID() {
+  //     console.log('hello')
+  //     let shortID = shortid.generate();
+  //     this.props.createInvite(this.props.group, shortID);
+  // }
 
   handleGroupInviteButton() {
     const message = 'Share this code with others to join the group! :';  
-    console.log(message + '\n' + this.props.group.shortID);
+    alert(message + '\n' + this.props.group.shortID);
   }
 
   render() {    

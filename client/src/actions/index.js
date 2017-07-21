@@ -110,8 +110,8 @@ export let fetchMessages = function(channelId) {
   };
 };
 
-export let createGroup = function(group, profile) {
-  const request = axios.post(`/groups/createGroup/${group}?id=${profile}`);
+export let createGroup = function(group, profile, shortID) {
+  const request = axios.post(`/groups/createGroup/${group}?id=${profile}&shortID=${shortID}`);
   return {
     type: CREATE_GROUP,
     payload: request

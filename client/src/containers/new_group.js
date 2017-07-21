@@ -3,6 +3,8 @@ import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { createGroup, createInvite, addProfileGroup} from '../actions';
 
+import shortid from 'shortid';
+
 class NewGroup extends Component {
   renderField(field) {
     const { meta: { touched, error } } = field; 
@@ -20,11 +22,9 @@ class NewGroup extends Component {
   onSubmit(element) {
     let newGroupName = element.groupName;
     let profile_id = this.props.profile.id;
-    this.props.createGroup(newGroupName, profile_id);
-    //   .then(group => {
-    //     console.log('gid', group.id)  
-    //     // this.props.addProfileGroup(profile_id, group.id);
-    //   })
+    let shortID = shortid.generate();
+
+    this.props.createGroup(newGroupName, profile_id, shortID);
   }
 
   render() {
