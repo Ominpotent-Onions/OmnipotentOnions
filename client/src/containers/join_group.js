@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-import { fetchOneGroup } from '../actions';
+import { joinGroup } from '../actions';
 
 class JoinGroup extends Component {
   renderField(field) {
@@ -20,7 +20,7 @@ class JoinGroup extends Component {
   onSubmit(group) {
     let shortID = group.shortID;
     let profile_id = this.props.profile.id;
-    this.props.fetchOneGroup(shortID, profile_id);
+    this.props.joinGroup(shortID, profile_id);
   }
 
   render() {
@@ -49,5 +49,5 @@ const mapStateToProps = function(state) {
 export default reduxForm({
   form: 'formReducer'
 })(
-  connect(mapStateToProps, { fetchOneGroup })(JoinGroup)
+  connect(mapStateToProps, { joinGroup })(JoinGroup)
 );

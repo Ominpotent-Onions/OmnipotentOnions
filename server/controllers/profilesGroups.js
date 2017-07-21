@@ -12,8 +12,7 @@ module.exports.getAllGroups = (req, res) => {
     });
 };
 
-//TODO: Grab group id at shortID 
-module.exports.fetchOneGroup = (req, res) => {
+module.exports.joinGroup = (req, res) => {
   models.Group.where({ shortID: req.params.id })
     .fetch()
     .then(group => {
@@ -30,13 +29,13 @@ module.exports.fetchOneGroup = (req, res) => {
               res.status(201).send(groups);
             });
         });
+    })
+    .error(err => {
+      res.status(500).send(err);
+    })
+    .catch(err => {
+      res.status(404).send(err);
     });
-  // .error(err => {
-  //   res.status(500).send(err);
-  // })
-  // .catch(err => {
-  //   res.status(404).send(err);
-  // });
 };
 
 module.exports.addProfileGroup = (req, res) => {

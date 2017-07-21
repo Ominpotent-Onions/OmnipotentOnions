@@ -8,11 +8,8 @@ router.route('/:id')
 ;
 
 router.route('/fetchOneGroup/:id')
-  .post(ProfileGroupController.fetchOneGroup)
+  .post(ProfileGroupController.joinGroup)
 ;
 
-router.route('/addProfileGroup')
-  .post(ProfileGroupController.addProfileGroup)
-;
 
 module.exports = router;

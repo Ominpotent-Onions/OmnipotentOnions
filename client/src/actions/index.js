@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const FETCH_PROFILES = 'fetch_profiles';
 export const FETCH_GROUPS = 'fetch_groups';
-export const FETCH_ONE_GROUP = 'fetch_one_groups';
+export const JOIN_GROUP = 'join_group';
 export const FETCH_CHANNELS = 'fetch_channels';
 export const FETCH_MESSAGES = 'fetch_messages';
 export const CREATE_GROUP = 'create_group';
@@ -38,8 +38,8 @@ export const fetchGroups = function(user) {
   };
 };
 
-export const fetchOneGroup = function(shortid, profile) {
-  const request = axios.post(`/profileGroups/fetchOneGroup/${shortid}?id=${profile}`);
+export const joinGroup = function(shortid, profile) {
+  const request = axios.post(`/profileGroups/joinGroup/${shortid}?id=${profile}`);
   return {
     type: FETCH_ONE_GROUP,
     payload: request
