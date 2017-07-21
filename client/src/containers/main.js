@@ -17,8 +17,8 @@ class Main extends Component {
       <div>
         <h1>Welcome to Connect, {window.myUser.display}</h1>
         <Segment.Group horizontal>
-          {/*<Segment><Channels /></Segment>
-          <Segment><Messages /></Segment>*/}
+          {/* <Segment><Channels /></Segment>
+          <Segment><Messages /></Segment> */}
           <Segment><Groups profile={window.myUser}/></Segment>
         </Segment.Group>
       </div>

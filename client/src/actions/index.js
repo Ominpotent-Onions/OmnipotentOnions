@@ -10,19 +10,7 @@ export const CREATE_MESSAGE = 'create_message';
 export const FETCH_PROFILE = 'fetch_profile';
 
 export const fetchProfiles = function(user) {
-  // dummy request
-  const request = [
-    {
-      id: 1,
-      first: 'Gideon',
-      last: 'Baik',
-      display: 'Gideon Baik',
-      email: 'fakeemail@fakewebsite.com',
-      phone: null,
-      created_at: '2017-07-18 14:06:24.25958',
-      updated_at: '2017-07-18 14:06:24.25958'
-    }
-  ];
+  const request = axios.get(`/profileGroups/${user.id}`);
 
   return {
     type: FETCH_PROFILES,
@@ -47,29 +35,7 @@ export const joinGroup = function(shortid, profile) {
 };
 
 export let fetchChannels = function(group) {
-  // replace with real ajax request
-  // const request = axios.get(``);
-
-  // dummy request
-  const request = [
-    {
-      id: 1,
-      name: 'Shi-Hao\'s Smashing Channel'
-    },
-    {
-      id: 2,
-      name: 'Dylan\'s Dynamic Channel'
-    },
-    {
-      id: 3,
-      name: 'Peter\'s Poetic Channel'
-    },
-    {
-      id: 4,
-      name: 'Gideon\'s Gallant Channel'
-    }
-  ];
-
+  const request = axios.get(`/channels/${groupId}`);
   return {
     type: FETCH_CHANNELS,
     payload: request
