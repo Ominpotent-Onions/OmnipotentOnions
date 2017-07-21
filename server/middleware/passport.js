@@ -34,7 +34,9 @@ passport.use('google', new GoogleStrategy({
   clientSecret: config.Google.clientSecret,
   callbackURL: config.Google.callbackURL
 },
-(accessToken, refreshToken, profile, done) => getOrCreateOAuthProfile('google', profile, done))
+(accessToken, refreshToken, profile, done) => {
+  return getOrCreateOAuthProfile('google', profile, done);
+})
 );
 
 passport.use('facebook', new FacebookStrategy({
@@ -61,6 +63,7 @@ const getOrCreateOAuthProfile = (type, oauthProfile, done) => {
     withRelated: ['profile']
   })
     .then(oauthAccount => {
+      console.log('middleware/passport OAUTHPROFILE', oauthProfile.photos[0].value);      
       if (oauthAccount) {
         throw oauthAccount;
       }
