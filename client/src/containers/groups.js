@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchGroups, createGroup } from '../actions';
+import { fetchGroups } from '../actions';
 
 import InviteLink from './invite_link';
 import NewGroup from './new_group';
 import JoinGroup from './join_group';
+
 import { Segment } from 'semantic-ui-react';
 
 class Groups extends Component { 
-
   componentWillMount() {
     this.props.fetchGroups(this.props.profile);
   }
@@ -42,4 +42,4 @@ const mapStateToProps = function(state) {
   return { groups: state.groups, profile: state.profile };
 };
 
-export default connect(mapStateToProps, { fetchGroups, createGroup })(Groups);
+export default connect(mapStateToProps, { fetchGroups })(Groups);

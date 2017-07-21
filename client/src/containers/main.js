@@ -9,10 +9,6 @@ import Channels from './channels';
 import Messages from './messages';
 
 class Main extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.props.fetchProfile(window.myUser);
-  // }
   componentWillMount() {
     this.props.fetchProfile(window.myUser);    
   }

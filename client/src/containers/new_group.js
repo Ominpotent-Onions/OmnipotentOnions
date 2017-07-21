@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-import { createGroup, createInvite, addProfileGroup} from '../actions';
+import { createGroup } from '../actions';
 
 import shortid from 'shortid';
 
@@ -51,5 +51,5 @@ const mapStateToProps = function(state) {
 export default reduxForm({
   form: 'GroupsForm'
 })(
-  connect(mapStateToProps, { createGroup, createInvite, addProfileGroup })(NewGroup)
+  connect(mapStateToProps, { createGroup })(NewGroup)
 );

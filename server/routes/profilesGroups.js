@@ -5,7 +5,6 @@ const ProfileGroupController = require('../controllers').ProfilesGroups;
 
 router.route('/:id')
   .get(ProfileGroupController.getAllGroups)
-  // .post(ProfileGroupController.joinGroup)
 ;
 
 router.route('/fetchOneGroup/:id')

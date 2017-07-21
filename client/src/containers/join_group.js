@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-import { fetchOneGroup, fetchProfilesGroups, joinGroup } from '../actions';
+import { fetchOneGroup } from '../actions';
 
 class JoinGroup extends Component {
-
-  // componentWillMount() {
-    
-  // }
-
   renderField(field) {
     const { meta: { touched, error } } = field; 
 
@@ -26,33 +21,6 @@ class JoinGroup extends Component {
     let shortID = group.shortID;
     let profile_id = this.props.profile.id;
     this.props.fetchOneGroup(shortID, profile_id);
-    //   .then(group => {
-    //     console.log(group.payload.data)
-    // })
-    // .then(group => {
-    //   console.log('a', group);
-    // })
-    // this.grabGroup(shortID, group => group)
-
-    //ryw0Y3CBb
-    // let message = _.filter(this.props.groups, (group) => (group.shortID === event.shortID));
-
-    // if(message[0] === undefined){
-    //   alert('Group not found!');
-    // } 
-
-    // let groupId = message[0].id;
-    // let profileId = this.props.profile.id;
-
-    // let data = {
-    //   //id will be auto-incremented 
-    //   id: 3,
-    //   profile_id: profileId,
-    //   group_id: groupId
-    // };
-    
-    // this.props.joinGroup(data);
-    
   }
 
   render() {
@@ -81,5 +49,5 @@ const mapStateToProps = function(state) {
 export default reduxForm({
   form: 'formReducer'
 })(
-  connect(mapStateToProps, { fetchOneGroup, fetchProfilesGroups, joinGroup })(JoinGroup)
+  connect(mapStateToProps, { fetchOneGroup })(JoinGroup)
 );

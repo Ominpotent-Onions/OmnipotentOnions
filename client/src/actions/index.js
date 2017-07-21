@@ -1,15 +1,11 @@
 import axios from 'axios';
 
 export const FETCH_PROFILES = 'fetch_profiles';
-export const FETCH_PROFILES_GROUPS = 'fetch_profiles_groups';
 export const FETCH_GROUPS = 'fetch_groups';
 export const FETCH_ONE_GROUP = 'fetch_one_groups';
 export const FETCH_CHANNELS = 'fetch_channels';
 export const FETCH_MESSAGES = 'fetch_messages';
 export const CREATE_GROUP = 'create_group';
-// export const ADD_PROFILE_GROUP = 'add_profile_group';
-export const CREATE_INVITE = 'create_invite';
-export const JOIN_GROUP = 'join_group';
 export const CREATE_MESSAGE = 'create_message';
 export const FETCH_PROFILE = 'fetch_profile';
 
@@ -30,27 +26,6 @@ export const fetchProfiles = function(user) {
 
   return {
     type: FETCH_PROFILES,
-    payload: request
-  };
-};
-
-export const fetchProfilesGroups = function(user) {
-  // dummy request
-  const request = [
-    {
-      id: 1,
-      profile_id: 1,
-      group_id: 1     
-    },
-    {
-      id: 2,
-      profile_id: 1,     
-      group_id: 3 
-    }
-  ];
-
-  return {
-    type: FETCH_PROFILES_GROUPS,
     payload: request
   };
 };
@@ -114,23 +89,6 @@ export let createGroup = function(group, profile, shortID) {
   const request = axios.post(`/groups/createGroup/${group}?id=${profile}&shortID=${shortID}`);
   return {
     type: CREATE_GROUP,
-    payload: request
-  };
-};
-
-export let addProfileGroup = function(profile, group) {
-  const request = axios.post(`/profileGroups/addProfileGroup?pid=${profile}&gid=${group}`);
-  return {
-    type: JOIN_GROUP,
-    payload: request
-  };
-};
-
-export let createInvite = function(group, shortID) {
-  //?id=${shortID}
-  const request = axios.post(`/groups/createInvite/${group.id}?id=${shortID}`);
-  return {
-    type: CREATE_INVITE,
     payload: request
   };
 };

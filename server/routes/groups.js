@@ -7,8 +7,4 @@ router.route('/createGroup/:id')
   .post(GroupController.createGroup)
 ;
 
-router.route('/createInvite/:id')
-  .post(GroupController.createInvite)
-;
-
 module.exports = router;
