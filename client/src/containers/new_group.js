@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-import { createGroup, createInvite} from '../actions';
+import { createGroup, createInvite, addProfileGroup} from '../actions';
 
 class NewGroup extends Component {
-
-  constructor(props) {
-    super(props);
-  }
-
   renderField(field) {
     const { meta: { touched, error } } = field; 
 
     return (
-      <div className='group'>
+      <div>
         <input
           type='text'
           {...field.input} 
@@ -22,8 +17,14 @@ class NewGroup extends Component {
     );
   }
 
-  onSubmit(group) {
-    console.log(group);
+  onSubmit(element) {
+    let newGroupName = element.groupName;
+    let profile_id = this.props.profile.id;
+    this.props.createGroup(newGroupName, profile_id);
+    //   .then(group => {
+    //     console.log('gid', group.id)  
+    //     // this.props.addProfileGroup(profile_id, group.id);
+    //   })
   }
 
   render() {
@@ -33,8 +34,7 @@ class NewGroup extends Component {
       <div>
         <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
           <Field
-            label='Add new group'
-            name='group'
+            name='groupName'
             component={this.renderField}
           />
           <button type='submit'>Create Group</button>
@@ -44,8 +44,12 @@ class NewGroup extends Component {
   }
 }
 
+const mapStateToProps = function(state) {
+  return { groupName: state.groupName };
+};
+
 export default reduxForm({
-  groups: 'GroupForm'
+  form: 'GroupsForm'
 })(
-  connect(null, { createGroup, createInvite })(NewGroup)
+  connect(mapStateToProps, { createGroup, createInvite, addProfileGroup })(NewGroup)
 );

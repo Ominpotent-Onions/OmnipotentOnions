@@ -9,23 +9,19 @@ import { Segment } from 'semantic-ui-react';
 
 class Groups extends Component { 
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.fetchGroups(this.props.profile);
   }
 
   renderGroups() {
     return _.map(this.props.groups, group => {
       return (
-        <Segment key={group.id}>
+        <Segment key={group.id}>          
           <div> {group.groups.name} </div>
-          <InviteLink group={group.groups} profile={this.props.profile}/>
+          {/*<InviteLink group={group.groups} profile={this.props.profile}/>*/}
         </Segment>
       );
     });
-  }
-
-  addNewGroup() {
-    console.log('hello');
   }
 
   render() {
@@ -34,10 +30,9 @@ class Groups extends Component {
         <h2>Groups</h2>
         <Segment.Group>
           {this.renderGroups()}
-          <NewGroup />
-          <JoinGroup groups={this.props.groups} profile={this.props.profile} />
+          <NewGroup profile={this.props.profile}/>
+          {/*<JoinGroup />*/}
         </Segment.Group>
-             
       </div>
     );
   }

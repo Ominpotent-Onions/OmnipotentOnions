@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-import { fetchProfilesGroups, joinGroup } from '../actions';
+import { fetchOneGroup, fetchProfilesGroups, joinGroup } from '../actions';
 
-class NewGroup extends Component {
+class JoinGroup extends Component {
 
-  constructor(props) {
-    super(props);
-  }
+  // componentWillMount() {
+    
+  // }
 
   renderField(field) {
     const { meta: { touched, error } } = field; 
@@ -22,25 +22,40 @@ class NewGroup extends Component {
     );
   }
 
-  onSubmit(event) {
-    let message = _.filter(this.props.groups, (group) => (group.shortID === event.shortID));
-
-    if(message[0] === undefined){
-      alert('Group not found!');
-    } 
-
-    let groupId = message[0].id;
-    let profileId = this.props.profile.id;
-
-    let data = {
-      //id will be auto-incremented 
-      id: 3,
-      profile_id: profileId,
-      group_id: groupId
-    };
+  grabGroup(shortID, callback) {
     
-    this.props.joinGroup(data);
-    console.log(data);
+  }
+
+  onSubmit(shortID) {
+    this.props.fetchOneGroup(shortID);
+    //   .then(group => {
+    //     console.log(group.payload.data)
+    // })
+    // .then(group => {
+    //   console.log('a', group);
+    // })
+    // this.grabGroup(shortID, group => group)
+
+    console.log('this.props.group:',this.props.group);
+    //ryw0Y3CBb
+    // let message = _.filter(this.props.groups, (group) => (group.shortID === event.shortID));
+
+    // if(message[0] === undefined){
+    //   alert('Group not found!');
+    // } 
+
+    // let groupId = message[0].id;
+    // let profileId = this.props.profile.id;
+
+    // let data = {
+    //   //id will be auto-incremented 
+    //   id: 3,
+    //   profile_id: profileId,
+    //   group_id: groupId
+    // };
+    
+    // this.props.joinGroup(data);
+    
   }
 
   render() {
@@ -51,7 +66,7 @@ class NewGroup extends Component {
         <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
           <Field
             label='Add new group'
-            name='shortID'
+            name='group'
             component={this.renderField}
           />
           <button type='submit'>Join Group</button>
@@ -61,8 +76,13 @@ class NewGroup extends Component {
   }
 }
 
+const mapStateToProps = function(state) {
+  console.log(state, 'state');
+  return { group: state.group };
+};
+
 export default reduxForm({
-  form: 'JoinGroupForm'
+  form: 'formReducer'
 })(
-  connect(null, { fetchProfilesGroups, joinGroup })(NewGroup)
+  connect(mapStateToProps, { fetchOneGroup, fetchProfilesGroups, joinGroup })(JoinGroup)
 );

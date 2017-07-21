@@ -3,9 +3,13 @@ import axios from 'axios';
 export const FETCH_PROFILES = 'fetch_profiles';
 export const FETCH_PROFILES_GROUPS = 'fetch_profiles_groups';
 export const FETCH_GROUPS = 'fetch_groups';
+export const FETCH_ONE_GROUP = 'fetch_one_groups';
 export const FETCH_CHANNELS = 'fetch_channels';
 export const FETCH_MESSAGES = 'fetch_messages';
 export const CREATE_GROUP = 'create_group';
+// export const ADD_PROFILE_GROUP = 'add_profile_group';
+export const CREATE_INVITE = 'create_invite';
+export const JOIN_GROUP = 'join_group';
 export const CREATE_MESSAGE = 'create_message';
 export const FETCH_PROFILE = 'fetch_profile';
 
@@ -60,9 +64,20 @@ export const fetchGroups = function(user) {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 export let fetchChannels = function(groupId) {
   const request = axios.get(`/channels/${groupId}`);
 =======
+=======
+export const fetchOneGroup = function(user) {
+  const request = axios.get(`/profileGroups/fetchOneGroup/${user}`);
+  return {
+    type: FETCH_ONE_GROUP,
+    payload: request
+  };
+};
+
+>>>>>>> Add create group function and render dynamically
 export let fetchChannels = function(group) {
   // replace with real ajax request
   // const request = axios.get(``);
@@ -103,12 +118,19 @@ export let fetchMessages = function(channelId) {
   };
 };
 
-export let createGroup = function(group) {
-  const name = {};
-
+export let createGroup = function(group, profile) {
+  const request = axios.post(`/groups/createGroup/${group}?id=${profile}`);
   return {
     type: CREATE_GROUP,
-    payload: name
+    payload: request
+  };
+};
+
+export let addProfileGroup = function(profile, group) {
+  const request = axios.post(`/profileGroups/addProfileGroup?pid=${profile}&gid=${group}`);
+  return {
+    type: JOIN_GROUP,
+    payload: request
   };
 };
 

@@ -5,7 +5,15 @@ const ProfileGroupController = require('../controllers').ProfilesGroups;
 
 router.route('/:id')
   .get(ProfileGroupController.getAllGroups)
-  .post(ProfileGroupController.joinGroup)
+  // .post(ProfileGroupController.joinGroup)
+;
+
+router.route('/fetchOneGroup/:id')
+  .get(ProfileGroupController.fetchOneGroup)
+;
+
+router.route('/addProfileGroup')
+  .post(ProfileGroupController.addProfileGroup)
 ;
 
 module.exports = router;
