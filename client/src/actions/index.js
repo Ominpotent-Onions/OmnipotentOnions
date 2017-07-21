@@ -41,7 +41,7 @@ export const fetchGroups = function(user) {
 export const joinGroup = function(shortid, profile) {
   const request = axios.post(`/profileGroups/joinGroup/${shortid}?id=${profile}`);
   return {
-    type: FETCH_ONE_GROUP,
+    type: JOIN_GROUP,
     payload: request
   };
 };

@@ -7,7 +7,7 @@ router.route('/:id')
   .get(ProfileGroupController.getAllGroups)
 ;
 
-router.route('/fetchOneGroup/:id')
+router.route('/joinGroup/:id')
   .post(ProfileGroupController.joinGroup)
 ;
 
