@@ -5,7 +5,7 @@ const PendingFriends = db.Model.extend({
     return this.belongsTo('Profile');
   },
   friend: () => {
-    return this.belongsTo('Profile');
+    return this.hasMany('Profile');
   }
 });
 

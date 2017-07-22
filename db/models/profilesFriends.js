@@ -5,7 +5,7 @@ const ProfileFriends = db.Model.extend({
     return this.belongsTo('Profile');
   },
   friend: function() {
-    return this.belongsTo('Profile');
+    return this.belongsTo('Profile', 'friend_id', 'id');
   }
 });
 
