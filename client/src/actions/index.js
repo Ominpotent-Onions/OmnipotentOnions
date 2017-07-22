@@ -35,7 +35,7 @@ export const joinGroup = function(shortid, profile) {
 };
 
 export let fetchChannels = function(group) {
-  const request = axios.get(`/channels/${groupId}`);
+  const request = axios.get(`/channels/${group}`);
   return {
     type: FETCH_CHANNELS,
     payload: request
