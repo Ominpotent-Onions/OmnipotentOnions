@@ -16,10 +16,12 @@ class NewChannel extends Component {
 
   onCreateChannel(e) {
     console.log('CONTIANERS/NEW_CHANNEL: ', e.channelName);
-    let newChannel = e.groupName;
-    let groupId = this.props.groupId;
+    let newGroup = {
+      groupId: this.props.groupId,
+      channelName: e.channelName
+    };
     e.channelName = '';
-    // this.props.createChannel();
+    this.props.createChannel(newGroup);
   }
 
   render() {
@@ -47,4 +49,4 @@ const mapStateToProps = (state) => {
 
 export default reduxForm({
   form: 'ChannelsForm'
-})( connect(mapStateToProps, { createChannel})(NewChannel) );
+})( connect(mapStateToProps, { createChannel })(NewChannel) );

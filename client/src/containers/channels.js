@@ -10,19 +10,13 @@ import { Segment } from 'semantic-ui-react';
 export class Channels extends Component {
   constructor(props) {
     super(props);
-    // this.props.fetchChannels(this.props.groupId);
-    console.log('INSIDE CONSTRUCTOR OF CHANNEL', this.props.groupId);
-  }
-  componentWillMount() {
-    console.log('containers/channels WILL MOUNT');
-    // this.props.fetchChannels(1);
   }
 
   renderChannels() {
     return _.map(this.props.channels, channel => {
       return (
         <Segment key={channel.id}>
-          <button> 
+          <button value={channel.id}> 
             {channel.name} 
           </button>
         </Segment>

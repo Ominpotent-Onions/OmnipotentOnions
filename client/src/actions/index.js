@@ -8,6 +8,7 @@ export const JOIN_GROUP = 'join_group';
 export const CREATE_GROUP = 'create_group';
 
 export const FETCH_CHANNELS = 'fetch_channels';
+export const CREATE_CHANNEL = 'create_channel';
 
 
 export const FETCH_MESSAGES = 'fetch_messages';
@@ -64,8 +65,12 @@ export let fetchChannels = function(groupId) {
   };
 };
 
-export let createChannels = function(groupId) {
-  const request = axios;
+export let createChannel = function(group) {
+  const request = axios.post(`/channels/${group.groupId}?name=${group.channelName}`);
+  return {
+    type: CREATE_CHANNEL,
+    payload: request
+  };
 };
 
 /* -----------------------MESSAGES ------------------------------------- */
