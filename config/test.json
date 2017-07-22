@@ -2,6 +2,7 @@
   "port": "6666",
 
   "knex": {
+    "client": "postgresql", 
     "connection": {
       "database": "thesis_test"
     }
