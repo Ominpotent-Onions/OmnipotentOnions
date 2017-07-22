@@ -3,13 +3,15 @@ import { connect } from 'react-redux';
 import { fetchChannels } from '../actions';
 import _ from 'lodash';
 
+import NewChannel from './new_channel';
+
 import { Segment } from 'semantic-ui-react';
 
 export class Channels extends Component {
   constructor(props) {
     super(props);
     // this.props.fetchChannels(this.props.groupId);
-    console.log('INSIDE CONSTRUCTOR OF CHANNEL');
+    console.log('INSIDE CONSTRUCTOR OF CHANNEL', this.props.groupId);
   }
   componentWillMount() {
     console.log('containers/channels WILL MOUNT');
@@ -29,12 +31,12 @@ export class Channels extends Component {
   }
 
   render() {
-    console.log('INSIDE RENDER OF CHANNELS');
     return (
       <div>
         <h2>Channels</h2>
         <Segment.Group>
           {this.renderChannels()}
+          <NewChannel groupId={this.props.groupId}/>
         </Segment.Group>
       </div>
     );

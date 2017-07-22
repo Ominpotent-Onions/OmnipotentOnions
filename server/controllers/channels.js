@@ -3,7 +3,7 @@ const models = require('../../db/models');
 module.exports.createChannel = (req, res) => {
   models.Channel.forge({
     name: req.body.name,
-    group_id: req.body.group_id
+    group_id: req.body.groupId
   })
     .save()
     .then(result => {
