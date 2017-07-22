@@ -14,6 +14,9 @@ export const CREATE_CHANNEL = 'create_channel';
 export const FETCH_MESSAGES = 'fetch_messages';
 export const CREATE_MESSAGE = 'create_message';
 
+export const FETCH_PROFILE = 'fetch_profile';
+export const FETCH_FRIENDS = 'fetch_friends';
+
 export const fetchProfiles = function(user) {
   const request = axios.get(`/profileGroups/${user.id}`);
 
@@ -93,6 +96,45 @@ export let createMessage = function(message) {
     type: CREATE_MESSAGE,
     payload: message
   };
+}; 
+
+/* Friends List Action Creators */
+
+export let fetchFriends = function(profile) {
+  // hard-coded friends
+  var friends = [
+    {
+      id: 12,
+      first: 'John',
+      last: 'Doe',
+      display: 'John Doe',
+      email: 'johndoe@anonymous.com'
+    },
+    {
+      id: 25,
+      first: 'Janet',
+      last: 'Doe',
+      display: 'Janet Doe',
+      email: 'janetdoe@anonymous.com'
+    },
+    {
+      id: 36,
+      first: 'Evets',
+      last: 'Bojs',
+      display: 'Evets Bojs',
+      email: 'elppa@elppa.com'
+    },
+    {
+      id: 77,
+      first: 'Derf',
+      last: 'Gnudriz',
+      display: 'Derf Gnudriz',
+      email: 'hr@$hr.com'
+    },
+  ];
+
+  return {
+    type: FETCH_FRIENDS,
+    payload: friends
+  };
 };
-
-

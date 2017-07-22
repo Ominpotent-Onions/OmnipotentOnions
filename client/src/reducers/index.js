@@ -6,6 +6,7 @@ import JoinGroupReducer from './reducer_join_group.js';
 import ChannelsReducer from './reducer_channels';
 import MessagesReducer from './reducer_messages';
 import ProfileReducer from './reducer_profile';
+import FriendsReducer from './reducer_friends';
 
 const rootReducer = combineReducers({
   form: formReducer,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   joinGroup: JoinGroupReducer,
   channels: ChannelsReducer,
   messages: MessagesReducer,
-  profile: ProfileReducer
+  profile: ProfileReducer,
+  friends: FriendsReducer
 });
 
 export default rootReducer;
