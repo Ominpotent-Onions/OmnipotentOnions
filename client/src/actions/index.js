@@ -17,6 +17,9 @@ export const CREATE_MESSAGE = 'create_message';
 export const FETCH_PROFILE = 'fetch_profile';
 export const FETCH_FRIENDS = 'fetch_friends';
 
+export const FETCH_PENDING_REQUESTS = 'fetch_pending_requests';
+export const FETCH_FRIEND_REQUESTS = 'fetch_friend_requests';
+
 export const fetchProfiles = function(user) {
   const request = axios.get(`/profileGroups/${user.id}`);
 
@@ -130,11 +133,60 @@ export let fetchFriends = function(profile) {
       last: 'Gnudriz',
       display: 'Derf Gnudriz',
       email: 'hr@$hr.com'
-    },
+    }
   ];
 
   return {
     type: FETCH_FRIENDS,
     payload: friends
+  };
+};
+
+export let fetchPendingRequests = function(profile) {
+  var pending = [
+    {
+      id: 15,
+      first: 'Peter',
+      last: 'Tan',
+      display: 'Peter Tan',
+      email: 'pete@anonymous.com'
+    },
+    {
+      id: 126,
+      first: 'Dylan',
+      last: 'Mayoral',
+      display: 'Dylan Mayoral',
+      email: 'cooldancer@anonymous.com'
+    }
+  ];
+
+
+  return {
+    type: FETCH_PENDING_REQUESTS,
+    payload: pending
+  };
+};
+
+export let fetchFriendRequests = function(profile) {
+  var requests = [
+    {
+      id: 300,
+      first: 'Cat',
+      last: 'Dog',
+      display: 'Cat Dog',
+      email: 'cat@dog.com'
+    },
+    {
+      id: 400,
+      first: 'Antique',
+      last: 'Healbot',
+      display: 'Antique Healbot',
+      email: 'antikill@bot.com'
+    }
+  ];
+
+  return {
+    type: FETCH_FRIEND_REQUESTS,
+    payload: requests
   };
 };

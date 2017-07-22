@@ -7,9 +7,10 @@ export class FriendsList extends Component {
   renderFriends() {
     return _.map(this.props.friends, (friend) => {
       return (
-        <div>
+        <div key={friend.id}>
           <div> Name: {friend.display} </div>
           <div> Email: {friend.email} </div>
+          -----
         </div>
       );
     });

@@ -7,6 +7,8 @@ import ChannelsReducer from './reducer_channels';
 import MessagesReducer from './reducer_messages';
 import ProfileReducer from './reducer_profile';
 import FriendsReducer from './reducer_friends';
+import PendingReducer from './reducer_pending';
+import FriendRequestsReducer from './reducer_requests';
 
 const rootReducer = combineReducers({
   form: formReducer,
@@ -16,7 +18,9 @@ const rootReducer = combineReducers({
   channels: ChannelsReducer,
   messages: MessagesReducer,
   profile: ProfileReducer,
-  friends: FriendsReducer
+  friends: FriendsReducer,
+  pending: PendingReducer,
+  requests: FriendRequestsReducer
 });
 
 export default rootReducer;
