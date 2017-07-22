@@ -5,7 +5,7 @@
    "client": "postgresql", 
 
    "connection": {
-     "database": "thesis",
+     "database": "thesis_test",
      "user": "postgres",
      "password": "postgres",
      "host": "localhost",
