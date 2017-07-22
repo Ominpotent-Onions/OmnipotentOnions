@@ -20,6 +20,7 @@ class NewGroup extends Component {
   }
 
   onSubmit(element) {
+    console.log('continer/new_group Element: ', element);
     let newGroupName = element.groupName;
     let profile_id = this.props.profile.id;
     let shortID = shortid.generate();
