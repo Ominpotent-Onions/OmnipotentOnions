@@ -2,7 +2,7 @@ redis:
   image: redis
   ports: 
     - 9001:6379
-postgresq;:
+postgresql:
   image: postgresql
   volumes:
     - /data
