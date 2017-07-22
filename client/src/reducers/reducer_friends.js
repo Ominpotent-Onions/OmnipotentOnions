@@ -4,7 +4,8 @@ import _ from 'lodash';
 export default function(state = {}, action) {
   switch(action.type) {
   case FETCH_FRIENDS:
-    return _.mapKeys(action.payload, 'first');
+    console.log('friend payload', action.payload.data);
+    return action.payload.data;
   default:
     return state;
   }

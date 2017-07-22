@@ -103,38 +103,40 @@ export let createMessage = function(message) {
 
 /* Friends List Action Creators */
 
-export let fetchFriends = function(profile) {
+export let fetchFriends = function(profileId) {
   // hard-coded friends
-  var friends = [
-    {
-      id: 12,
-      first: 'John',
-      last: 'Doe',
-      display: 'John Doe',
-      email: 'johndoe@anonymous.com'
-    },
-    {
-      id: 25,
-      first: 'Janet',
-      last: 'Doe',
-      display: 'Janet Doe',
-      email: 'janetdoe@anonymous.com'
-    },
-    {
-      id: 36,
-      first: 'Evets',
-      last: 'Bojs',
-      display: 'Evets Bojs',
-      email: 'elppa@elppa.com'
-    },
-    {
-      id: 77,
-      first: 'Derf',
-      last: 'Gnudriz',
-      display: 'Derf Gnudriz',
-      email: 'hr@$hr.com'
-    }
-  ];
+  // var friends = [
+  //   {
+  //     id: 12,
+  //     first: 'John',
+  //     last: 'Doe',
+  //     display: 'John Doe',
+  //     email: 'johndoe@anonymous.com'
+  //   },
+  //   {
+  //     id: 25,
+  //     first: 'Janet',
+  //     last: 'Doe',
+  //     display: 'Janet Doe',
+  //     email: 'janetdoe@anonymous.com'
+  //   },
+  //   {
+  //     id: 36,
+  //     first: 'Evets',
+  //     last: 'Bojs',
+  //     display: 'Evets Bojs',
+  //     email: 'elppa@elppa.com'
+  //   },
+  //   {
+  //     id: 77,
+  //     first: 'Derf',
+  //     last: 'Gnudriz',
+  //     display: 'Derf Gnudriz',
+  //     email: 'hr@$hr.com'
+  //   }
+  // ];
+  console.log('profile id', profileId);
+  let friends = axios.get(`/friendsget/${profileId}`);
 
   return {
     type: FETCH_FRIENDS,
@@ -159,7 +161,6 @@ export let fetchPendingRequests = function(profile) {
       email: 'cooldancer@anonymous.com'
     }
   ];
-
 
   return {
     type: FETCH_PENDING_REQUESTS,

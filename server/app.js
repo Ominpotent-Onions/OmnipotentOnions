@@ -36,6 +36,15 @@ app.use('/channels', routes.channels);
 // add messages router
 app.use('/messages', routes.messages);
 
+// add friends router
+app.use('/friendsget', routes.profilesFriends);
+
+// add friendRequests router
+// app.use('/friendrequests', routes.friendrequests);
+
+// add pendingFriends router
+// app.use('/pendingfriends', routes.pendingFriends);
+
 io.on('connection', function(socket) {
   console.log('a user has connected');
   socket.on('send', (message) => {
