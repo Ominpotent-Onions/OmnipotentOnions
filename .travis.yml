@@ -3,8 +3,15 @@ language: node_js
 node_js:
   - '7'
 
+env:
+  - NODE_ENV=test
+
+services:
+  - postgresql
+  
 script: 
   - npm test
 
 before_script:
   - npm install -g grunt-cli
+  - psql -c 'create database thesis_ci_test;' -U postgres
