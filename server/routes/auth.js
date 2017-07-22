@@ -16,7 +16,7 @@ router.route('/profile')
 router.route('/friends')
   .get(middleware.auth.verify, (req, res) => {
     res.render('friends.ejs');
-  })
+  });
 
 router.route('/login')
   .get((req, res) => {
