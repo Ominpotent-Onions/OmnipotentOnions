@@ -27,6 +27,6 @@ export class Friends extends Component {
 
 const mapStateToProps = function(state) {
   return { profile: state.profile };
-}
+};
 
 export default connect(mapStateToProps, { fetchProfile, fetchFriends, fetchPendingRequests, fetchFriendRequests })(Friends);
