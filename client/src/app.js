@@ -8,7 +8,6 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import promise from 'redux-promise';
 import reducers from './reducers';
-// import thunk from 'thunk';
 
 import Router from './components/router';
 
@@ -22,4 +21,4 @@ const App = () => (
   </Provider>
 );
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById("root"));

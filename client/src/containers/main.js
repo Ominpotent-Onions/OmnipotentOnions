@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchProfile } from '../actions';
+import { fetchProfile, fetchChannels } from '../actions';
 
 import { Segment } from 'semantic-ui-react';
 
@@ -12,45 +12,48 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showChannels: false,
+      showChannel: false,
       showMessages: false
     };
-    this.onClickGroup = this.onClickGroup.bind(this);
+    this.onHandleChannel = this.onHandleChannel.bind(this);
   }
   componentWillMount() {
     this.props.fetchProfile(window.myUser);    
   }
-  onClickGroup(e) {
-    console.log(e.target.value);
-    if (this.state.channelId === undefined) {
+
+  onHandleChannel (e) {
+    if (this.state.showChannel === false && this.state.groupId === undefined) {
+      this.props.fetchChannels(e.target.value);
       this.setState({
-        showChannels: !this.state.showChannels,
-        channelId: e.target.value
+        showChannel: !this.state.showChannel,
+        groupId: e.target.value
       });
-    } else if (e.target.value === this.state.channelId && this.state.showChannels === true) {
+    } else if (this.state.showChannel && this.state.groupId === e.target.value) {
       this.setState({
-        showChannels: !this.state.showChannels,
-        channelId: undefined
+        showChannel: !this.state.showChannel,
+        groupId: undefined
       });
-    } else if (e.target.value !== this.state.channelId) {
+    } else if (this.state.showChannel && this.state.groupId !== e.target.value) {
+      this.props.fetchChannels(e.target.value);
       this.setState({
-        channelId: e.target.value
+        groupId: e.target.value
       });
     }
   }
+
   render() {
     return (
       <div>
         <h1>Welcome to Connect, {window.myUser.display}</h1>
-        <Segment.Group horizontal> 
-          <Segment><Groups channels={this.onClickGroup}/></Segment>
+        <Segment.Group horizontal>
+          <Segment><Groups profile={window.myUser} handleChannel={this.onHandleChannel}/></Segment>
           {
-            this.state.showChannels ? <Segment><Channels channel={this.state.channelId}/></Segment> : null
+            this.state.showChannel ? <Segment><Channels groupId={this.state.channelId}/></Segment> : null
           }
         </Segment.Group>
       </div>
     );
   }  
 }
-      
-export default connect(null, { fetchProfile} )(Main);
+// <Segment><Messages /></Segment> 
+export default connect(null, { fetchProfile, fetchChannels} )(Main);

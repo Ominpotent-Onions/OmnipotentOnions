@@ -5,61 +5,31 @@ import _ from 'lodash';
 
 import { Segment } from 'semantic-ui-react';
 
-
 export class Channels extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      count: 0
-    };
-    console.log('PROPS OF CHANNEL ----constructor------ channel: ', this.props.channel);
-    // this.props.fetchChannels(this.props.channel);
-    // this.setState(this.state);
-    // this.props.fetchChannels(this.props.channel).then(channels => {
-    //   this.setState({
-    //     channels: channels.payload.data
-    //   });
-    // });
-    this.dispatch(this.props.fetchChannels(this.props.channel));
-
+    // this.props.fetchChannels(this.props.groupId);
+    console.log('INSIDE CONSTRUCTOR OF CHANNEL');
   }
-  componentDidMount() {
-    // console.log('containers/channels I am hardcoded fix me');
-    // this.forceUpdate();
-    // this.props.fetchChannels(this.props.channel).then(channels => {
-    //   console.log('CONTAIINERS/CHANNELS: ', channels);
-    //   this.setState({
-
-    //   })
-    // });
-    // this.props.fetchChannels(this.props.channel);
-    console.log('CONTAINER/CHANNELS ---------didMount------------');
-
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (JSON.stringify(this.props.channel) !== JSON.stringify(nextProps)) { 
-      console.log('WILL RECEIVE PROPS: ', nextProps.channel, true); 
-      // this.props.fetchChannels(nextProps.channel);
-      // this.state.count++;
-      // console.log(this.state.count++);
-    }
+  componentWillMount() {
+    console.log('containers/channels WILL MOUNT');
+    // this.props.fetchChannels(1);
   }
 
   renderChannels() {
-    console.log('CONTAINER/CHANNELS state.channels: ', this.props.channels);
     return _.map(this.props.channels, channel => {
       return (
         <Segment key={channel.id}>
-          <div> 
+          <button> 
             {channel.name} 
-          </div>
+          </button>
         </Segment>
       );
     });
   }
 
   render() {
+    console.log('INSIDE RENDER OF CHANNELS');
     return (
       <div>
         <h2>Channels</h2>
