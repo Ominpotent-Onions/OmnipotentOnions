@@ -48,7 +48,7 @@ class Main extends Component {
         <Segment.Group horizontal>
           <Segment><Groups profile={window.myUser} handleChannel={this.onHandleChannel}/></Segment>
           {
-            this.state.showChannel ? <Segment><Channels groupId={this.state.channelId}/></Segment> : null
+            this.state.showChannel ? <Segment><Channels groupId={this.state.groupId}/></Segment> : null
           }
         </Segment.Group>
       </div>

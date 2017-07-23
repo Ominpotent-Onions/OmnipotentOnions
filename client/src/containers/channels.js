@@ -25,7 +25,6 @@ export class Channels extends Component {
   }
 
   render() {
-    console.log('INSIDE RENDER OF CHANNELS');
     return (
       <div>
         <h2>Channels</h2>
