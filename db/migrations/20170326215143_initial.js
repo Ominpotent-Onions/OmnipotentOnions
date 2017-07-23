@@ -31,7 +31,7 @@ exports.up = function (knex, Promise) {
     }),
     knex.schema.createTableIfNotExists('channels', (t) => {
       t.increments('id').unsigned().primary();
-      t.string('name').notNullable().unsigned();
+      t.string('name').notNullable();
       t.integer('group_id').references('groups.id').onDelete('CASCADE');
     }),
     knex.schema.createTableIfNotExists('messages', (t) => {

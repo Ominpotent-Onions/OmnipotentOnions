@@ -22,8 +22,7 @@ module.exports.createChannel = (req, res) => {
 };
 
 module.exports.getGroupChannels = (req, res) => {
-  console.log('controllers/channel REQ.PARAMS: ', req.params.groupId);
-  models.Channel.where({ group_id: req.params.groupId }).fetchAll()
+  models.Channel.where({ groups_id: req.params.id }).fetchAll()
     .then(channels => {
       res.status(200).send(channels);
     })
