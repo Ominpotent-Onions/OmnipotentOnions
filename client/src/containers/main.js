@@ -50,7 +50,6 @@ class Main extends Component {
   }
 
   onHandleMessage(e) {
-    console.log('HANDLE MESSAGE value: ', e.target.value);
     if (this.state.showChannel && this.state.channelId === undefined && this.state.showMessages === false) {
       this.props.fetchMessages(e.target.value);
       this.setState({

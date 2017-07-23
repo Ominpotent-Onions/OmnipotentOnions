@@ -11,7 +11,6 @@ import { Segment } from 'semantic-ui-react';
 
 class Messages extends Component {
   componentWillMount() {
-    console.log('containers/messages I AM HARDCODED FOR NOW, fix me');
     // this.props.fetchMessages(1);
   }
   
