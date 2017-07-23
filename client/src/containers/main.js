@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchProfile, fetchChannels } from '../actions';
+import { fetchProfile, fetchChannels, fetchMessages } from '../actions';
 
 import { Segment } from 'semantic-ui-react';
 
@@ -45,6 +45,7 @@ class Main extends Component {
   onHandleMessage(e) {
     console.log('HANDLE MESSAGE value: ', e.target.value);
     if (this.state.showChannel && this.state.channelId === undefined && this.state.showMessages === false) {
+      this.props.fetchMessages(e.target.value);
       this.setState({
         showMessages: !this.state.showMessages,
         channelId: e.target.value
@@ -55,6 +56,7 @@ class Main extends Component {
         channelId: undefined
       });
     } else if (this.state.showChannel && this.state.showMessages && this.state.channelId !== e.target.value) {
+      this.props.fetchMessages(e.target.value);      
       this.setState({
         channelId: e.target.value
       });
@@ -78,4 +80,4 @@ class Main extends Component {
     );
   }  
 }
-export default connect(null, { fetchProfile, fetchChannels} )(Main);
+export default connect(null, { fetchProfile, fetchChannels, fetchMessages} )(Main);
