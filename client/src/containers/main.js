@@ -45,10 +45,10 @@ class Main extends Component {
     return (
       <div>
         <h1>Welcome to Connect, {window.myUser.display}</h1>
-        <Segment.Group horizontal>
-          <Segment><Groups profile={window.myUser} handleChannel={this.onHandleChannel}/></Segment>
+        <Segment.Group horizontal> 
+          <Segment><Groups channels={this.onClickGroup}/></Segment>
           {
-            this.state.showChannel ? <Segment><Channels groupId={this.state.groupId}/></Segment> : null
+            this.state.showChannels ? <Segment><Channels channel={this.state.channelId}/></Segment> : null
           }
         </Segment.Group>
       </div>

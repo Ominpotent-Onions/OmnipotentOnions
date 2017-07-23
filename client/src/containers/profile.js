@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 export class Profile extends Component {
   constructor(props) {
     super(props);
-    console.log(this.props.profile);
   }
   
   render() {

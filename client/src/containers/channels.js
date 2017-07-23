@@ -7,12 +7,14 @@ import NewChannel from './new_channel';
 
 import { Segment } from 'semantic-ui-react';
 
+
 export class Channels extends Component {
   constructor(props) {
     super(props);
   }
 
   renderChannels() {
+    console.log('CONTAINER/CHANNELS state.channels: ', this.props.channels);
     return _.map(this.props.channels, channel => {
       return (
         <Segment key={channel.id}>
