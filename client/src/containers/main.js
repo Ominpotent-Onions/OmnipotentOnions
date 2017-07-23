@@ -34,6 +34,13 @@ class Main extends Component {
         showChannel: !this.state.showChannel,
         groupId: undefined
       });
+    } else if (this.state.showChannel && this.state.groupId !== e.target.value && this.state.showMessages) {
+      this.props.fetchChannels(e.target.value);
+      this.setState({
+        groupId: e.target.value,
+        showMessages: !this.state.showMessages,
+        channelId: undefined
+      });
     } else if (this.state.showChannel && this.state.groupId !== e.target.value) {
       this.props.fetchChannels(e.target.value);
       this.setState({
