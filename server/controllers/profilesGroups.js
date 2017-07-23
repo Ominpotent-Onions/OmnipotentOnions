@@ -23,6 +23,7 @@ module.exports.joinGroup = (req, res) => {
           models.ProfileGroup.where({ profile_id: req.query.id })
             .fetchAll({ withRelated: ['groups'] })
             .then(groups => {
+              console.log(groups);
               res.status(201).send(groups);
             });
         });
