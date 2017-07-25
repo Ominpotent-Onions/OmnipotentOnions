@@ -23,3 +23,17 @@ module.exports.getAllFriendRequests = (req, res) => {
       res.status(503).send(err);
     });
 };
+
+module.exports.sendFriendRequest = (req, res) => {
+  models.PendingFriends.forge()
+    .save({
+      profile_id: req.params.id,
+      friend_id: req.params.friendId
+    })
+    .then(request => {
+      res.status(201).send(request);
+    })
+    .catch(err => {
+      res.status(500).send(err);
+    });
+};
