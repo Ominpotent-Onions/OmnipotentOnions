@@ -144,23 +144,24 @@ export let fetchFriends = function(profileId) {
   };
 };
 
-export let fetchPendingRequests = function(profile) {
-  var pending = [
-    {
-      id: 15,
-      first: 'Peter',
-      last: 'Tan',
-      display: 'Peter Tan',
-      email: 'pete@anonymous.com'
-    },
-    {
-      id: 126,
-      first: 'Dylan',
-      last: 'Mayoral',
-      display: 'Dylan Mayoral',
-      email: 'cooldancer@anonymous.com'
-    }
-  ];
+export let fetchPendingRequests = function(profileId) {
+  // var pending = [
+  //   {
+  //     id: 15,
+  //     first: 'Peter',
+  //     last: 'Tan',
+  //     display: 'Peter Tan',
+  //     email: 'pete@anonymous.com'
+  //   },
+  //   {
+  //     id: 126,
+  //     first: 'Dylan',
+  //     last: 'Mayoral',
+  //     display: 'Dylan Mayoral',
+  //     email: 'cooldancer@anonymous.com'
+  //   }
+  // ];
+  var pending = axios.get(`/pendingfriends/${profileId}`);
 
   return {
     type: FETCH_PENDING_REQUESTS,
