@@ -39,9 +39,7 @@ app.use('/messages', routes.messages);
 // add friends router
 app.use('/friendsget', routes.profilesFriends);
 
-// add friendRequests router
-// app.use('/friendrequests', routes.friendrequests);
-
+// add pending and requests router
 app.use('/pendingfriends', routes.pendingFriends);
 
 io.on('connection', function(socket) {

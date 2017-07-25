@@ -5,13 +5,11 @@ import _ from 'lodash';
 export class PendingList extends Component {
 
   renderPendingRequests() {
-    console.log('pending requests in component', this.props.pending);
     return _.map(this.props.pending, request => {
-      console.log('each request', request);
       return (
         <div key={request.id}>
           <div>Name: {request.user.display} </div>
-          <div>email: {request.user.email} </div>
+          <div>Email: {request.user.email} </div>
           <button>Accept</button> 
           <button>Decline</button><br/>
           -----
@@ -24,8 +22,8 @@ export class PendingList extends Component {
     return _.map(this.props.requests, request => {
       return (
         <div key={request.id}>
-          <div>Name: {request.display} </div>
-          <div>email: {request.email} </div>
+          <div>Name: {request.friend.display} </div>
+          <div>Email: {request.friend.email} </div>
           <button>Cancel request</button> <br/>
         </div>
       );

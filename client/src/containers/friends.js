@@ -12,7 +12,7 @@ export class Friends extends Component {
     this.props.fetchProfile(myUser);
     this.props.fetchFriends(myUser.id); 
     this.props.fetchPendingRequests(myUser.id); 
-    this.props.fetchFriendRequests();
+    this.props.fetchFriendRequests(myUser.id);
   }
 
   render() {

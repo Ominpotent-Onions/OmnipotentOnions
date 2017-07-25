@@ -5,7 +5,6 @@ import _ from 'lodash';
 export class FriendsList extends Component {
 
   renderFriends() {
-    console.log('freinds gahh', this.props.friends);
     return _.map(this.props.friends, (friend) => {
       return (
         <div key={friend.id}>

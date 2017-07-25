@@ -135,7 +135,6 @@ export let fetchFriends = function(profileId) {
   //     email: 'hr@$hr.com'
   //   }
   // ];
-  console.log('profile id', profileId);
   let friends = axios.get(`/friendsget/${profileId}`);
 
   return {
@@ -161,7 +160,7 @@ export let fetchPendingRequests = function(profileId) {
   //     email: 'cooldancer@anonymous.com'
   //   }
   // ];
-  var pending = axios.get(`/pendingfriends/${profileId}`);
+  var pending = axios.get(`/pendingfriends/pending/${profileId}`);
 
   return {
     type: FETCH_PENDING_REQUESTS,
@@ -169,23 +168,24 @@ export let fetchPendingRequests = function(profileId) {
   };
 };
 
-export let fetchFriendRequests = function(profile) {
-  var requests = [
-    {
-      id: 300,
-      first: 'Cat',
-      last: 'Dog',
-      display: 'Cat Dog',
-      email: 'cat@dog.com'
-    },
-    {
-      id: 400,
-      first: 'Antique',
-      last: 'Healbot',
-      display: 'Antique Healbot',
-      email: 'antikill@bot.com'
-    }
-  ];
+export let fetchFriendRequests = function(profileId) {
+  // var requests = [
+  //   {
+  //     id: 300,
+  //     first: 'Cat',
+  //     last: 'Dog',
+  //     display: 'Cat Dog',
+  //     email: 'cat@dog.com'
+  //   },
+  //   {
+  //     id: 400,
+  //     first: 'Antique',
+  //     last: 'Healbot',
+  //     display: 'Antique Healbot',
+  //     email: 'antikill@bot.com'
+  //   }
+  // ];
+  var requests = axios.get(`/pendingfriends/requests/${profileId}`);
 
   return {
     type: FETCH_FRIEND_REQUESTS,
