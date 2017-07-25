@@ -43,7 +43,9 @@ export class PendingList extends Component {
             this.props.fetchFriendRequests(this.props.profile.id);
           })
           .catch(err => {
-            console.log('err: ', err);
+            this.setState({
+              danger: 'User not found',
+            });
           });
       } else {
         this.setState({
@@ -51,8 +53,6 @@ export class PendingList extends Component {
           term: ''
         });
       }
-
-
     } else {
       this.setState({
         danger: 'You cannot add yourself as a friend',
