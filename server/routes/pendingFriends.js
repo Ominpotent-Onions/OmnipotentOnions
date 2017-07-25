@@ -11,7 +11,7 @@ router.route('/requests/:id')
   .get(PendingFriendsController.getAllFriendRequests)
 ;
 
-router.route('/sendRequest/:id/:friendId')
+router.route('/sendRequest/:id')
   .post(PendingFriendsController.sendFriendRequest)
 ;
 

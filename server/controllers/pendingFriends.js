@@ -25,15 +25,47 @@ module.exports.getAllFriendRequests = (req, res) => {
 };
 
 module.exports.sendFriendRequest = (req, res) => {
-  models.PendingFriends.forge()
-    .save({
-      profile_id: req.params.id,
-      friend_id: req.params.friendId
-    })
-    .then(request => {
-      res.status(201).send(request);
+  console.log('params:', req.params);
+  console.log('stuff', req.body.emailAddress);
+  // first check profile page for the email
+
+  models.Profile.where({ email: req.body.emailAddress }).fetch()
+    .then(profile => {
+      if (!profile) {
+        throw profile;
+      } 
+
+      if (profile.id === req.params.id) {
+        throw {
+          err: 'cannot add yourself as a friend'
+        };
+      }
+
+      models.PendingFriends.forge()
+        .save({
+          profile_id: req.params.id,
+          friend_id: profile.id
+        })
+        .then(request => {
+          res.status(201).send(request);
+        })
+        .catch(err => {
+          res.status(500).send(err);
+        });
     })
     .catch(err => {
       res.status(500).send(err);
     });
+
+  // models.PendingFriends.forge()
+  //   .save({
+  //     profile_id: req.params.id,
+  //     friend_id: req.params.friendId
+  //   })
+  //   .then(request => {
+  //     res.status(201).send(request);
+  //   })
+  //   .catch(err => {
+  //     res.status(500).send(err);
+  //   });
 };
