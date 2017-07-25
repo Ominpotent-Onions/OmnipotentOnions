@@ -42,8 +42,7 @@ app.use('/friendsget', routes.profilesFriends);
 // add friendRequests router
 // app.use('/friendrequests', routes.friendrequests);
 
-// add pendingFriends router
-// app.use('/pendingfriends', routes.pendingFriends);
+app.use('/pendingfriends', routes.pendingFriends);
 
 io.on('connection', function(socket) {
   console.log('a user has connected');

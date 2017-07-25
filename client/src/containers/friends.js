@@ -10,8 +10,8 @@ export class Friends extends Component {
   constructor(props) {
     super(props);
     this.props.fetchProfile(myUser);
-    this.props.fetchFriends(myUser.id); // add user id to it at some point
-    this.props.fetchPendingRequests();
+    this.props.fetchFriends(myUser.id); 
+    this.props.fetchPendingRequests(myUser.id); 
     this.props.fetchFriendRequests();
   }
 

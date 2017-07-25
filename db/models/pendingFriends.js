@@ -1,11 +1,11 @@
 const db = require('../');
 const PendingFriends = db.Model.extend({
   tableName: 'pending_friend_requests',
-  user: () => {
-    return this.belongsTo('Profile');
+  user: function() {
+    return this.belongsTo('Profile', 'profile_id', 'id');
   },
-  friend: () => {
-    return this.hasMany('Profile');
+  friend: function() {
+    return this.belongsTo('Profile', 'friend_id', 'id');
   }
 });
 
