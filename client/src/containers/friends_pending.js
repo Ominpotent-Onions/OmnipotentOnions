@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import { fetchFriendRequests, fetchPendingRequests, fetchFriends } from '../actions';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
 import _ from 'lodash';
 import axios from 'axios';
 
@@ -19,18 +22,18 @@ export class PendingList extends Component {
 
   onAddFriend(e) {
     e.preventDefault();
-    console.log('handle submit!');
-    console.log(this.state.term);
-    console.log('profile id', this.props.profile.id);
     if (this.props.profile.email !== this.state.term) {
       axios.post(`/pendingfriends/sendRequest/${this.props.profile.id}`, {
         emailAddress: this.state.term
       })
         .then(response => {
           console.log('success!');
+          this.props.fetchFriendRequests(this.props.profile.id);
         })
         .catch(err => {
-          console.log('nuooooo', err);
+          this.setState({
+            danger: 'User is already your friend'
+          });
         });
     } else {
       this.setState({
@@ -64,10 +67,6 @@ export class PendingList extends Component {
   }
 
   renderPendingRequests() {
-    if (!this.props.pending) {
-      return <div>No pending friend requests</div>;
-    }
-
     return _.map(this.props.pending, request => {
       return (
         <div key={request.id}>
@@ -107,7 +106,7 @@ export class PendingList extends Component {
   }
 }
 
-let mapStateToProps = function(state) {
+const mapStateToProps = function(state) {
   return { 
     pending: state.pending, 
     requests: state.requests,
@@ -115,4 +114,12 @@ let mapStateToProps = function(state) {
   };
 };
 
-export default connect(mapStateToProps, null)(PendingList);
+const mapDispatchToProps = function(dispatch) {
+  return bindActionCreators({ 
+    fetchFriends,
+    fetchPendingRequests, 
+    fetchFriendRequests
+  }, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PendingList);
