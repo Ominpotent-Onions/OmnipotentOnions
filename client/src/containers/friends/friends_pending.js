@@ -24,21 +24,39 @@ export class PendingList extends Component {
   onAddFriend(e) {
     e.preventDefault();
     if (this.props.profile.email !== this.state.term) {
-      axios.post(`/pendingfriends/sendRequest/${this.props.profile.id}`, {
-        emailAddress: this.state.term
-      })
-        .then(response => {
-          console.log('success!');
-          this.props.fetchFriendRequests(this.props.profile.id);
+      let isUserFriend;
+
+      isUserFriend = _.reduce(this.props.friends, (bool, user) => {
+        if (user.friend.email === this.state.term) {
+          return true;
+        } else {
+          return bool || false;
+        }
+      }, false);
+
+      if (!isUserFriend) {
+        axios.post(`/pendingfriends/sendRequest/${this.props.profile.id}`, {
+          emailAddress: this.state.term
         })
-        .catch(err => {
-          this.setState({
-            danger: 'User is already your friend'
+          .then(response => {
+            console.log('success!');
+            this.props.fetchFriendRequests(this.props.profile.id);
+          })
+          .catch(err => {
+            console.log('err: ', err);
           });
+      } else {
+        this.setState({
+          danger: 'User is already your friend',
+          term: ''
         });
+      }
+
+
     } else {
       this.setState({
-        danger: 'You cannot add yourself as a friend'
+        danger: 'You cannot add yourself as a friend',
+        term: ''
       });
     }
   }
@@ -139,7 +157,8 @@ const mapStateToProps = function(state) {
   return { 
     pending: state.pending, 
     requests: state.requests,
-    profile: state.profile
+    profile: state.profile,
+    friends: state.friends
   };
 };
 
