@@ -7,4 +7,8 @@ router.route('/:id')
   .get(ProfileFriendController.getAllFriends)
 ;
 
+router.route('/:id/:friendId')
+  .post(ProfileFriendController.addFriend)
+;
+
 module.exports = router;

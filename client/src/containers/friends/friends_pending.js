@@ -61,6 +61,23 @@ export class PendingList extends Component {
       });
   }
 
+  onAcceptRequest(friendId) {
+    console.log(friendId);
+    axios.post(`/friendsget/${this.props.profile.id}/${friendId}`)
+      .then(request => {
+        console.log('success!');
+        this.props.fetchFriends(this.props.profile.id);
+        this.props.fetchPendingRequests(this.props.profile.id);
+      })
+      .catch(err => {
+        console.log('err: ', err);
+      });
+  }
+
+  onDeclineRequest(friendId) {
+
+  }
+
   renderForm() {
     return (
       <div> 
@@ -84,7 +101,7 @@ export class PendingList extends Component {
         <div key={request.id}>
           <div>Name: {request.user.display} </div>
           <div>Email: {request.user.email} </div>
-          <button>Accept</button> 
+          <button onClick={() => {this.onAcceptRequest(request.profile_id); }}>Accept</button> 
           <button>Decline</button><br/>
           -----
         </div>
