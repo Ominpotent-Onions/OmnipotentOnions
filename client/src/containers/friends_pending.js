@@ -8,7 +8,10 @@ export class PendingList extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { term: '' };
+    this.state = { 
+      term: '',
+      danger: ''
+    };
 
     this.onInputChange = this.onInputChange.bind(this);
     this.onAddFriend = this.onAddFriend.bind(this);
@@ -19,21 +22,45 @@ export class PendingList extends Component {
     console.log('handle submit!');
     console.log(this.state.term);
     console.log('profile id', this.props.profile.id);
-    axios.post(`/pendingfriends/sendRequest/${this.props.profile.id}`, {
-      emailAddress: this.state.term
-    })
-      .then(response => {
-        console.log('success!');
+    if (this.props.profile.email !== this.state.term) {
+      axios.post(`/pendingfriends/sendRequest/${this.props.profile.id}`, {
+        emailAddress: this.state.term
       })
-      .catch(err => {
-        console.log('nuooooo', err);
+        .then(response => {
+          console.log('success!');
+        })
+        .catch(err => {
+          console.log('nuooooo', err);
+        });
+    } else {
+      this.setState({
+        danger: 'You cannot add yourself as a friend'
       });
+    }
   }
 
   onInputChange(event) {
     this.setState({
-      term: event.target.value
+      term: event.target.value,
+      danger: ''
     });
+  }
+
+  renderForm() {
+    return (
+      <div> 
+        To add a friend, please enter their email address below and submit
+        <form onSubmit={this.onAddFriend}>
+          <input
+            placeholder='Enter email address here' 
+            value={this.state.term}
+            onChange={this.onInputChange}
+          /> <br/>
+          <div className='dangerMessage' style={{color: 'red'}} >{this.state.danger}</div>
+          <button>Add a friend</button>
+        </form>
+      </div>
+    );
   }
 
   renderPendingRequests() {
@@ -70,15 +97,7 @@ export class PendingList extends Component {
     return (
       <div>
         <h3>Pending List</h3>
-        To add a friend, please enter their email address below and submit
-        <form onSubmit={this.onAddFriend}>
-          <input
-            placeholder='Enter email address here' 
-            value={this.state.term}
-            onChange={this.onInputChange}
-          /> <br/>
-          <button>Add a friend</button>
-        </form>
+        {this.renderForm()}
         <h4>Pending Requests</h4>
         {this.renderPendingRequests()}
         <h4>Friend Requests</h4>
