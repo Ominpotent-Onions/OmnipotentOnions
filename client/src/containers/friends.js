@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchProfile, fetchFriends, fetchPendingRequests, fetchFriendRequests } from '../actions';
+import { bindActionCreators } from 'redux';
 
 import FriendsList from './friends_list';
 import PendingList from './friends_pending';
@@ -29,4 +30,13 @@ const mapStateToProps = function(state) {
   return { profile: state.profile };
 };
 
-export default connect(mapStateToProps, { fetchProfile, fetchFriends, fetchPendingRequests, fetchFriendRequests })(Friends);
+const mapDispatchToProps = function(dispatch) {
+  return bindActionCreators({ 
+    fetchProfile,
+    fetchFriends,
+    fetchPendingRequests, 
+    fetchFriendRequests
+  }, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Friends);
