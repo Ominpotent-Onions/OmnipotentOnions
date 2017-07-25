@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchProfile, fetchFriends, fetchPendingRequests, fetchFriendRequests } from '../actions';
+import { fetchProfile, fetchFriends, fetchPendingRequests, fetchFriendRequests } from '../../actions';
 import { bindActionCreators } from 'redux';
 
 import FriendsList from './friends_list';

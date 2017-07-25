@@ -63,3 +63,15 @@ module.exports.sendFriendRequest = (req, res) => {
       res.status(500).send(err);
     });
 };
+
+module.exports.cancelFriendRequest = (req, res) => {
+  models.PendingFriends.where({ profile_id: req.params.id, friend_id: req.params.friendId }).destroy()
+    .then(result => {
+      console.log('has been deleted', result);
+      res.status(204).send(result);
+    })
+    .catch(err => {
+      console.log('failed delete', err);
+      res.status(500).send(err);
+    });
+};

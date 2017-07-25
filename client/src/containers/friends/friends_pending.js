@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { fetchFriendRequests, fetchPendingRequests, fetchFriends } from '../actions';
+import { fetchFriendRequests, fetchPendingRequests, fetchFriends } from '../../actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -18,6 +18,7 @@ export class PendingList extends Component {
 
     this.onInputChange = this.onInputChange.bind(this);
     this.onAddFriend = this.onAddFriend.bind(this);
+    this.onCancelRequest = this.onCancelRequest.bind(this);
   }
 
   onAddFriend(e) {
@@ -47,6 +48,17 @@ export class PendingList extends Component {
       term: event.target.value,
       danger: ''
     });
+  }
+
+  onCancelRequest(friendId) {
+    axios.delete(`/pendingfriends/cancelrequest/${this.props.profile.id}/${friendId}`)
+      .then(request => {
+        console.log('success!');
+        this.props.fetchFriendRequests(this.props.profile.id);
+      })
+      .catch(err => {
+        console.log('err: ', err);
+      });
   }
 
   renderForm() {
@@ -83,10 +95,10 @@ export class PendingList extends Component {
   renderFriendRequests() {
     return _.map(this.props.requests, request => {
       return (
-        <div key={request.id}>
+        <div key={request.friend_id}>
           <div>Name: {request.friend.display} </div>
           <div>Email: {request.friend.email} </div>
-          <button>Cancel request</button> <br/>
+          <button onClick={() => { this.onCancelRequest(request.friend_id); }}>Cancel request</button> <br/>
         </div>
       );
     });

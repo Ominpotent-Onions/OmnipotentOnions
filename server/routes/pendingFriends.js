@@ -15,4 +15,8 @@ router.route('/sendRequest/:id')
   .post(PendingFriendsController.sendFriendRequest)
 ;
 
+router.route('/cancelrequest/:id/:friendId')
+  .delete(PendingFriendsController.cancelFriendRequest)
+;
+
 module.exports = router;
