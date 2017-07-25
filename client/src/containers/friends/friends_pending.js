@@ -119,7 +119,7 @@ export class PendingList extends Component {
         <div key={request.id}>
           <div>Name: {request.user.display} </div>
           <div>Email: {request.user.email} </div>
-          <button onClick={() => {this.onAcceptRequest(request.profile_id); }}>Accept</button> 
+          <button onClick={ () => { this.onAcceptRequest(request.profile_id); } }>Accept</button> 
           <button>Decline</button><br/>
           -----
         </div>
