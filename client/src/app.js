@@ -18,7 +18,7 @@ const enchancers = compose(
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
 const App = () => (
-  <Provider store={createStoreWithMiddleware(reducers, {}, enchancers)}>
+  <Provider store={createStoreWithMiddleware(reducers, {}, enhancers)}>
     <BrowserRouter>
       <Router />
     </BrowserRouter>
