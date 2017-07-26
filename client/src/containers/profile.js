@@ -1,16 +1,41 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {Field, reduxForm} from 'redux-form';
 
 export class Profile extends Component {
-  constructor(props) {
-    super(props);
+  renderField(field) {
+    const { meta: { touched, error } } = field; 
+    return (
+      <div>
+        <label> {field.input.placeholder} </label>
+        <input
+          type='textarea'
+          {...field.input} 
+        />
+      </div>
+    );
+  }
+
+  editProfile(e) {
+    console.log(e.editProfile);
   }
   
   render() {
+    const {handleSubmit} = this.props;
     return (
       <div>
-        <h1>{this.props.profile.display}</h1>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/Spam_can.png"></img>
+        {console.log(window.myUser)}
+        <img src={window.myUser.profilePic}></img>
+        
+        <p>name: {window.myUser.display}</p>
+        <p>email: {window.myUser.email}</p>
+        <form onSubmit={handleSubmit(this.editProfile.bind(this))}>
+          <Field
+            name='editProfile'
+            component={this.renderField}
+          />
+          <button type = 'submit'>Submit Changes</button>
+        </form>
       </div>    
     );
   }
@@ -22,4 +47,9 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, null)(Profile);
+
+export default reduxForm({
+  form: 'ProfileForm'
+})(
+  connect(mapStateToProps, null)(Profile)
+);
