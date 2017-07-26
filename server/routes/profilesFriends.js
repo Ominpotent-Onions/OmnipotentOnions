@@ -9,6 +9,7 @@ router.route('/:id')
 
 router.route('/:id/:friendId')
   .post(ProfileFriendController.addFriend)
+  .delete(ProfileFriendController.deleteFriend)
 ;
 
 module.exports = router;

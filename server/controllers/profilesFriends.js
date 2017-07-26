@@ -45,3 +45,20 @@ module.exports.addFriend = (req, res) => {
       res.status(500).send(err);
     });
 };
+
+module.exports.deleteFriend = (req, res) => {
+  console.log('req params', req.params);
+  models.ProfileFriends.where({ profile_id: req.params.id, friend_id: req.params.friendId }).destroy()
+    .then(result => {
+      models.ProfileFriends.where({ profile_id: req.params.friendId, friend_id: req.params.id }).destroy()
+        .then(result => {
+          res.status(200).send(result);
+        })
+        .catch(err => {
+          res.status(500).send(err);
+        });
+    })
+    .catch(err => {
+      res.status(500).send(err);
+    });
+};
