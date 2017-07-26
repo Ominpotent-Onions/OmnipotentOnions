@@ -25,12 +25,12 @@ class MessageBoard extends Component {
     return _.map(messages, message => {
       // console.log('message-BOARD', message);
       return (
-          <Segment key={message.id}> 
-            <strong>{message.profile.display}</strong>
-            <em>{/*<h8>{message.create_at}</h8>*/} 12:55pm </em>
-            <Divider fitted />
-            {message.text}
-          </Segment>
+        <Segment key={message.id}> 
+          <strong>{message.profile.display}</strong>
+          <em>{Date.parse(message.create_at)}</em>
+          <Divider fitted />
+          {message.text}
+        </Segment>
       );
     });
   }
