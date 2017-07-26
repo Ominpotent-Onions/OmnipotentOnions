@@ -14,14 +14,11 @@ class Groups extends Component {
     console.log('profile in groups ', this.props.profile);
     this.props.fetchGroups(this.props.profile);
   }
-  // componentWillMount() {
-  // }
 
   renderGroups() {
     return _.map(this.props.groups, group => {
       return (
         <Segment key={group.id}>    
-         {/* {console.log('this is container/groups ', this.props)}       */}
           <button onClick={this.props.handleChannel} value={group.id}> {group.groups.name} </button>
           <InviteLink group={group.groups} profile={this.props.profile}/>
         </Segment>

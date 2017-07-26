@@ -46,32 +46,32 @@ module.exports.updateBio = (req, res) => {
   console.log(req.params);
   console.log(req.params.id);
   models.Profile.where({ id: req.params.id }).fetch()
-  .then(profile => {
-    let profileInfo = {
-      first: profile.attributes.first,
-      last: profile.attributes.last,
-      display: profile.attributes.display,
-      email: profile.attributes.email,
-      profilePic: profile.attributes.profilePic,
-      aboutMe: req.query.bio
-    };
-      //update profile with info with bio
-    profile.save(profileInfo, { method: 'update' })
-      .then(() => {
-        models.Profile.where({ id: req.params.id}).fetch()
-          .then(profile => {
-            res.status(201).send(profile);
-          }); 
-      })
-      .catch(err => {
-        res.status(500).send(err);
-      });  
-    // res.status(201).send(profile);
-  })
-  .error(err => {
-    res.status(500).send(err);
-  })
-  .catch(() => res.sendStatus(404));
+    .then(profile => {
+      let profileInfo = {
+        first: profile.attributes.first,
+        last: profile.attributes.last,
+        display: profile.attributes.display,
+        email: profile.attributes.email,
+        profilePic: profile.attributes.profilePic,
+        aboutMe: req.query.bio
+      };
+        //update profile with info with bio
+      profile.save(profileInfo, { method: 'update' })
+        .then(() => {
+          models.Profile.where({ id: req.params.id}).fetch()
+            .then(profile => {
+              res.status(201).send(profile);
+            }); 
+        })
+        .catch(err => {
+          res.status(500).send(err);
+        });  
+      // res.status(201).send(profile);
+    })
+    .error(err => {
+      res.status(500).send(err);
+    })
+    .catch(() => res.sendStatus(404));
 };
 
 // module.exports.deleteOne = (req, res) => {
