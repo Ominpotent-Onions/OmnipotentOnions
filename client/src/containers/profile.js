@@ -116,16 +116,11 @@ export class Profile extends Component {
 }
 
 const mapStateToProps = (state) => {
+  // console.log('mapstateprofile ', state);
   return {groups: state.groups, profile: state.profile};
 };
 
 
 export default reduxForm({
   form: 'ProfileForm'
-})(
-<<<<<<< HEAD
-  connect(mapStateToProps, {fetchProfile, updateProfileBio, updateNickname })(Profile)
-=======
-  connect(mapStateToProps, null)(Profile)
->>>>>>> add auto rendering biography input
-);
+})(connect(mapStateToProps, {fetchProfile, updateProfileBio, updateNickname })(Profile));
