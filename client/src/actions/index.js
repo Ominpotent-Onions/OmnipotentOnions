@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 export const FETCH_PROFILE = 'fetch_profile';
+
 export const UPDATE_PROFILE_BIO = 'update_profile_bio';
 export const UPDATE_NICKNAME = 'update_nickname';
 
