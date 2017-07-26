@@ -7,16 +7,21 @@ import { Segment } from 'semantic-ui-react';
 import Groups from './groups';
 import Channels from './channels';
 import Messages from './messages';
+import Events from './events/events';
 
 class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
       showChannel: false,
-      showMessages: false
+      showMessages: false,
+      showEvents: false,
+      showGroups: true,
     };
     this.onHandleChannel = this.onHandleChannel.bind(this);
     this.onHandleMessage = this.onHandleMessage.bind(this);
+    this.onHandleEvents = this.onHandleEvents.bind(this);
+    this.onHandleGroups = this.onHandleGroups.bind(this);
   }
   componentWillMount() {
     this.props.fetchProfile(window.myUser);    
@@ -78,13 +83,36 @@ class Main extends Component {
     }
   }
 
+  onHandleEvents() {
+    console.log('INSIDE HANDLE EVENTS');
+    this.setState({
+      showChannel: false,
+      showMessages: false,
+      showEvents: true,
+      showGroups: false,
+    });
+  }
+
+  onHandleGroups() {
+    this.setState({
+      showEvents: false,
+      showGroups: true
+    });
+  }
+
   render() {
     return (
       <div>
         {console.log('main.js, the props, ' + console.log(this))}
         <h1>Welcome to Connect, {window.myUser.display}</h1>
         <Segment.Group horizontal>
-          <Segment><Groups profile={window.myUser} handleChannel={this.onHandleChannel}/></Segment>
+          {
+            this.state.showEvents ? <Segment><Events showGroups={this.onHandleGroups}/></Segment> : null
+          }
+          {
+            this.state.showGroups ? <Segment><Groups profile={window.myUser} handleChannel={this.onHandleChannel} showEvents={this.onHandleEvents}/></Segment> 
+            : null
+          }          
           {
             this.state.showChannel ? <Segment><Channels groupId={this.state.groupId} handleMessage={this.onHandleMessage}/></Segment> : null
           }
