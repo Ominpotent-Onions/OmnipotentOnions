@@ -42,18 +42,18 @@ module.exports.getOne = (req, res) => {
 };
 
 module.exports.updateBio = (req, res) => {
-  console.log('hello');
-  console.log(req.params);
-  console.log(req.params.id);
   models.Profile.where({ id: req.params.id }).fetch()
     .then(profile => {
+      var aboutMe = req.query.bio ? req.query.bio : profile.attributes.aboutMe;
+      var nickname = req.query.nickname ? req.query.nickname : profile.attributes.nickname;
       let profileInfo = {
         first: profile.attributes.first,
         last: profile.attributes.last,
         display: profile.attributes.display,
         email: profile.attributes.email,
         profilePic: profile.attributes.profilePic,
-        aboutMe: req.query.bio
+        aboutMe: aboutMe,
+        nickname: nickname
       };
         //update profile with info with bio
       profile.save(profileInfo, { method: 'update' })
