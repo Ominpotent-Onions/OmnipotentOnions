@@ -10,8 +10,10 @@ router.route('/')
 
 router.route('/:id')
   .get(ProfileController.getOne)
-  .put(ProfileController.update)
+  .post(ProfileController.updateBio)
   // .delete(ProfileController.deleteOne)
   ;
+
+// router.route('/:id/);
 
 module.exports = router;
