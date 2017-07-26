@@ -123,5 +123,9 @@ const mapStateToProps = (state) => {
 export default reduxForm({
   form: 'ProfileForm'
 })(
+<<<<<<< HEAD
   connect(mapStateToProps, {fetchProfile, updateProfileBio, updateNickname })(Profile)
+=======
+  connect(mapStateToProps, null)(Profile)
+>>>>>>> add auto rendering biography input
 );
