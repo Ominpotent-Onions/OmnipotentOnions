@@ -33,6 +33,7 @@ class Messages extends Component {
           <Segment>
             <MessageInput
               socket={socket}
+              channelId={this.props.channelId}
             />
           </Segment>
         </Segment.Group>

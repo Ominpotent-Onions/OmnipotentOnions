@@ -111,11 +111,11 @@ export let fetchMessages = function(channelId) {
 
 export let createMessage = function(message) {
   // replace with real ajax request
-  const request = axios.post(`/messages/${message.channelId}`);
+  const request = axios.post(`/messages/${message.channel_id}`, {text: message.text, profileId: message.profile_id});
   // change this back later
   return {
     type: CREATE_MESSAGE,
-    payload: message
+    payload: request
   };
 }; 
 
