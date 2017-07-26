@@ -24,7 +24,7 @@ export class PendingList extends Component {
   onAddFriend(e) {
     e.preventDefault();
     if (this.props.profile.email !== this.state.term) {
-      let isUserFriend;
+      let isUserFriend, isUserAlreadyPending;
 
       isUserFriend = _.reduce(this.props.friends, (bool, user) => {
         if (user.friend.email === this.state.term) {
