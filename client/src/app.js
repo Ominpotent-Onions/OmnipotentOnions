@@ -11,7 +11,7 @@ import reducers from './reducers';
 
 import Router from './components/router';
 
-const enchancers = compose(
+const enhancers = compose(
   window.devToolsExtension ? window.devToolsExtension() : f => f
 );
 
