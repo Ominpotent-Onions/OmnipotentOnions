@@ -116,6 +116,7 @@ export class Profile extends Component {
 }
 
 const mapStateToProps = (state) => {
+  // console.log('mapstateprofile ', state);
   return {groups: state.groups, profile: state.profile};
 };
 
