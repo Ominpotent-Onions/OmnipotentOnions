@@ -2,7 +2,6 @@ import axios from 'axios';
 
 export const FETCH_PROFILES = 'fetch_profiles';
 export const FETCH_PROFILE = 'fetch_profile';
-
 export const UPDATE_PROFILE_BIO = 'update_profile_bio';
 export const UPDATE_NICKNAME = 'update_nickname';
 
@@ -29,6 +28,7 @@ export const DELETE_EVENT = 'delete_event';
 export const JOIN_EVENT = 'join_event';
 export const UNJOIN_EVENT = 'unjoin_evnet';
 export const FETCH_ALL_ATTENDEES = 'fetch_all_attendees';
+/* -----------------------PROFILE ------------------------------------- */
 
 export let fetchProfile = function(profile) {
   return {
@@ -53,6 +53,7 @@ export let updateNickname = function(nickname, profileId) {
     payload: request
   };
 };
+
 
 /* -----------------------GROUPS ------------------------------------- */
 export const fetchGroups = function(user) {
