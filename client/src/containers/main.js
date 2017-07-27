@@ -84,7 +84,6 @@ class Main extends Component {
   }
 
   onHandleEvents() {
-    console.log('INSIDE HANDLE EVENTS');
     this.setState({
       showChannel: false,
       showMessages: false,

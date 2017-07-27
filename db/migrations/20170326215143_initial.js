@@ -59,13 +59,13 @@ exports.up = function (knex, Promise) {
       t.string('name').notNullable();
       t.string('address').notNullable();
       t.string('time').notNullable();
-      t.integer('group_id').references('group.id').onDelete('CASCADE');
-      t.integer('creator').references('profile.id').onDelete('CASCADE');
+      t.integer('group_id').references('groups.id').onDelete('CASCADE');
+      t.integer('creator').references('profiles.id').onDelete('CASCADE');
     }),
     knex.schema.createTableIfNotExists('attendees', (t) => {
       t.increments('id').unsigned().primary();
       t.integer('event_id').references('events.id').onDelete('CASCADE');
-      t.integer('profile_id').references('profile.id').onDelete('CASCADE');
+      t.integer('profile_id').references('profiles.id').onDelete('CASCADE');
     })
   ]);
 };

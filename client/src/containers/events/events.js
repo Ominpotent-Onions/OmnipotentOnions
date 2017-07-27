@@ -3,12 +3,16 @@ import { connect } from 'react-redux';
 import { Icon, Segment } from 'semantic-ui-react';
 import _ from 'lodash';
 // import {} from '../../actions';
-
+import Details from './eventDetails';
+import CreateEvent from './createEvent';
 
 class Events extends Component {
   constructor(props) {
     super(props);
-    console.log('INSIDE EVENTS');
+    this.state = {
+      showDetails: false,
+      showCreate: false,
+    };
   }
 
   renderGroups() {
