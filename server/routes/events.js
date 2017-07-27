@@ -8,4 +8,8 @@ router.route('/:groupId')
   .delete(EventController.deleteEvent)
 ;
 
+router.route('/:groupId/:eventId')
+  .get(EventController.fetchEvent)
+;
+
 module.exports = router;

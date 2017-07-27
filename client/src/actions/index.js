@@ -21,6 +21,7 @@ export const FETCH_PENDING_REQUESTS = 'fetch_pending_requests';
 export const FETCH_FRIEND_REQUESTS = 'fetch_friend_requests';
 
 export const FETCH_EVENTS = 'fetch_events';
+export const FETCH_EVENT = 'fetch_event';
 export const CREATE_EVENT = 'create_event';
 export const DELETE_EVENT = 'delete_event';
 
@@ -160,6 +161,22 @@ export let deleteEvent = function(eventId, groupId) {
   };
 };
 
+export let fetchEvents = function(groupId) {
+  let events = axios.get(`/events/${groupId}`);
+  return {
+    type: FETCH_EVENTS,
+    payload: events
+  };
+};
+
+export let fetchEvent = function(groupId, eventId) {
+  let event = axios.get(`/events/${groupId}/${eventId}`);
+  return {
+    type: FETCH_EVENT,
+    payload: event
+  };
+};
+
 /* -----------------------ATTENDANCES------------------------------------- */
 
 export let joinEvent = function(eventId, profileId) {
@@ -178,10 +195,10 @@ export let unjoinEvent = function(eventId, profileId) {
   };
 };
 
-export let fetchEvents = function(eventId) {
-  let fetchEvents = axios.get(`/attendance/${eventId}`);
+export let fetchAttendees = function(eventId) {
+  let fetchAttendees = axios.get(`/attendance/${eventId}`);
   return {
     type: FETCH_ALL_ATTENDEES,
-    payload: fetchEvents
+    payload: fetchAttendees
   };
 };

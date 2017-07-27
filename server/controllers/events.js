@@ -54,3 +54,23 @@ module.exports.deleteEvent = (req, res) => {
       res.sendStatus(404);
     });
 };
+
+module.exports.fetchEvents = (req, res) => {
+  models.Events.where({ group_id: req.params.groupId }).fetchAll()
+  .then(events => {
+    res.status(200).send(events);
+  })
+  .error(err => {
+    res.status(503).send(err);
+  });
+};
+
+module.exports.fetchEvent = (req, res) => {
+  models.Events.where ({ id: req.params.eventId }).fetch()
+  .then(event => {
+    res.status(200).send(event);
+  })
+  .error(err => {
+    res.status(503).send(err);
+  });
+};
