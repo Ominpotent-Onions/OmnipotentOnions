@@ -5,15 +5,21 @@ import _ from 'lodash';
 
 import { Segment, Icon } from 'semantic-ui-react';
 
-export class CreateEvent extends Component {
+export class GroupEvents extends Component {
   constructor(props) {
     super(props);
+  }
+
+  renderEvents() {
+    // map over events
   }
 
   render() {
     return (
       <div>
-      
+        <button>
+          <Icon name='plus circle' size='big'/>        
+        </button>
       </div>
     );
   }
@@ -21,7 +27,7 @@ export class CreateEvent extends Component {
 }
 
 const mapStateToProps = function(state) {
-  return { };
+  return {};
 };
 
-export default connect(mapStateToProps, {})(CreateEvent);
+export default connect(mapStateToProps, {})(GroupEvents);

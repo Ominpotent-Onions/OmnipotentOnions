@@ -9,17 +9,13 @@ import CreateEvent from './createEvent';
 class Events extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      showDetails: false,
-      showCreate: false,
-    };
   }
 
   renderGroups() {
     return _.map(this.props.groups, group => {
       return (
         <Segment key={group.id}>
-          <button value={group.id}>
+          <button value={group.id} onClick={this.props.groupEvents}>
             {group.groups.name}
           </button>
         </Segment>
