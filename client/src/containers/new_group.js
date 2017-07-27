@@ -8,7 +8,6 @@ import shortid from 'shortid';
 class NewGroup extends Component {
   renderField(field) {
     const { meta: { touched, error } } = field; 
-
     return (
       <div>
         <input
