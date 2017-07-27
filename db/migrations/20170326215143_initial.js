@@ -56,6 +56,7 @@ exports.up = function (knex, Promise) {
     knex.schema.createTableIfNotExists('events', (t) => {
       t.increments('id').unsigned().primary();
       t.string('date').notNullable();
+      t.string('name').notNullable();
       t.string('address').notNullable();
       t.integer('group_id').references('group.id').onDelete('CASCADE');
       t.integer('creator').references('profile.id').onDelete('CASCADE');
@@ -87,7 +88,7 @@ exports.down = function (knex, Promise) {
     knex.raw('DROP TABLE if exists profiles_friends CASCADE'),
     knex.raw('DROP TABLE if exists pending_friend_requests CASCADE'),
     knex.raw('DROP TABLE if exists events CASCADE'),
-    knex.raw('DROP TABLE if exists attendees CASCADE');
+    knex.raw('DROP TABLE if exists attendees CASCADE')
   ]);
 
 };
