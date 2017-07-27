@@ -126,10 +126,12 @@ class Main extends Component {
 
   }
 
-  handleCreateEvent() {
+  handleCreateEvent(e) {
     // need edge cases
-    
-
+    this.setState({
+      showCreateEvents: !this.state.showCreateEvents,
+      groupId: e.target.value
+    });
 
   }
 
@@ -166,8 +168,9 @@ class Main extends Component {
           {
             this.state.showEventDetails ? <Segment><EventDetails eventId={this.state.eventId} /></Segment> : null
           }
-
-
+          {
+            this.state.showCreateEvents ? <Segment><CreateEvent showCreateEvents={this.handleCreateEvent} groupId={this.state.groupId}/></Segment> : null
+          }
         </Segment.Group>
       </div>
     );

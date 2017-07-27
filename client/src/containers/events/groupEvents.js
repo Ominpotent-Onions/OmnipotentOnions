@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+<<<<<<< HEAD
 import _ from 'lodash';
 import { fetchEvents } from '../../actions';
 import { Segment, Icon, Button } from 'semantic-ui-react';
+=======
+import { fetchChannels } from '../../actions';
+import CreateEvent from './createEvent';
+import _ from 'lodash';
+
+import { Segment, Icon, Modal, Button } from 'semantic-ui-react';
+>>>>>>> add event handler for event form
 
 export class GroupEvents extends Component {
   constructor(props) {
@@ -29,14 +37,9 @@ export class GroupEvents extends Component {
 
   render() {
     return (
-      <div>
-        <Segment.Group>
-          {this.renderEvents()}
-        </Segment.Group>
-        <button>
-          <Icon name='plus circle' size='big'/>        
-        </button>
-      </div>
+      <Modal trigger={<Button><Icon name='plus circle' size='big'/></Button>}>
+        <CreateEvent />
+      </Modal>
     );
   }
 }
