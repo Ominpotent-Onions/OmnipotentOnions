@@ -10,4 +10,4 @@ const Event = db.Model.extend({
   }
 });
 
-module.exports = db.Model('Event', Event);
+module.exports = db.model('Event', Event);
