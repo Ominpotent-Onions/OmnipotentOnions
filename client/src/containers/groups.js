@@ -11,7 +11,6 @@ import { Segment, Icon } from 'semantic-ui-react';
 class Groups extends Component { 
   constructor(props) {
     super(props);
-    console.log('profile in groups ', this.props.profile);
     this.props.fetchGroups(this.props.profile);
   }
 
