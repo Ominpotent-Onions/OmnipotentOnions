@@ -8,7 +8,6 @@ import { Segment, Icon } from 'semantic-ui-react';
 export class EventDetails extends Component {
   constructor(props) {
     super(props);
-    console.log('event details rendered. event id: ', this.props.eventId);
   }
 
   componentDidMount() {
@@ -34,19 +33,18 @@ export class EventDetails extends Component {
           position: results[0].geometry.location
         });
       } else {
-        alert('geocode unsuccessful: ', status);
+        alert('Geocoding was unsuccessful. There will not be a GMap displayed: ', status);
       }
     });
   }
 
   render() {
     let currentEvent = this.props.events[this.props.eventId];
-    console.log('current event! ', currentEvent );
     return (
       <div> 
         <h3>{currentEvent.name} </h3>
         <strong>Date:</strong> {currentEvent.date} <br/>
-        <strong>Address:</strong> {currentEvent.address} <br/>
+        <strong>Location:</strong> {currentEvent.address} <br/>
         <div id='map-canvas'></div>
         <strong>Time:</strong> {currentEvent.time} <br/>
       </div>

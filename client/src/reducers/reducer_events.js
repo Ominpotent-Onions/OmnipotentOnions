@@ -8,7 +8,7 @@ export default function(state = {}, action) {
   case DELETE_EVENT:
     return _.mapKeys(action.payload.data, 'id');
   case FETCH_EVENTS:
-    return _.mapKeys(action.payload.data, 'id');
+    return _.mapKeys(action.payload, 'id');
   default:
     return state;
   }
