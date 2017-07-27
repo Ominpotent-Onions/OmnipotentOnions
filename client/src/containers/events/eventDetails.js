@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchChannels } from '../../actions';
 import _ from 'lodash';
-// import geocoder from 'geocoder';
 
 import { Segment, Icon } from 'semantic-ui-react';
 
