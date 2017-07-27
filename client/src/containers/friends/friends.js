@@ -31,6 +31,7 @@ export class Friends extends Component {
 
   renderPage() {
     if (this.state.activeItem === 'Friends') {
+      this.props.fetchFriends(this.props.profile.id);
       return <FriendsList />;
     } else if (this.state.activeItem === 'Pending') {
       this.props.fetchPendingRequests(this.props.profile.id);
