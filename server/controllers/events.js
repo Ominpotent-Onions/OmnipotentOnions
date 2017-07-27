@@ -1,6 +1,7 @@
 const models = require('../../db/models');
 
 module.exports.createEvent = (req, res) => {
+  // POST EVENT
   models.Event.forge({
     date: req.body.date,
     address: req.body.address,
@@ -31,6 +32,7 @@ module.exports.createEvent = (req, res) => {
 };
 
 module.exports.deleteEvent = (req, res) => {
+  // DELETE EVENT
   models.Event.where({ id: req.body.eventId }).fetch()
     .then(event => {
       if (!event) {
@@ -39,7 +41,7 @@ module.exports.deleteEvent = (req, res) => {
       return event.destroy();
     })
     .then(() => {
-      res.status(500).send('Event has been deleted');
+      res.status(200).send('Event has been deleted');
     })
     .error(err => {
       res.status(503).send(err);
