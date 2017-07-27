@@ -8,7 +8,7 @@ module.exports.join = (req, res) => {
   })
   .save()
   .then(attendee => {
-    models.Attendee.where({ event_id: attendee.event_id }).fetchAll({
+    models.Attendee.where({ event_id: req.params.eventId }).fetchAll({
       withRelated: ['profile']
     })
     .then(attendees => res.status(201).send(attendees))
@@ -30,10 +30,12 @@ module.exports.unjoin = (req, res) => {
     if (!attend) {
       throw attend;
     }
-    return attend.destroy();
-  })
-  .then(() => {
-    res.status(200).send('Unjoin event');
+    attend.destroy();
+    models.Attendee.where({ event_id: req.params.eventId }).fetchAll({
+      withRelated: ['profile']
+    })
+    .then(attendees => res.status(201).send(attendees))
+    .error(err => res.status(500).send(err));
   })
   .error(err => {
     res.status(503).send(err);

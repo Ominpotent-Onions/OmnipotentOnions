@@ -4,11 +4,11 @@ import _ from 'loadash';
 export default function(state = {}, action) {
   switch (action.type) {
   case JOIN:
-    return;
+    return _.mapKeys(action.payload.data, 'id');
   case UNJOIN:
-    return;
+    return _.mapKeys(action.payload.data, 'id');
   case FETCH_ALL_ATTENDEES:
-    return;
+    return _.mapKeys(action.payload.data, 'id');
   default:
     return state;
   }
