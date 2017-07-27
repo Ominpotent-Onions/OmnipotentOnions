@@ -1,5 +1,5 @@
 import { CREATE_EVENT, DELETE_EVENT } from '../actions';
-import _ from 'loadash';
+import _ from 'lodash';
 
 export default function(state = {}, action) {
   switch (action.type) {
