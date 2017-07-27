@@ -44,11 +44,11 @@ export class EventDetails extends Component {
     console.log('current event! ', currentEvent );
     return (
       <div> 
-        Name: {currentEvent.name} <br/>
-        Date: {currentEvent.date} <br/>
-        Address: {currentEvent.address} <br/>
+        <h3>{currentEvent.name} </h3>
+        <strong>Date:</strong> {currentEvent.date} <br/>
+        <strong>Address:</strong> {currentEvent.address} <br/>
         <div id='map-canvas'></div>
-        Time: {currentEvent.time} <br/>
+        <strong>Time:</strong> {currentEvent.time} <br/>
       </div>
     );
   } 
