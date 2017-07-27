@@ -58,6 +58,7 @@ exports.up = function (knex, Promise) {
       t.string('date').notNullable();
       t.string('name').notNullable();
       t.string('address').notNullable();
+      t.string('time').notNullable();
       t.integer('group_id').references('group.id').onDelete('CASCADE');
       t.integer('creator').references('profile.id').onDelete('CASCADE');
     }),

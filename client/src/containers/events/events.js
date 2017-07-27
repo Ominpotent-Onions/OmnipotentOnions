@@ -26,7 +26,7 @@ class Events extends Component {
   render () {
     return (
       <div>
-        <h2>Events</h2>
+        <h2>Groups</h2>
         <Segment.Group>
           {this.renderGroups()}
           <button onClick={this.props.showGroups}>          
