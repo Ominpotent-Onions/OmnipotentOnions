@@ -5,7 +5,7 @@ import _ from 'loadash';
 export default function(state = {}, action) {
   switch (action.type) {
   case CREATE_EVENT:
-    return;
+    return _.mapKeys(action.payload.data, 'id');
   case DELETE_EVENT:
     return;
   case FETCH_EVENTS:

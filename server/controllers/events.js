@@ -38,10 +38,14 @@ module.exports.deleteEvent = (req, res) => {
       if (!event) {
         throw event;
       }
-      return event.destroy();
-    })
-    .then(() => {
-      res.status(200).send('Event has been deleted');
+      event.destroy();
+      models.Event.where({ group_id: req.params.groupId }).fetchAll()
+      .then(events => {
+        res.status(200).send(events);
+      })
+      .error(err => {
+        res.state(503).send(err);
+      });
     })
     .error(err => {
       res.status(503).send(err);

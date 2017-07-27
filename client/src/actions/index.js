@@ -28,15 +28,6 @@ export const JOIN_EVENT = 'join_event';
 export const UNJOIN_EVENT = 'unjoin_evnet';
 export const FETCH_ALL_ATTENDEES = 'fetch_all_attendees';
 
-// export const fetchProfiles = function(user) {
-//   const request = axios.get(`/profileGroups/${user.id}`);
-
-//   return {
-//     type: FETCH_PROFILES,
-//     payload: request
-//   };
-// };
-
 export let fetchProfile = function(profile) {
   return {
     type: FETCH_PROFILE,
