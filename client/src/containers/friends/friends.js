@@ -33,6 +33,8 @@ export class Friends extends Component {
     if (this.state.activeItem === 'Friends') {
       return <FriendsList />;
     } else if (this.state.activeItem === 'Pending') {
+      this.props.fetchPendingRequests(this.props.profile.id);
+      this.props.fetchFriendRequests(this.props.profile.id);
       return <PendingList />;
     } else if (this.state.activeItem === 'Add') {
       return <FriendsAdd />;
