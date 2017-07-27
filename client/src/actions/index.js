@@ -97,6 +97,37 @@ export let createChannel = function(group) {
   };
 }; 
 
+/* -----------------------EVENTS ------------------------------------- */
+
+export let fetchEvents = function(groupId) {
+
+  const request = [
+    {
+      id: 2,
+      date: '2018/05/25',
+      name: 'Lecture w/ Luke Davis',
+      address: '944 Market St',
+      time: '16:00 - 21:00',
+      group_id: 1,
+      creator: 1
+    },
+    {
+      id: 4,
+      date: '1994/07/25',
+      name: 'Shi Hao\'s Birthday',
+      address: 'Ipoh Garden, Millbrae',
+      time: '14:00 - 16:00',
+      group_id: 1,
+      creator: 1
+    }
+  ];
+
+  return {
+    type: FETCH_EVENTS,
+    payload: request
+  };
+};
+
 /* -----------------------MESSAGES ------------------------------------- */
 
 export let fetchMessages = function(channelId) {
