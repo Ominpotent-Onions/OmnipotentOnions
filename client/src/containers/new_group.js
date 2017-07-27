@@ -42,7 +42,6 @@ class NewGroup extends Component {
 }
 
 const mapStateToProps = function(state) {
-  console.log('mapstateNEWgroup ', state);
   return { groupName: state.groupName };
 };
 
