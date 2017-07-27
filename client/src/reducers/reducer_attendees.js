@@ -1,5 +1,5 @@
 import { JOIN, UNJOIN, FETCH_ALL_ATTENDEES } from '../actions';
-import _ from 'loadash';
+import _ from 'lodash';
 
 export default function(state = {}, action) {
   switch (action.type) {
