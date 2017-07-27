@@ -38,30 +38,6 @@ export class EventDetails extends Component {
         alert('geocode unsuccessful: ', status);
       }
     });
-
-
-    // let createMarker = function(latlng) {
-    //   if (marker !== undefined && marker !== '') {
-    //     marker.setMap(null);
-    //     marker = '';
-    //   }
-
-    //   marker = new google.maps.Marker({
-    //     map: map,
-    //     position: latlng
-    //   });
-    // }
-
-    // geocoder.geocode({address: address}, function(results, status) {
-    //   if (status === google.maps.GeocoderStatus.OK) {
-    //     let myResult = results[0].geometry.location;
-    //     createMarker(myResult);
-    //     map.setCenter(myResult);
-    //     map.setZoom(17);
-    //   } else {
-    //     alert('Geocode unsuccessful');
-    //   }
-    // });
   }
 
   render() {
