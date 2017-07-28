@@ -20,7 +20,6 @@ export class GroupEvents extends Component {
     this.handleClose = this.handleClose.bind(this);
   }
 
-
   handleEventClick(eventId) {
     this.props.handleEventDetails(eventId);
   }
@@ -43,7 +42,6 @@ export class GroupEvents extends Component {
   }
 
   renderEvents() {
-    // console.log('rerender events', this.props.events);
     return _.map(this.props.events, event => {
       return (
         <Menu.Item 
