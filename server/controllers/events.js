@@ -3,20 +3,26 @@ const models = require('../../db/models');
 module.exports.createEvent = (req, res) => {
   // POST EVENT
   models.Event.forge({
-    date: req.body.date,
-    address: req.body.address,
+    eventName: req.body.eventName,
+    location: req.body.location,
     group_id: req.params.groupId,
-    creator: req.bodhy.profileId,
-    time: req.body.time
+    creator: req.body.creator,
+    startTime: req.body.startTime,
+    startDate: req.body.startDate,
+    endTime: req.body.endTime,
+    endDate: req.body.endDate,
+    detail: req.body.detail
   })
   .save()
   .then(event => {
-    modles.Attendee.forge({
+    console.log('im inside events? ', event.id, req.body.creator);
+    models.Attendee.forge({
       event_id: event.id,
-      profile_id: event.creator
+      profile_id: req.body.creator
     })
     .save()
     .then(attendee => {
+      console.log('inside atttende ', attendee);
       models.Event.where({ group_id: req.params.groupId }).fetchAll()
       .then(events => {
         res.status(201).send(events);
@@ -56,8 +62,10 @@ module.exports.deleteEvent = (req, res) => {
 };
 
 module.exports.fetchEvents = (req, res) => {
-  models.Events.where({ group_id: req.params.groupId }).fetchAll()
+  console.log('FETCHED EVENTS: ', req.params.groupId);
+  models.Event.where({ group_id: req.params.groupId }).fetchAll()
   .then(events => {
+    console.log('FETCHED EVENTS!!!!!!!!!!: ', events);
     res.status(200).send(events);
   })
   .error(err => {
@@ -66,7 +74,7 @@ module.exports.fetchEvents = (req, res) => {
 };
 
 module.exports.fetchEvent = (req, res) => {
-  models.Events.where ({ id: req.params.eventId }).fetch()
+  models.Event.where ({ id: req.params.eventId }).fetch()
   .then(event => {
     res.status(200).send(event);
   })

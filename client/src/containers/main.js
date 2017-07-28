@@ -119,11 +119,11 @@ class Main extends Component {
   handleGroupEvents(e) {
     // show Group Events and should have some actions
     // need edge cases
+    console.log('main handlegroup ', e.target.value);
     this.setState({
       showGroupEvents: !this.state.showGroupEvents,
       groupId: e.target.value
     });
-
   }
 
   handleCreateEvent(e) {

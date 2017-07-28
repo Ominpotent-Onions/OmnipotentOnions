@@ -46,7 +46,6 @@ export let updateProfileBio = function(aboutMe, profileId) {
 };
 
 export let updateNickname = function(nickname, profileId) {
-  console.log('i got to updateNicknameBio ', nickname, profileId);
   const request = axios.post(`/profiles/${profileId}?nickname=${nickname}`);
   return {
     type: UPDATE_NICKNAME,
@@ -188,6 +187,7 @@ export let fetchFriendRequests = function(profileId) {
 
 /* -----------------------EVENTS------------------------------------- */
 export let createEvent = function(reqBody, groupId) {
+  console.log(reqBody, groupId);
   let createEvent = axios.post(`/events/${groupId}`, reqBody);
   return {
     type: CREATE_EVENT,
@@ -203,6 +203,7 @@ export let deleteEvent = function(eventId, groupId) {
   };
 };
 
+<<<<<<< HEAD
 // export let fetchEvents = function(groupId) {
 //   let events = axios.get(`/events/${groupId}`);
 //   return {
@@ -210,6 +211,16 @@ export let deleteEvent = function(eventId, groupId) {
 //     payload: events
 //   };
 // };
+=======
+export let fetchEvents = function(groupId) {
+  console.log('fetch events in action ', groupId);
+  let events = axios.get(`/events/${groupId}`);
+  return {
+    type: FETCH_EVENTS,
+    payload: events
+  };
+};
+>>>>>>> render group list
 
 export let fetchEvent = function(groupId, eventId) {
   let event = axios.get(`/events/${groupId}/${eventId}`);
