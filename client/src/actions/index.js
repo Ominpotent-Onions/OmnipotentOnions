@@ -187,6 +187,18 @@ export let deleteEvent = function(eventId, groupId) {
   };
 };
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+// export let fetchEvents = function(groupId) {
+//   let events = axios.get(`/events/${groupId}`);
+//   return {
+//     type: FETCH_EVENTS,
+//     payload: events
+//   };
+// };
+=======
+>>>>>>> render group list
 export let fetchEvents = function(groupId) {
   let events = axios.get(`/events/${groupId}`);
   return {
@@ -194,6 +206,10 @@ export let fetchEvents = function(groupId) {
     payload: events
   };
 };
+<<<<<<< HEAD
+=======
+>>>>>>> render group list
+>>>>>>> render group list
 
 export let fetchEvent = function(groupId, eventId) {
   let event = axios.get(`/events/${groupId}/${eventId}`);
