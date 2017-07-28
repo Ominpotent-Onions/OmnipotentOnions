@@ -183,6 +183,7 @@ export let deleteEvent = function(eventId, groupId) {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 // export let fetchEvents = function(groupId) {
@@ -194,6 +195,8 @@ export let deleteEvent = function(eventId, groupId) {
 // };
 =======
 >>>>>>> render group list
+=======
+>>>>>>> rebasing
 export let fetchEvents = function(groupId) {
   let events = axios.get(`/events/${groupId}`);
   return {
@@ -202,9 +205,12 @@ export let fetchEvents = function(groupId) {
   };
 };
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> render group list
 >>>>>>> render group list
+=======
+>>>>>>> rebasing
 
 export let fetchEvent = function(groupId, eventId) {
   let event = axios.get(`/events/${groupId}/${eventId}`);
