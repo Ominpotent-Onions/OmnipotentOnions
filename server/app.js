@@ -5,12 +5,9 @@ const middleware = require('./middleware');
 const routes = require('./routes');
 
 const app = express();
-<<<<<<< HEAD
-=======
 // const server = app.listen(8080);
 const server = require('http').createServer(app);
 const io = require('socket.io').listen(server);
->>>>>>> Add basic WebRTC video
 
 io.attach(server);
 io.set('transports', ['websocket', 'htmlfile', 'polling']);
