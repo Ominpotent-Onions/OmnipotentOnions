@@ -20,7 +20,6 @@ export class GroupEvents extends Component {
     this.handleClose = this.handleClose.bind(this);
   }
 
-
   handleEventClick(eventId) {
     this.props.handleEventDetails(eventId);
   }
