@@ -19,12 +19,6 @@ export class GroupEvents extends Component {
     this.handleClose = this.handleClose.bind(this);
   }
 
-  componentDidMount() {
-    // console.log('this.props.groupId ', this.props.groupId);
-    // this.props.fetchEvents(this.props.groupId);
-  }
-
-
   handleEventClick(eventId) {
     this.props.handleEventDetails(eventId);
   }
@@ -42,7 +36,6 @@ export class GroupEvents extends Component {
   }
 
   renderEvents() {
-    // console.log('this.props.events ', this.props);
     return _.map(this.props.events, event => {
       return (
         <Segment key={event.id}>
@@ -59,14 +52,12 @@ export class GroupEvents extends Component {
       <div>
         {this.renderEvents()}
         <Modal 
-        trigger={<Button onClick={this.handleOpen}><Icon name='plus circle' size='small'/></Button>}
-        open={this.state.modalOpen}
-        onClose={this.handleClose}
+          trigger={<Button onClick={this.handleOpen}><Icon name='plus circle' size='small'/></Button>}
+          open={this.state.modalOpen}
+          onClose={this.handleClose}
         >
           <CreateEvent groupId={this.props.groupId} handleClose={this.handleClose}/>
         </Modal>
-        <div>
-        </div>
       </div>
     );
   }

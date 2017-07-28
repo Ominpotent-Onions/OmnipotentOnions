@@ -13,32 +13,32 @@ module.exports.createEvent = (req, res) => {
     endDate: req.body.endDate,
     detail: req.body.detail
   })
-  .save()
-  .then(event => {
-    console.log('im inside events? ', event.id, req.body.creator);
-    models.Attendee.forge({
-      event_id: event.id,
-      profile_id: req.body.creator
-    })
     .save()
-    .then(attendee => {
-      console.log('inside atttende ', attendee);
-      models.Event.where({ group_id: req.params.groupId }).fetchAll()
-      .then(events => {
-        res.status(201).send(events);
+    .then(event => {
+      console.log('im inside events? ', event.id, req.body.creator);
+      models.Attendee.forge({
+        event_id: event.id,
+        profile_id: req.body.creator
       })
-      .error(err => {
-        res.status(500).send(err);
-      });
+        .save()
+        .then(attendee => {
+          console.log('inside atttende ', attendee);
+          models.Event.where({ group_id: req.params.groupId }).fetchAll()
+            .then(events => {
+              res.status(201).send(events);
+            })
+            .error(err => {
+              res.status(500).send(err);
+            });
+        });
+    })
+    .error(err => {
+      res.status(500).send(err);
     });
-  })
-  .error(err => {
-    res.status(500).send(err);
-  });
 };
 
 module.exports.deleteEvent = (req, res) => {
-  // DELETE EVENT
+//DELETE EVENT
   models.Event.where({ id: req.body.eventId }).fetch()
     .then(event => {
       if (!event) {
@@ -46,12 +46,12 @@ module.exports.deleteEvent = (req, res) => {
       }
       event.destroy();
       models.Event.where({ group_id: req.params.groupId }).fetchAll()
-      .then(events => {
-        res.status(200).send(events);
-      })
-      .error(err => {
-        res.state(503).send(err);
-      });
+        .then(events => {
+          res.status(200).send(events);
+        })
+        .error(err => {
+          res.state(503).send(err);
+        });
     })
     .error(err => {
       res.status(503).send(err);
@@ -64,21 +64,21 @@ module.exports.deleteEvent = (req, res) => {
 module.exports.fetchEvents = (req, res) => {
   console.log('FETCHED EVENTS: ', req.params.groupId);
   models.Event.where({ group_id: req.params.groupId }).fetchAll()
-  .then(events => {
-    console.log('FETCHED EVENTS!!!!!!!!!!: ', events);
-    res.status(200).send(events);
-  })
-  .error(err => {
-    res.status(503).send(err);
-  });
+    .then(events => {
+      console.log('FETCHED EVENTS!!!!!!!!!!: ', events);
+      res.status(200).send(events);
+    })
+    .error(err => {
+      res.status(503).send(err);
+    });
 };
 
 module.exports.fetchEvent = (req, res) => {
   models.Event.where ({ id: req.params.eventId }).fetch()
-  .then(event => {
-    res.status(200).send(event);
-  })
-  .error(err => {
-    res.status(503).send(err);
-  });
+    .then(event => {
+      res.status(200).send(event);
+    })
+    .error(err => {
+      res.status(503).send(err);
+    });
 };
