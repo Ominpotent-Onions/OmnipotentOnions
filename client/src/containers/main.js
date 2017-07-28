@@ -7,7 +7,6 @@ import { Segment } from 'semantic-ui-react';
 import Groups from './groups';
 import Channels from './channels';
 import Messages from './messages';
-import VideoChat from './video_chat';
 
 import Events from './events/events';
 import CreateEvent from './events/createEvent';
@@ -148,7 +147,6 @@ class Main extends Component {
       <div>
         {/* {console.log('main.js, the props, ' + console.log(this))} */}
         <h1>Welcome to Connect, {window.myUser.display}</h1>
-        <VideoChat />
         <Segment.Group horizontal>
           {
             this.state.showGroups ? <Segment><Groups profile={window.myUser} handleChannel={this.onHandleChannel} showEvents={this.onHandleEvents}/></Segment> : null
