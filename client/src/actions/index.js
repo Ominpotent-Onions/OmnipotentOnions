@@ -122,7 +122,7 @@ export let fetchEvents = function(groupId) {
     },
     {
       id: 7,
-      date: '1994/07/31',
+      date: '2017/07/31',
       name: 'Graduation Party',
       address: 'Temple Nightclub',
       time: '20:00 - 23:59',
