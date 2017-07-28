@@ -100,8 +100,8 @@ export let createChannel = function(group) {
 /* -----------------------EVENTS ------------------------------------- */
 
 export let fetchEvents = function(groupId) {
-
-  const request = [
+  let request = {};
+  request.data = [
     {
       id: 2,
       date: '2018/05/25',
@@ -201,13 +201,13 @@ export let deleteEvent = function(eventId, groupId) {
   };
 };
 
-export let fetchEvents = function(groupId) {
-  let events = axios.get(`/events/${groupId}`);
-  return {
-    type: FETCH_EVENTS,
-    payload: events
-  };
-};
+// export let fetchEvents = function(groupId) {
+//   let events = axios.get(`/events/${groupId}`);
+//   return {
+//     type: FETCH_EVENTS,
+//     payload: events
+//   };
+// };
 
 export let fetchEvent = function(groupId, eventId) {
   let event = axios.get(`/events/${groupId}/${eventId}`);

@@ -1,4 +1,4 @@
-import { CREATE_EVENT, DELETE_EVENT, FECTCH_EVENTS } from '../actions';
+import { CREATE_EVENT, DELETE_EVENT, FETCH_EVENTS } from '../actions';
 import _ from 'lodash';
 
 export default function(state = {}, action) {
@@ -8,7 +8,7 @@ export default function(state = {}, action) {
   case DELETE_EVENT:
     return _.mapKeys(action.payload.data, 'id');
   case FETCH_EVENTS:
-    return _.mapKeys(action.payload, 'id');
+    return _.mapKeys(action.payload.data, 'id');
   default:
     return state;
   }
