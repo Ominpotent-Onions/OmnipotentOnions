@@ -98,45 +98,6 @@ export let createChannel = function(group) {
   };
 }; 
 
-/* -----------------------EVENTS ------------------------------------- */
-
-// export let fetchEvents = function(groupId) {
-//   let request = {};
-//   request.data = [
-//     {
-//       id: 2,
-//       date: '2018/05/25',
-//       name: 'Lecture w/ Luke Davis',
-//       address: '944 Market St',
-//       time: '16:00 - 21:00',
-//       group_id: 1,
-//       creator: 1
-//     },
-//     {
-//       id: 4,
-//       date: '1994/08/4',
-//       name: 'Shi Hao\'s Birthday',
-//       address: 'Ipoh Garden, Millbrae',
-//       time: '14:00 - 16:00',
-//       group_id: 1,
-//       creator: 1
-//     },
-//     {
-//       id: 7,
-//       date: '2017/07/31',
-//       name: 'Graduation Party',
-//       address: 'Temple Nightclub',
-//       time: '20:00 - 23:59',
-//       group_id: 1,
-//       creator: 1
-//     }
-//   ];
-
-//   return {
-//     type: FETCH_EVENTS,
-//     payload: request
-//   };
-// };
 
 /* -----------------------MESSAGES ------------------------------------- */
 
