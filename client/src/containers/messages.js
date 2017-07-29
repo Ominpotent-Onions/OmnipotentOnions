@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchMessages, createMessage } from '../actions';
 
-import axios from 'axios';
 import io from 'socket.io-client';
 
 import MessageBoard from '../components/messages_board';
@@ -19,7 +18,6 @@ class Messages extends Component {
       if (message.channel_id === this.props.channelId) {
         this.props.createMessage(message);
       }
-      axios.post(`/messages/${message.channel_id}`, {text: message.text, profileId: message.profile_id});
     });
   }
 
