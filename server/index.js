@@ -36,6 +36,16 @@ var sockets = {};
  */
 io.on('connection', function(socket) {
   console.log('a user has connected');
+  socket.on('token', function() {
+    twilio.tokens.create(function(err, response) {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log('hello ', response);
+        socket.emit('token', response);
+      }
+    });
+  });
   socket.on('send', message => {
     io.to(message.channel_id).emit('display-message', message);
   });
