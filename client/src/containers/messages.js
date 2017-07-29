@@ -4,6 +4,7 @@ import { fetchMessages, createMessage } from '../actions';
 
 import io from 'socket.io-client';
 
+import VideoChat from './video_chat';
 import MessageBoard from '../components/messages_board';
 import MessageInput from './messages_input';
 import { Segment } from 'semantic-ui-react';
@@ -11,6 +12,12 @@ import { Segment } from 'semantic-ui-react';
 class Messages extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      showVideoChat: false 
+    };
+
+    this.onHandleVideoChatJoin = this.onHandleVideoChatJoin.bind(this);
+    this.onHandleVideoChatLeave = this.onHandleVideoChatLeave.bind(this);
   }
   
   componentDidMount() {
@@ -20,12 +27,31 @@ class Messages extends Component {
       }
     });
   }
+  
+  onHandleVideoChatJoin() {
+    this.setState({
+      showVideoChat: true
+    });
+  }
+
+  onHandleVideoChatLeave() {
+    this.setState({
+      showVideoChat: false
+    });
+  }
 
   render() {
     return (
       <div> 
         <h2> Messages </h2>
         <Segment.Group>
+          <Segment>
+            <button onClick={this.onHandleVideoChatJoin}>Join Video Chat</button>
+            <button onClick={this.onHandleVideoChatLeave}>Leave Video Chat</button>
+            {
+              this.state.showVideoChat ? <VideoChat shortID={this.props.channelId}/> : null
+            }
+          </Segment>
           <Segment>
             <MessageBoard 
               socket={this.props.socket}
