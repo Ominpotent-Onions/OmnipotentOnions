@@ -29,7 +29,6 @@ export class MessageInput extends Component {
       channel_id: this.props.channelId
     }; 
     data.message = '';
-    // {text: message.text, profileId: message.profile_id}
     // Add display name & the client time, since they're available here.
     console.log(message.channel_id, 'message');
     this.props.createMessage(message);

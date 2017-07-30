@@ -6,10 +6,13 @@ module.exports.createMessage = (req, res) => {
     profile_id: req.query.profile_id,
     channel_id: req.query.channel_id
   }).save()
-    .then(message => {
-      res.status(201).send(message);
-      // models.Message.where({channel_id: message.channel_id}).fetchAll()
-      // .then(message => res.status(201).send(message));
+    .then(() => {
+      // res.status(201).send(message);
+      models.Message.where({channel_id: req.query.channel_id}).fetchAll()
+        .then(message => {
+          // console.log(message, 'CREATE MESSAGE');
+          res.status(201).send(message);
+        });
     })
     .catch(err => {
       res.status(500).send(err);
