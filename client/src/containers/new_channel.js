@@ -22,7 +22,6 @@ class NewChannel extends Component {
       group_id: this.props.groupId
     };
     let shortID = shortid.generate();
-    console.log('In new_channel, generated shortID: ', shortID);
     e.channelName = '';
     this.props.createChannel(newChannel, shortID);
   }

@@ -33,7 +33,7 @@ class Messages extends Component {
       showVideoChat: true
     });
     
-    document.getElementById('joinVideoChat').style.display = 'none';
+    // document.getElementById('joinVideoChat').style.display = 'none';å
   }
 
   onHandleVideoChatLeave() {
@@ -41,7 +41,7 @@ class Messages extends Component {
       showVideoChat: false
     });
 
-    document.getElementById('joinVideoChat').style.display = 'initial';    
+    // document.getElementById('joinVideoChat').style.display = 'initial';    
   }
 
   render() {

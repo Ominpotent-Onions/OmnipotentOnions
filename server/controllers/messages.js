@@ -1,10 +1,10 @@
 const models = require('../../db/models');
 
-module.exports.postMessage = (req, res) => {
+module.exports.createMessage = (req, res) => {
   models.Message.forge({ 
-    text: req.body.text,
-    profile_id: req.body.profileId,
-    channel_id: req.params.id,
+    text: req.params.id,
+    profile_id: req.query.profile_id,
+    channel_id: req.query.channel_id
   }).save()
     .then(message => {
       res.status(201).send(message);
