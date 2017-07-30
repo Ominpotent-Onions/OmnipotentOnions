@@ -32,7 +32,8 @@ class Messages extends Component {
     this.setState({
       showVideoChat: true
     });
-    document.getElementsByClassName('joinVideoChat')[0].style.display = 'none';
+    
+    document.getElementById('joinVideoChat').style.display = 'none';
   }
 
   onHandleVideoChatLeave() {
@@ -40,7 +41,7 @@ class Messages extends Component {
       showVideoChat: false
     });
 
-    document.getElementsByClassName('joinVideoChat')[0].style.display = 'initial';    
+    document.getElementById('joinVideoChat').style.display = 'initial';    
   }
 
   render() {
@@ -49,7 +50,7 @@ class Messages extends Component {
         <h2> Messages </h2>
         <Segment.Group>
           <Segment>
-            <button onClick={this.onHandleVideoChatJoin} className='joinVideoChat'>Join Video Chat</button>
+            <button onClick={this.onHandleVideoChatJoin} id='joinVideoChat'>Join Video Chat</button>
             {
               this.state.showVideoChat ? <VideoChat toggleVideo={this.onHandleVideoChatLeave} shortID={this.props.channelId}/> : null
             }
