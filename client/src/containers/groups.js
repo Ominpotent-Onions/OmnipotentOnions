@@ -24,7 +24,7 @@ class Groups extends Component {
         <Segment key={group.id}>
           <button onClick={this.props.handleChannel} value={group.id}> {group.groups.name} </button>
           <InviteLink group={group.groups} profile={this.props.profile}/>
-          <LeaveGroup group={group}/>
+          <LeaveGroup group={group} handleDeleteGroup={this.props.handleDeleteGroup}/>
         </Segment>
       );
     });
