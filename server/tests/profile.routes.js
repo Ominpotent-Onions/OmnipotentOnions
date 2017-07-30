@@ -32,9 +32,9 @@ describe('Profile API', function() {
 
   it('seds 404 if id on GET request to /profile does not exist', function(done) {
     request(app)
-    .get('/profil')
-    .expect(404)
-    .end(done);
+      .get('/profil')
+      .expect(404)
+      .end(done);
   });
 
   it('accepts GET requests to /profiles/:id', function (done) {
