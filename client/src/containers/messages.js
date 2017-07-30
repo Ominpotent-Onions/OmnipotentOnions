@@ -47,9 +47,8 @@ class Messages extends Component {
         <Segment.Group>
           <Segment>
             <button onClick={this.onHandleVideoChatJoin}>Join Video Chat</button>
-            <button onClick={this.onHandleVideoChatLeave}>Leave Video Chat</button>
             {
-              this.state.showVideoChat ? <VideoChat shortID={this.props.channelId}/> : null
+              this.state.showVideoChat ? <VideoChat toggleVideo={this.onHandleVideoChatLeave} shortID={this.props.channelId}/> : null
             }
           </Segment>
           <Segment>
