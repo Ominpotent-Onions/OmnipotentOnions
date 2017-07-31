@@ -16,33 +16,32 @@ describe('Groups API', function() {
 
   it('post to groups', function(done) {
     request(app)
-    .post('/groups/createGroup/genericName')
-    .query({
-      id: 1,
-      shortID: '123JAS'
-    })
-    .expect(res => {
-      res.body = {
-        id: res.body[0].groups.id,
-        shortID: res.body[0].groups.shortID
-      };
-    }).expect(201, {
-      id: 1,
-      shortID: '123JAS'
-    })
-    .end(done);
+      .post('/groups/createGroup/genericName')
+      .query({
+        id: 1,
+        shortID: '123JAS'
+      })
+      .expect(res => {
+        res.body = {
+          id: res.body[0].groups.id,
+          shortID: res.body[0].groups.shortID
+        };
+      }).expect(201, {
+        id: 1,
+        shortID: '123JAS'
+      })
+      .end(done);
   }); 
 
   it('get to groups', function(done) {
     request(app)
-    .get('/groups/fetchOneGroup/1')
-    .expect(res => {
-      console.log('im in res GETGROUPS ', res.body);
-      res.body = {
-        length: res.body.length
-      };
-    })
-    .expect(200)
-    .end(done);
+      .get('/groups/fetchOneGroup/1')
+      .expect(res => {
+        res.body = {
+          length: res.body.length
+        };
+      })
+      .expect(200)
+      .end(done);
   });
 });
