@@ -27,18 +27,9 @@ describe('Profile API', function() {
     };
 		
     request(app)
-      .post('/groups/createGroup/genericName')
-      .query({
-        id: 1,
-        shortID: '123JAS'
-      });
-    request(app)
-			.post('/events/1')
-			.send(event)
-			.expect(res => {
-  console.log('THIS IS WHAT I GOT FROM MY EVENTS ', res.body);
-})
-			.expect(201, event)
+      .post('/events/1')
+      .send(event)
+      .expect(201, event)
       .end(done);
   });
 			
