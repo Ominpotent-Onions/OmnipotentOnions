@@ -7,7 +7,7 @@ import io from 'socket.io-client';
 import VideoChat from './video_chat';
 import MessageBoard from '../components/messages_board';
 import MessageInput from './messages_input';
-import { Segment } from 'semantic-ui-react';
+import { Segment, Header } from 'semantic-ui-react';
 
 class Messages extends Component {
   constructor(props) {
@@ -50,35 +50,34 @@ class Messages extends Component {
   render() {
     return (
       <div> 
-        <h2> Messages: Channel {this.props.channelId} </h2>
+        <Segment>
+          <Header size='large'> Messages: Channel {this.props.channelId} </Header>
+          <button onClick={this.onHandleVideoChatJoin} id='joinVideoChat'>Join Video Chat</button>
+          {
+            this.state.showVideoChat ? <VideoChat toggleVideo={this.onHandleVideoChatLeave} shortID={this.props.channelId}/> : null
+          }
+        </Segment>
         <Segment.Group>
-          <Segment>
-            <button onClick={this.onHandleVideoChatJoin} id='joinVideoChat'>Join Video Chat</button>
-            {
-              this.state.showVideoChat ? <VideoChat toggleVideo={this.onHandleVideoChatLeave} shortID={this.props.channelId} channel={'test'}/> : null
-            }
-          </Segment>
-          <Segment>
-            <MessageBoard 
-              socket={this.props.socket}
-              messages={this.props.messages}
-              channelId={this.props.channelId}
-            />
-          </Segment>
-          <Segment>
-            <MessageInput
-              socket={this.props.socket}
-              channelId={this.props.channelId}
-            />
-          </Segment>
+          <MessageBoard 
+            socket={this.props.socket}
+            messages={this.props.messages}
+            channelId={this.props.channelId}
+            profileId={this.props.profile.id}
+          />
         </Segment.Group>
+        <Segment>
+          <MessageInput
+            socket={this.props.socket}
+            channelId={this.props.channelId}
+          />
+        </Segment>
       </div>
     );
   }
 }
 
 const mapStateToProps = function(state) {
-  return { messages: state.messages, channel: state.channels };
+  return { messages: state.messages, channel: state.channels, profile: state.profile };
 };
 
 export default connect(mapStateToProps, { fetchMessages, createMessage })(Messages);
