@@ -176,7 +176,7 @@ export class CreateEvent extends Component {
             <textarea className='required field' rows="3" onChange={this.detailChange}></textarea>
           </div>
         </div>
-        <button className="ui button" type="submit" onClick={this.onSubmit}>Submit</button>
+        <button className="ui teal button small" type="submit" onClick={this.onSubmit}>Submit</button>
       </Modal.Content>
     );
   }

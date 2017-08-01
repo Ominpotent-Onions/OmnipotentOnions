@@ -56,6 +56,7 @@ export class GroupEvents extends Component {
           size='large'
           open={this.state.modalOpen}
           onClose={this.handleClose}
+          closeIcon='close'
         >
           <CreateEvent groupId={this.props.groupId} handleClose={this.handleClose}/>
         </Modal>
