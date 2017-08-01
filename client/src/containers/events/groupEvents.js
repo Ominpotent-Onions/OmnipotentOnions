@@ -51,8 +51,9 @@ export class GroupEvents extends Component {
     return (
       <div>
         {this.renderEvents()}
-        <Modal 
+        <Modal
           trigger={<Button onClick={this.handleOpen}><Icon name='plus circle' size='small'/></Button>}
+          size='large'
           open={this.state.modalOpen}
           onClose={this.handleClose}
         >
