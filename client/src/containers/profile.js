@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { updateProfileBio, fetchProfile, updateNickname } from '../actions';
+<<<<<<< HEAD
 import { Image, Segment, Button, Container } from 'semantic-ui-react';
+=======
+import { Segment, Button } from 'semantic-ui-react';
+>>>>>>> add additional exit feature on create event
 import axios from 'axios';
 
 export class Profile extends Component {
