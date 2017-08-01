@@ -4,6 +4,7 @@ import _ from 'lodash';
 import { Segment, Label, Image, Header } from 'semantic-ui-react';
 import moment from 'moment';
 
+
 class MessageBoard extends Component {
   constructor(props) {
     super(props);
