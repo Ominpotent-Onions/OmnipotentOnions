@@ -127,7 +127,9 @@ class Main extends Component {
     }
   }
 
+
   render() {
+    console.log('state.channelId in Main: ', this.state.channelId);
     return (
       <div>
         <Menu inverted vertical id='sidebar'>
@@ -142,7 +144,8 @@ class Main extends Component {
               <Groups 
                 profile={window.myUser} 
                 handleChannel={this.onHandleChannel}
-                handleEvents={this.onHandleEvents}/> :
+                handleEvents={this.onHandleEvents}/> 
+              :
               <Events 
                 showGroups={this.onHandleGroups} 
                 handleEventsDisplay={this.onDisplayEvents}
@@ -155,7 +158,8 @@ class Main extends Component {
                 socket={socket} 
                 groupId={this.state.groupId} 
                 handleMessage={this.onHandleMessage}
-              /> :
+              /> 
+              :
               <GroupEvents 
                 groupId={this.state.groupId} 
                 handleEventDetails={this.handleEventDetails}
@@ -169,7 +173,8 @@ class Main extends Component {
               <Messages 
                 socket={socket} 
                 channelId={this.state.channelId}
-              /> : 
+              /> 
+              : 
               this.renderEventDetails()
           }
         </div>
