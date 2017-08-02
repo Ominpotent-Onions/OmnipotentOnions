@@ -132,6 +132,7 @@ class Main extends Component {
 
 
   render() {
+    console.log('state.channelId in Main: ', this.state.channelId);
     return (
       <div>
         <Menu inverted vertical id='sidebar'>

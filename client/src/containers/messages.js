@@ -48,6 +48,7 @@ class Messages extends Component {
   }
 
   render() {
+    console.log('CHANNEL ID IN MESSAGES: ', this.props.channelId);
     return (
       <div> 
         <Segment inverted color='grey'>
