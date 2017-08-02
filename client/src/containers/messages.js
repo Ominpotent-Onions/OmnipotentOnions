@@ -37,12 +37,13 @@ class Messages extends Component {
   }
 
   onHandleVideoChatLeave() {
+    // io().emit('part', 'test' );
+
     this.setState({
       showVideoChat: false
     });
 
-    io().emit('part', 'test');
-    io().emit('disconnect');    
+    io().emit('disconnected');    
 
     document.getElementById('joinVideoChat').style.display = 'initial';    
   }

@@ -37,6 +37,7 @@ class VideoChat extends Component {
     /** CONFIG **/
         /* ------------------------ Shorten this.state --------------------------- */
     let ts = this.state; 
+    let tss = this.setState
     // var SIGNALING_SERVER = 'http://localhost';
     var USE_AUDIO = true;
     var USE_VIDEO = true;
@@ -59,13 +60,13 @@ class VideoChat extends Component {
       setup_local_media(function() {
         /* once the user has given us access to their
          * microphone/camcorder, join the channel and start peering up */
-        join_chat_channel('test', {
+        join_chat_channel(ts.DEFAULT_CHANNEL, {
           'whatever-you-want-here': 'stuff'
         });
       });
     });
 
-    signaling_socket.on('disconnected', function() {
+    signaling_socket.on('disconnect', function() {
       console.log('Disconnected from signaling server');
       /* Tear down all of our peer connections and remove all the
        * media divs when we disconnect */
@@ -95,7 +96,7 @@ class VideoChat extends Component {
      * connections in the network).
      */
     signaling_socket.on('addPeer', function(config) {
-      // console.log('Signaling server said to add peer:', config);
+      console.log('Signaling server said to add peer:', config);
       var peer_id = config.peer_id;
       if (peer_id in peers) {
         /* This could happen if the user joins multiple channels where the other peer is also in. */
