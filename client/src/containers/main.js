@@ -68,7 +68,6 @@ class Main extends Component {
 
   handleDeleteGroup() {
     this.setState({
-      showChannel: false,
       groupId: undefined,
       showMessages: false,
       channelId: undefined,
@@ -132,7 +131,6 @@ class Main extends Component {
             this.state.showMain ? <Messages socket={socket} channelId={this.state.channelId}/> : <Messages socket={socket} channelId={1}/>
           }
         </div>
-
       </div>
     );
   }  
