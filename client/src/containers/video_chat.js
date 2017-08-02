@@ -7,7 +7,7 @@ class VideoChat extends Component {
   constructor(props) {	
     super(props);
     
-    this.endVideo = this.endVideo.bind(this);
+    // this.endVideo = this.endVideo.bind(this);
   }
 
   componentDidMount () {
@@ -15,8 +15,8 @@ class VideoChat extends Component {
     // var SIGNALING_SERVER = 'http://localhost';
     var USE_AUDIO = true;
     var USE_VIDEO = true;
-    var DEFAULT_CHANNEL = 'some-global-channel-name';
-    var MUTE_AUDIO_BY_DEFAULT = false;
+    var DEFAULT_CHANNEL = this.props.channel;
+    var MUTE_AUDIO_BY_DEFAULT = true;
     /** You should probably use a different stun server doing commercial stuff **/
     /** Also see: https://gist.github.com/zziuni/3741933 **/
     var ICE_SERVERS = [{
@@ -59,9 +59,9 @@ class VideoChat extends Component {
         'userdata': userdata
       });
     }
-    const part_chat_channel = function(channel) {
-      signaling_socket.emit('part', channel);
-    }
+    // const part_chat_channel = function(channel) {
+    //   signaling_socket.emit('part', channel);
+    // }
     /**
      * When we join a group, our signaling server will send out 'addPeer' events to each pair
      * of users in the group (creating a fully-connected graph of users, ie if there are 6 people
@@ -287,17 +287,17 @@ class VideoChat extends Component {
 }
 
 
-  endVideo() {
-    console.log('INSIDE END VIDEO');
-    this.state.part_chat_channel('nothing');
-    this.props.toggleVideo();
-  }
+  // endVideo() {
+  //   console.log('INSIDE END VIDEO');
+  //   // this.state.part_chat_channel('nothing');
+  //   this.props.toggleVideo();
+  // }
 
   render () {
     return (
       <div>
-        {/* <div className='videos'></div> */}
-        <button onClick={this.endVideo}>Leave Video Chat</button>
+         <div className='videos'></div> 
+        <button onClick={this.props.toggleVideo}>Leave Video Chat</button>
       </div>
 
     );
