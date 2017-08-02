@@ -43,25 +43,24 @@ class Main extends Component {
     });
   }
 
-  onHandleMessage(d) {
-    // if (this.state.showChannel && this.state.channelId === undefined && this.state.showMessages === false) {
-    //   this.props.fetchMessages(e.target.value);
-    //   this.setState({
-    //     showMessages: !this.state.showMessages,
-    //     channelId: e.target.value
-    //   });
-    // } else if (this.state.showChannel && this.state.showMessages && this.state.channelId === e.target.value) {
-    //   this.setState({
-    //     showMessages: !this.state.showMessages,
-    //     channelId: undefined
-    //   });
-    // } else if (this.state.showChannel && this.state.showMessages && this.state.channelId !== e.target.value) {
-    //   this.props.fetchMessages(e.target.value);      
-    //   this.setState({
-    //     channelId: e.target.value
-    //   });
-    // }
-    console.log('D VALUE', d);
+  onHandleMessage(e) {
+    if (this.state.showChannel && this.state.channelId === undefined && this.state.showMessages === false) {
+      this.props.fetchMessages(e.target.value);
+      this.setState({
+        showMessages: !this.state.showMessages,
+        channelId: e.target.value
+      });
+    } else if (this.state.showChannel && this.state.showMessages && this.state.channelId === e.target.value) {
+      this.setState({
+        showMessages: !this.state.showMessages,
+        channelId: 0
+      });
+    } else if (this.state.showChannel && this.state.showMessages && this.state.channelId !== e.target.value) {
+      this.props.fetchMessages(e.target.value);      
+      this.setState({
+        channelId: e.target.value
+      });
+    }
   }
 
   onHandleEvents() {
@@ -85,7 +84,7 @@ class Main extends Component {
       showChannel: false,
       groupId: undefined,
       showMessages: false,
-      channelId: undefined
+      channelId: 0
     });
   }
 
@@ -115,8 +114,9 @@ class Main extends Component {
       eventId: eventId
     });
   }
-// "position: fixed; left: 0px; bottom: 0px; width: 50em;"
+  // "position: fixed; left: 0px; bottom: 0px; width: 50em;"
   render() {
+    console.log('state.channelId in Main: ', this.state.channelId);
     return (
 
       <div>
@@ -145,7 +145,7 @@ class Main extends Component {
         </Menu>
         <div id='main'>
           {
-            this.state.showMain ? <Messages socket={socket} channelId={this.state.channelId}/> : null
+            this.state.showMain ? <Messages socket={socket} channelId={this.state.channelId}/> : <Messages socket={socket} channelId={1}/>
           }
         </div>
 
@@ -154,47 +154,3 @@ class Main extends Component {
   }  
 }
 export default connect(null, { fetchProfile, fetchChannels, fetchMessages} )(Main);
-
-
-//  const renderTextField = ({input, label, placeholder, width, meta: { touched, error, warning }}) => (
-//   <Form.Input onChange={e => input.onChange(e)} value={input.value} label={label} placeholder={placeholder} width={width} />
-// )
-// const required = value => {
-//   return value ? undefined  : <p> Required </p>
-// };
-// submit(values) {
-//     console.log('values: ', values);
-//   }
-// //inbetween render and return 
-// const { handleSubmit } = this.props;
-// <Form onSubmit={handleSubmit(this.submit.bind(this)).bind(this) }>
-//   <Field name="first_name" component={ renderTextField } validate={[required]} label="First Name" width={8}/>
-//   <Button primary type="submit">Update</Button>
-// </Form>
-        // <h1>Welcome to Connect, {window.myUser.display}</h1>
-        // <Segment.Group horizontal>
-        //   {
-        //     this.state.showGroups ? <Segment><Groups profile={window.myUser} handleChannel={this.onHandleChannel} showEvents={this.onHandleEvents}/></Segment> 
-        //     : null
-        //   }          
-        //   {
-        //     this.state.showChannel ? <Segment><Channels socket={socket} groupId={this.state.groupId} handleMessage={this.onHandleMessage}/></Segment> : null
-        //   }
-        //   {
-        //     this.state.showMessages ? <Segment><Messages socket={socket} channelId={this.state.channelId}/></Segment> : null
-        //   }
-
-
-        //   {
-        //     this.state.showEvents ? <Segment><Events showGroups={this.onHandleGroups} groupEvents={this.handleGroupEvents}/></Segment> : null
-        //   }
-        //   {
-        //     this.state.showGroupEvents ? <Segment><GroupEvents groupId={this.state.groupId} handleEventDetails={this.handleEventDetails}/></Segment> : null
-        //   }
-        //   {
-        //     this.state.showEventDetails ? <Segment><EventDetails eventId={this.state.eventId} /></Segment> : null
-        //   }
-        //   {
-        //     this.state.showCreateEvents ? <Segment><CreateEvent showCreateEvents={this.handleCreateEvent} groupId={this.state.groupId}/></Segment> : null
-        //   }
-        // </Segment.Group>

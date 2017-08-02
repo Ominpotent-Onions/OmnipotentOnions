@@ -48,10 +48,11 @@ class Messages extends Component {
   }
 
   render() {
+    console.log('CHANNEL ID IN MESSAGES: ', this.props.channelId);
     return (
       <div> 
         <Segment inverted>
-          <Header color='grey' size='large'> {this.props.channel[this.props.channelId].name} </Header>
+          <Header color='grey' size='large'> {'this.props.channel[0].name'} </Header>
           <button onClick={this.onHandleVideoChatJoin} id='joinVideoChat'>Join Video Chat</button>
           {
             this.state.showVideoChat ? <VideoChat toggleVideo={this.onHandleVideoChatLeave} shortID={this.props.channelId}/> : null
