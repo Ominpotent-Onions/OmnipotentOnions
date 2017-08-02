@@ -57,18 +57,19 @@ class Messages extends Component {
             this.state.showVideoChat ? <VideoChat toggleVideo={this.onHandleVideoChatLeave} shortID={this.props.channelId}/> : null
           }
         </Segment>
-        <Segment.Group>
+        <div>
           <MessageBoard 
             socket={this.props.socket}
             messages={this.props.messages}
             channelId={this.props.channelId}
             profileId={this.props.profile.id}
           />
-        </Segment.Group>
+        </div>
         <Segment>
           <MessageInput
             socket={this.props.socket}
             channelId={this.props.channelId}
+            profile={this.props.profile}
           />
         </Segment>
       </div>

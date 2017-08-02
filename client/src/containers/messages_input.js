@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { createMessage } from '../actions';
 import axios from 'axios';
 
+var moment = require('moment');
+
 export class MessageInput extends Component {
   constructor(props) {
     super(props);
@@ -31,8 +33,8 @@ export class MessageInput extends Component {
     data.message = '';
     axios.post(`/messages/${message.text}?channel_id=${message.channel_id}&profile_id=${message.profile_id}`);
     // Add display name & the client time, since they're available here.
-    message['profile'] = { display: this.props.profile.display};
-    message['fake_time'] = Date.now();
+    message['profile'] = this.props.profile;
+    message['create_at'] = moment().toISOString();
     this.props.socket.emit('send', message);
   }
 
