@@ -12,32 +12,26 @@ class MessageBoard extends Component {
   renderMessages () {
     return _.map(this.props.messages, message => {
       var myMessage = this.props.profileId === message.profile.id;
+      const colors = ['red', 'orange', 'yellow', 'green', 'olive', 'blue', 'pink', 'violet', 'purple'];
+      var randColor = colors[Math.floor(Math.random() * colors.length)];
       return myMessage ? (
-        <Segment.Group compact horizontal key={moment(message.create_at).valueOf()}>
-          <Segment inverted color='teal' tertiary>
-            <Header color='brown' textAlign='center' size='small'>{message.text}</Header>
-          </Segment>
-          <Segment basic inverted color='teal' tertiary textAlign='right'> 
-            <Label as='a' color='teal'>
-              <Image size='medium' floated='right' avatar spaced='left' src={message.profile.profilePic}/>
-              {message.profile.display} <br/> 
-              {moment(message.create_at).format('h:mma')}
-            </Label>
-          </Segment>
-        </Segment.Group>
+        <Segment compact inverted color='teal' tertiary compact key={moment(message.create_at).valueOf()} textAlign='right'> 
+          <Label as='a' color={'teal'}>
+            <Image size='medium' floated='right' avatar spaced='left' src={message.profile.profilePic}/>
+            {message.profile.display} <br/> 
+            {moment(message.create_at).format('h:mma')}
+          </Label>
+          <Header floated='left' size='small'>{message.text}</Header>
+        </Segment>
       ) : (
-        <Segment.Group compact horizontal key={moment(message.create_at).valueOf()}>
-          <Segment inverted color='orange' tertiary textAlign='left'> 
-            <Label as='a' color='orange'>
-              <Image size='medium' avatar floated='left' spaced='right' src={message.profile.profilePic}/>
-              {message.profile.display} <br/>
-              {moment(message.create_at).format('h:mma')}
-            </Label>
-          </Segment>
-          <Segment basic inverted color='orange' tertiary>
-            <Header color='brown' size='small' textAlign='center'>{message.text}</Header>
-          </Segment>
-        </Segment.Group>
+        <Segment compact inverted color={randColor} tertiary key={moment(message.create_at).valueOf()} textAlign='left'> 
+          <Label as='a' color={randColor}>
+            <Image size='medium' avatar floated='left' spaced='right' src={message.profile.profilePic}/>
+            {message.profile.display} <br/>
+            {moment(message.create_at).format('h:mma')}
+          </Label>
+          <Header floated='right' size='small'>{message.text}</Header>
+        </Segment>
       );
     });
   }
