@@ -10,9 +10,9 @@ describe('Groups API', function() {
     dbUtils.rollbackMigrate(done);
   });
 
-  // afterEach(function(done) {
-  //   dbUtils.rollback(done);
-  // });
+  afterEach(function(done) {
+    dbUtils.rollback(done);
+  });
 
   //the reason why id is 1 here is because it present the 1 from profile_id
   //the group will associate it with that, if you make it 2, that would cause a foriegn key problem
@@ -26,7 +26,11 @@ describe('Groups API', function() {
         shortID: '123JAS'
       })
       .expect(res => {
+<<<<<<< HEAD
         console.log('this is res ', res.body);
+=======
+        console.log(res.body);
+>>>>>>> created seed for groups
         res.body = {
           id: res.body[0].groups.id,
           shortID: res.body[0].groups.shortID
