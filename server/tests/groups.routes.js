@@ -10,9 +10,9 @@ describe('Groups API', function() {
     dbUtils.rollbackMigrate(done);
   });
 
-  // afterEach(function(done) {
-  //   dbUtils.rollback(done);
-  // });
+  afterEach(function(done) {
+    dbUtils.rollback(done);
+  });
 
   it('post to groups', function(done) {
     request(app)
@@ -22,6 +22,7 @@ describe('Groups API', function() {
         shortID: '123JAS'
       })
       .expect(res => {
+        console.log(res.body);
         res.body = {
           id: res.body[0].groups.id,
           shortID: res.body[0].groups.shortID
@@ -33,6 +34,17 @@ describe('Groups API', function() {
       .end(done);
   }); 
 
+  it('gets 404 when createGroup does not exist', function(done) {
+    request(app)
+      .post('/groups/createGrou')
+      .query({
+        id: 1,
+        shortID: '123JAS'
+      })
+      .expect(404)
+      .end(done);
+  });
+
   it('get to groups', function(done) {
     request(app)
       .get('/groups/fetchOneGroup/1')
@@ -42,6 +54,13 @@ describe('Groups API', function() {
         };
       })
       .expect(200)
+      .end(done);
+  });
+
+  it('404 on GET request when the groupid does not exist', function(done) {
+    request(app)
+      .get('/groups/fetchOneGroup/2123')
+      .expect(404)
       .end(done);
   });
 });
