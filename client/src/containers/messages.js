@@ -50,8 +50,8 @@ class Messages extends Component {
   render() {
     return (
       <div> 
-        <Segment>
-          <Header size='large'> Messages: Channel {this.props.channelId} </Header>
+        <Segment inverted>
+          <Header color='grey' size='large'> {this.props.channel[this.props.channelId].name} </Header>
           <button onClick={this.onHandleVideoChatJoin} id='joinVideoChat'>Join Video Chat</button>
           {
             this.state.showVideoChat ? <VideoChat toggleVideo={this.onHandleVideoChatLeave} shortID={this.props.channelId}/> : null
