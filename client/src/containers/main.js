@@ -36,34 +36,21 @@ class Main extends Component {
   }
 
   onHandleChannel (e) {
-    console.log('E TARGET VALUE: ', e.value);
+    var firstChannel;
     this.props.fetchChannels(e.value);
     this.setState({
       groupId: e.value,
     });
   }
 
-  onHandleMessage(e) {
-    if (this.state.showChannel && this.state.channelId === undefined && this.state.showMessages === false) {
-      this.props.fetchMessages(e.target.value);
-      this.setState({
-        showMessages: !this.state.showMessages,
-        channelId: e.target.value
-      });
-    } else if (this.state.showChannel && this.state.showMessages && this.state.channelId === e.target.value) {
-      this.setState({
-        showMessages: !this.state.showMessages,
-        channelId: 0
-      });
-    } else if (this.state.showChannel && this.state.showMessages && this.state.channelId !== e.target.value) {
-      this.props.fetchMessages(e.target.value);      
-      this.setState({
-        channelId: e.target.value
-      });
-    }
+  onHandleMessage(e, d) {
+    this.props.fetchMessages(d.value);
+    this.setState({
+      channelId: d.value,
+    });
   }
 
-  onHandleEvents() {
+  onHandleEvents() { 
     this.setState({
       showMain: !this.state.showMain
     });
@@ -84,7 +71,7 @@ class Main extends Component {
       showChannel: false,
       groupId: undefined,
       showMessages: false,
-      channelId: 0
+      channelId: undefined,
     });
   }
 
@@ -116,7 +103,6 @@ class Main extends Component {
   }
   // "position: fixed; left: 0px; bottom: 0px; width: 50em;"
   render() {
-    console.log('state.channelId in Main: ', this.state.channelId);
     return (
 
       <div>
@@ -129,17 +115,15 @@ class Main extends Component {
           </Menu.Item> 
           {
             this.state.showMain ? 
-            <Groups profile={window.myUser} handleChannel={this.onHandleChannel} handleEvents={this.onHandleEvents}/> 
+              <Groups profile={window.myUser} handleChannel={this.onHandleChannel} handleEvents={this.onHandleEvents}/> 
               :
-            <Events showGroups={this.onHandleGroups} groupEvents={this.handleGroupEvents}
-                handleEvents={this.onHandleEvents}/>
-              
+              <Events showGroups={this.onHandleGroups} groupEvents={this.handleGroupEvents} handleEvents={this.onHandleEvents}/>
           }
           {
             this.state.showMain ? 
-            <Channels socket={socket} groupId={this.state.groupId} handleMessage={this.onHandleMessage}/> 
+              <Channels socket={socket} groupId={this.state.groupId} handleMessage={this.onHandleMessage}/> 
               :
-            <GroupEvents groupId={this.state.groupId} handleEventDetails={this.handleEventDetails}/>
+              <GroupEvents groupId={this.state.groupId} handleEventDetails={this.handleEventDetails}/>
           }
           
         </Menu>
