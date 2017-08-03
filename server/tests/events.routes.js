@@ -29,7 +29,7 @@ describe('Profile API', function() {
       .post('/events/1')
       .send(event)
       .expect(201,
-      [{
+        [{
           id: 2,
           eventName: 'Test Party',
           location: '944 Market St. San Francisco',
