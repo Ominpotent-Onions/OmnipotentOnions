@@ -34,7 +34,6 @@ class VideoChat extends Component {
       },
     };
   // }
-    console.log(this.props, 'VIDEOCHAT props');
   // componentDidMount() {
     /** CONFIG **/
         /* ------------------------ Shorten this.state --------------------------- */
@@ -52,13 +51,14 @@ class VideoChat extends Component {
     var local_media_stream = null; /* our own microphone / webcam */
     var peers = {}; /* keep track of our peer connections, indexed by peer_id (aka socket.io id) */
     var peer_media_elements = {}; /* keep track of our <video>/<audio> tags, indexed by peer_id */
+    var filter = this.props.channelId !== undefined ? true : false;
     // console.log('Connecting to signaling server');
     // signaling_socket = io(SIGNALING_SERVER);
     signaling_socket = io();
 
     signaling_socket.on('connect', function() {
       console.log('Connected to signaling server');
-      if(this.props.channelId !== undefined){
+      if(filter){
         setup_local_media(function() {
           /* once the user has given us access to their
           * microphone/camcorder, join the channel and start peering up */
@@ -320,9 +320,10 @@ class VideoChat extends Component {
 }
 
   endVideo() {
-    console.log('INSIDE END VIDEO');
-    this.state.part_chat_channel(this.state.DEFAULT_CHANNEL);
-    this.props.toggleVideo();
+    var video = document.getElementsByClassName('videos');    
+    console.log('INSIDE END VIDEO', video);
+    // this.state.part_chat_channel(this.state.DEFAULT_CHANNEL);
+    // this.props.toggleVideo();
   }
 
   render () {
