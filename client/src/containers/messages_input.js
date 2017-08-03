@@ -43,7 +43,6 @@ export class MessageInput extends Component {
 
   render() {
     const { handleSubmit } = this.props;
-    console.log('channelId check: ', !this.props.channelId);
     var disableField = !this.props.channelId;
     return disableField ? null : (
       <Segment inverted>
