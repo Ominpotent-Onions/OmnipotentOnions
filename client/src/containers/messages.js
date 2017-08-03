@@ -4,7 +4,7 @@ import { fetchMessages, createMessage } from '../actions';
 
 import io from 'socket.io-client';
 
-import VideoChat from './video_chat.1';
+import VideoChat from './video_chat';
 import MessageBoard from '../components/messages_board';
 import MessageInput from './messages_input';
 import { Segment, Header, Button } from 'semantic-ui-react';
@@ -29,21 +29,22 @@ class Messages extends Component {
   }
   
   onHandleVideoChatJoin() {
-    this.setState({
-      showVideoChat: true
-    });
+    if(this.props.channelId !== undefined) {
+      this.setState({
+        showVideoChat: true
+      });
+      
+      document.getElementById('joinVideoChat').style.display = 'none';
+    } else {
+      alert('Join a channel')
+    }
     
-    document.getElementById('joinVideoChat').style.display = 'none';
   }
 
   onHandleVideoChatLeave() {
-    // io().emit('part', 'test' );
-
     this.setState({
       showVideoChat: false
     });
-
-    io().emit('disconnected');    
 
     document.getElementById('joinVideoChat').style.display = 'initial';    
   }
@@ -57,7 +58,7 @@ class Messages extends Component {
             <Header inverted color='teal' size='large'> {this.props.channelId ? this.props.channel[this.props.channelId].name : 'Select a Group & Channel...' } </Header>
             <Button className='ui teal' onClick={this.onHandleVideoChatJoin} id='joinVideoChat'>Join Video Chat</Button>
             {
-              this.state.showVideoChat ? <VideoChat toggleVideo={this.onHandleVideoChatLeave} shortID={this.props.channelId}/> : null
+              this.state.showVideoChat ? <VideoChat toggleVideo={this.onHandleVideoChatLeave} channelId={this.props.channelId}/> : null
             }
           </Segment>
         </div>
