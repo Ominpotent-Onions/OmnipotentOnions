@@ -29,11 +29,13 @@ class VideoChat extends Component {
       // },
       part_chat_channel: (channel) => {
         io().emit('part', channel);
-        // local_media_stream = null; 
+        // local_media_stream = null;
         local_media_stream.getTracks().forEach(track => track.stop());
       },
     };
-
+  // }
+    console.log(this.props, 'VIDEOCHAT props');
+  // componentDidMount() {
     /** CONFIG **/
         /* ------------------------ Shorten this.state --------------------------- */
     let ts = this.state; 
@@ -56,16 +58,18 @@ class VideoChat extends Component {
 
     signaling_socket.on('connect', function() {
       console.log('Connected to signaling server');
-      setup_local_media(function() {
-        /* once the user has given us access to their
-         * microphone/camcorder, join the channel and start peering up */
-        join_chat_channel('test', {
-          'whatever-you-want-here': 'stuff'
+      if(this.props.channelId !== undefined){
+        setup_local_media(function() {
+          /* once the user has given us access to their
+          * microphone/camcorder, join the channel and start peering up */
+          join_chat_channel('test', {
+            'whatever-you-want-here': 'stuff'
+          });
         });
-      });
+      } 
     });
 
-    signaling_socket.on('disconnected', function() {
+    signaling_socket.on('disconnect', function() {
       console.log('Disconnected from signaling server');
       /* Tear down all of our peer connections and remove all the
        * media divs when we disconnect */
@@ -95,7 +99,7 @@ class VideoChat extends Component {
      * connections in the network).
      */
     signaling_socket.on('addPeer', function(config) {
-      // console.log('Signaling server said to add peer:', config);
+      console.log('Signaling server said to add peer:', config);
       var peer_id = config.peer_id;
       if (peer_id in peers) {
         /* This could happen if the user joins multiple channels where the other peer is also in. */
@@ -314,14 +318,6 @@ class VideoChat extends Component {
 
     this.endVideo = this.endVideo.bind(this);  
 }
-
-  // endVideo() {
-  //   console.log('INSIDE END VIDEO');
-  //   // this.state.part_chat_channel(this.props.channel);
-  //   io().emit('disconnected')
-  //   io().emit('part', 'test');    
-  //   this.props.toggleVideo();
-  // }
 
   endVideo() {
     console.log('INSIDE END VIDEO');
