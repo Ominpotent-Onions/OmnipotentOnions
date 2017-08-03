@@ -33,11 +33,12 @@ class VideoChat extends Component {
         local_media_stream.getTracks().forEach(track => track.stop());
       },
     };
+  }
 
+  componentDidMount() {
     /** CONFIG **/
         /* ------------------------ Shorten this.state --------------------------- */
     let ts = this.state; 
-    let tss = this.setState
     // var SIGNALING_SERVER = 'http://localhost';
     var USE_AUDIO = true;
     var USE_VIDEO = true;
@@ -60,7 +61,7 @@ class VideoChat extends Component {
       setup_local_media(function() {
         /* once the user has given us access to their
          * microphone/camcorder, join the channel and start peering up */
-        join_chat_channel(ts.DEFAULT_CHANNEL, {
+        join_chat_channel('test', {
           'whatever-you-want-here': 'stuff'
         });
       });
@@ -315,14 +316,6 @@ class VideoChat extends Component {
 
     this.endVideo = this.endVideo.bind(this);  
 }
-
-  // endVideo() {
-  //   console.log('INSIDE END VIDEO');
-  //   // this.state.part_chat_channel(this.props.channel);
-  //   io().emit('disconnected')
-  //   io().emit('part', 'test');    
-  //   this.props.toggleVideo();
-  // }
 
   endVideo() {
     console.log('INSIDE END VIDEO');

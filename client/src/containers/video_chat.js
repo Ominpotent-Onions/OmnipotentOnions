@@ -29,7 +29,7 @@ class VideoChat extends Component {
       // },
       part_chat_channel: (channel) => {
         io().emit('part', channel);
-        // local_media_stream = null;
+        // local_media_stream = null; 
         local_media_stream.getTracks().forEach(track => track.stop());
       },
     };
