@@ -10,23 +10,23 @@ class MessageBoard extends Component {
   }
 
   renderMessages () {
-    return _.map(this.props.messages, message => {
+    return _.map(this.props.messages, (message, i) => {
       var myMessage = this.props.profileId === message.profile.id;
       const colors = ['red', 'orange', 'yellow', 'green', 'olive', 'blue', 'pink', 'violet', 'purple'];
       var randColor = colors[Math.floor(Math.random() * colors.length)];
       return myMessage ? (
-        <Segment compact inverted color='teal' tertiary compact key={moment(message.create_at).valueOf()} textAlign='right'> 
-          <Label as='a' color={'teal'}>
-            <Image size='medium' floated='right' avatar spaced='left' src={message.profile.profilePic}/>
+        <Segment inverted color='teal' tertiary compact key={moment(message.create_at).valueOf()} textAlign='left'> 
+          <Label color={'teal'}>
+            <Image size='medium' avatar floated='right' spaced='left' src={message.profile.profilePic}/>
             {message.profile.display} <br/> 
             {moment(message.create_at).format('h:mma')}
           </Label>
-          <Header floated='left' size='small'>{message.text}</Header>
+          <Header floated='right' size='small'>{message.text}</Header>
         </Segment>
       ) : (
-        <Segment compact inverted color={randColor} tertiary key={moment(message.create_at).valueOf()} textAlign='left'> 
-          <Label as='a' color={randColor}>
-            <Image size='medium' avatar floated='left' spaced='right' src={message.profile.profilePic}/>
+        <Segment inverted color={randColor} tertiary compact key={moment(message.create_at).valueOf()} textAlign='left'> 
+          <Label color={randColor}>
+            <Image size='medium' avatar floated='right' spaced='left' src={message.profile.profilePic}/>
             {message.profile.display} <br/>
             {moment(message.create_at).format('h:mma')}
           </Label>
