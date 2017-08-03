@@ -51,14 +51,14 @@ class VideoChat extends Component {
     var local_media_stream = null; /* our own microphone / webcam */
     var peers = {}; /* keep track of our peer connections, indexed by peer_id (aka socket.io id) */
     var peer_media_elements = {}; /* keep track of our <video>/<audio> tags, indexed by peer_id */
-    var filter = this.props.channelId !== undefined ? true : false;
+    var checkIfInChannel = this.props.channelId !== undefined ? true : false;
+    // var numberOfVideos =
     // console.log('Connecting to signaling server');
     // signaling_socket = io(SIGNALING_SERVER);
     signaling_socket = io();
-
     signaling_socket.on('connect', function() {
       console.log('Connected to signaling server');
-      if(filter){
+      if(checkIfInChannel){
         setup_local_media(function() {
           /* once the user has given us access to their
           * microphone/camcorder, join the channel and start peering up */
@@ -98,14 +98,19 @@ class VideoChat extends Component {
      * in the channel you will connect directly to the other 5, so there will be a total of 15
      * connections in the network).
      */
-    signaling_socket.on('addPeer', function(config) {
-      console.log('Signaling server said to add peer:', config);
+    signaling_socket.on('addPeer', function(config) {      
+      // console.log('Signaling server said to add peer:', config);
       var peer_id = config.peer_id;
       if (peer_id in peers) {
         /* This could happen if the user joins multiple channels where the other peer is also in. */
         // console.log('Already connected to peer ', peer_id);
         return;
       }
+
+      if(document.getElementById('videos').childNodes.length > 4) {
+        alert('Please purchase our premium plan!');
+      }
+
       var peer_connection = new RTCPeerConnection({
         'iceServers': ICE_SERVERS
       }, {
@@ -142,9 +147,9 @@ class VideoChat extends Component {
         remote_media.setAttribute('controls', '');
         remote_media.setAttribute('width', '50%');
         peer_media_elements[peer_id] = remote_media;
-        var video = document.getElementsByClassName('videos');
+        var video = document.getElementById('videos');
         // console.log(video)
-        video[0].appendChild(remote_media);
+        video.appendChild(remote_media);
         attachMediaStream(remote_media, event.stream);
       }
 
@@ -304,8 +309,8 @@ class VideoChat extends Component {
       local_media.setAttribute('muted', 'true'); /* always mute ourselves by default */
       local_media.setAttribute('controls', '');
       local_media.setAttribute('width', '50%');
-      var video = document.getElementsByClassName('videos');
-      video[0].appendChild(local_media);
+      var video = document.getElementById('videos');
+      video.appendChild(local_media);
       attachMediaStream(local_media, stream);
       if (callback) callback(stream);
     },
@@ -320,16 +325,16 @@ class VideoChat extends Component {
 }
 
   endVideo() {
-    var video = document.getElementsByClassName('videos');    
-    console.log('INSIDE END VIDEO', video);
-    // this.state.part_chat_channel(this.state.DEFAULT_CHANNEL);
-    // this.props.toggleVideo();
+    console.log('INSIDE END VIDEO');
+
+    this.state.part_chat_channel(this.state.DEFAULT_CHANNEL);
+    this.props.toggleVideo();
   }
 
   render () {
     return (
       <div>
-         <div className='videos'></div> 
+         <div id='videos'></div> 
         <button onClick={this.endVideo}>Leave Video Chat</button>
       </div>
 
