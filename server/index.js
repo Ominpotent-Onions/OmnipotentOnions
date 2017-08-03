@@ -72,6 +72,7 @@ io.on('connection', function(socket) {
     }
     if (!(channel in channels)) {
       channels[channel] = {};
+      console.log('SERVER CHANNELS:', channels);
     }
     for (var id in channels[channel]) {
       channels[channel][id].emit('addPeer', { 'peer_id': socket.id, 'should_create_offer': false });

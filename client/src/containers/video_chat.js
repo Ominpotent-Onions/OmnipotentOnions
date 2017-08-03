@@ -52,6 +52,7 @@ class VideoChat extends Component {
     var peers = {}; /* keep track of our peer connections, indexed by peer_id (aka socket.io id) */
     var peer_media_elements = {}; /* keep track of our <video>/<audio> tags, indexed by peer_id */
     var checkIfInChannel = this.props.channelId !== undefined ? true : false;
+    var channel = this.props.channelId;
     // var numberOfVideos =
     // console.log('Connecting to signaling server');
     // signaling_socket = io(SIGNALING_SERVER);
@@ -62,7 +63,7 @@ class VideoChat extends Component {
         setup_local_media(function() {
           /* once the user has given us access to their
           * microphone/camcorder, join the channel and start peering up */
-          join_chat_channel('test', {
+          join_chat_channel(channel, {
             'whatever-you-want-here': 'stuff'
           });
         });
@@ -327,7 +328,7 @@ class VideoChat extends Component {
   endVideo() {
     console.log('INSIDE END VIDEO');
 
-    this.state.part_chat_channel(this.state.DEFAULT_CHANNEL);
+    this.state.part_chat_channel(this.props.channelId);
     this.props.toggleVideo();
   }
 
