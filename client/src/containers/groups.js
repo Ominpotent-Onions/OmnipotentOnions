@@ -18,12 +18,17 @@ class Groups extends Component {
     };
     this.handleItemClick = this.handleItemClick.bind(this);
   }
-  handleItemClick(name) {
-    console.log('NAME: ', name);
+
+  handleItemClick(e, { name }) {
     this.setState({activeItem: name});
   }
   componentWillMount() {
-    this.props.fetchGroups(this.props.profile);    
+    this.props.fetchGroups(this.props.profile)
+    .then((groups) => {
+      this.setState({
+        activeItem: groups.payload.data[0].groups.name
+      })
+    }) 
   }
 
   //functioned called immediately and will send over

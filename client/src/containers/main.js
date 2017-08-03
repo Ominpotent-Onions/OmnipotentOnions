@@ -41,7 +41,19 @@ class Main extends Component {
   //Once sign on, your information is fetched
   //as we go around the site, this information will be passed to load contents specific for each user
   componentWillMount() {
-    this.props.fetchProfile(window.myUser);    
+    this.props.fetchProfile(window.myUser);
+    this.props.fetchGroups(window.myUser)
+    .then((groups) => {
+      this.props.fetchChannels(groups.payload.data[0].group_id).
+      then((channels) => {
+        console.log(groups.payload.data[0].groups.name)
+        console.log(channels.payload.data[0].name)
+        this.props.fetchMessages(channels.payload.data[0].id)
+        this.setState({
+          groupId: groups.payload.data[0].group_id,
+        })
+      });
+    })
   }
 
   onHandleChannel (groupdId) {
@@ -49,9 +61,11 @@ class Main extends Component {
     this.setState({
       groupId: groupdId,
     });
+    console.log(this.props);
   }
 
   onHandleMessage(e, d) {
+    console.log(d.value);
     this.props.fetchMessages(d.value);
     this.setState({
       channelId: d.value,
@@ -143,6 +157,7 @@ class Main extends Component {
               <Channels
                 key={this.state.groupId}
                 socket={socket} 
+                profile={window.myUser}
                 groupId={this.state.groupId} 
                 handleMessage={this.onHandleMessage}
               /> 
