@@ -30,15 +30,6 @@ describe('Groups API', function() {
         shortID: '123JAS'
       })
       .expect(res => {
-<<<<<<< HEAD
-<<<<<<< HEAD
-        console.log('this is res ', res.body);
-=======
-        console.log(res.body);
->>>>>>> created seed for groups
-=======
-        console.log('this is res ', res.body);
->>>>>>> fix group and group testing, create static sidebar and main
         res.body = {
           id: res.body[0].groups.id,
           shortID: res.body[0].groups.shortID
