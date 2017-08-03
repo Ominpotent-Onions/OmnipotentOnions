@@ -27,7 +27,7 @@ module.exports.createGroup = (req, res) => {
       if (err.constraint === 'groups_name_unique') {
         return res.status(403);
       }
-      res.status(500).send(err);
+      res.status(404).send(err);
     });
 };
 
@@ -36,12 +36,12 @@ module.exports.fetchOneGroup = (req, res) => {
     .then(oneGroup => {
       console.log('oneGroup ', oneGroup);
       if (oneGroup === null) {
-        res.sendStatus(404);
+        throw oneGroup;
       }
       res.status(200).send(oneGroup);
     })
     .catch(err => {
-      res.status(503).send(err);
+      res.status(404).send(err);
     });
 };
 

@@ -43,8 +43,10 @@
 
 #main {
   float: left;
-  width: 80%;
+  width: 400px;
   padding: 40px;
+  left: 175px;
+  position: absolute;
 }
 
 .display {
@@ -79,9 +81,9 @@
   padding-bottom: 2em;
 } */
 
-.buttonGroup {
+ .buttonGroup {
   font-size: 5px;
-}
+} 
 
 .events {
   float: right;

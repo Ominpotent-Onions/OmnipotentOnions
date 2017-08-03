@@ -10,9 +10,13 @@ describe('Groups API', function() {
     dbUtils.rollbackMigrate(done);
   });
 
-  afterEach(function(done) {
-    dbUtils.rollback(done);
-  });
+  // afterEach(function(done) {
+  //   dbUtils.rollback(done);
+  // });
+
+  //the reason why id is 1 here is because it present the 1 from profile_id
+  //the group will associate it with that, if you make it 2, that would cause a foriegn key problem
+  //the id we return is not from profile, but the ID of the groups
 
   it('post to groups', function(done) {
     request(app)
@@ -22,24 +26,24 @@ describe('Groups API', function() {
         shortID: '123JAS'
       })
       .expect(res => {
-        console.log(res.body);
+        console.log('this is res ', res.body);
         res.body = {
           id: res.body[0].groups.id,
           shortID: res.body[0].groups.shortID
         };
       }).expect(201, {
-        id: 1,
+        id: 2,
         shortID: '123JAS'
       })
       .end(done);
   }); 
 
-  it('gets 404 when createGroup does not exist', function(done) {
+  it('gets 404 when incorrect URL', function(done) {
     request(app)
-      .post('/groups/createGrou')
+      .post('/groups/createGrou/1234')
       .query({
         id: 1,
-        shortID: '123JAS'
+        shortID: 123
       })
       .expect(404)
       .end(done);
