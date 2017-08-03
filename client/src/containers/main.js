@@ -38,6 +38,8 @@ class Main extends Component {
     this.handleEventDetails = this.handleEventDetails.bind(this);
   }
 
+  //Once sign on, your information is fetched
+  //as we go around the site, this information will be passed to load contents specific for each user
   componentWillMount() {
     this.props.fetchProfile(window.myUser);    
   }
