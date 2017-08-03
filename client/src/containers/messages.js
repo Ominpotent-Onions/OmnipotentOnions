@@ -4,7 +4,7 @@ import { fetchMessages, createMessage } from '../actions';
 
 import io from 'socket.io-client';
 
-import VideoChat from './video_chat';
+import VideoChat from './video_chat.1';
 import MessageBoard from '../components/messages_board';
 import MessageInput from './messages_input';
 import { Segment, Header, Button } from 'semantic-ui-react';
