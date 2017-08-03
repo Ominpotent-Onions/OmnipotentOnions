@@ -49,6 +49,7 @@ class Main extends Component {
             this.props.fetchMessages(channels.payload.data[0].id);
             this.setState({
               groupId: groups.payload.data[0].group_id,
+              channelId: channels.payload.data[0].id
             });
           });
       });
@@ -175,6 +176,7 @@ class Main extends Component {
               <Messages 
                 socket={socket} 
                 channelId={this.state.channelId}
+                profile={window.myUser}
               /> 
               : 
               this.renderEventDetails()
