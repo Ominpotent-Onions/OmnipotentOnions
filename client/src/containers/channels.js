@@ -20,15 +20,14 @@ export class Channels extends Component {
 
   componentWillMount() {
     this.props.fetchGroups(window.myUser)
-    .then((groups) => {
-      this.props.fetchChannels(groups.payload.data[0].group_id)
-      .then((channels) => {
-        console.log(channels.payload.data[0].name)
-        this.setState({
-          activeItem: channels.payload.data[0].name
-        })
-      })
-    })
+      .then((groups) => {
+        this.props.fetchChannels(groups.payload.data[0].group_id)
+          .then((channels) => {
+            this.setState({
+              activeItem: channels.payload.data[0].name
+            });
+          });
+      });
   }
   handleItemClick(e, {name}) {
     this.setState({activeItem: name});
