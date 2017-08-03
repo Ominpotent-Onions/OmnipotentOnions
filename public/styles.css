@@ -12,6 +12,22 @@
   height: 125px;
 }
 
+#message-scroll {
+  position: absolute;
+  left: 22%;
+  width: 78%;
+  top: 260px;
+  height: 62%;
+  overflow-y: scroll;
+}
+
+#message-input {
+  position: fixed;
+  left: 20.65%;
+  width: 78%;
+  top: 90%;
+}
+
 #map-canvas {
   float: right;
   margin: 0;
@@ -36,7 +52,7 @@
 #sidebar {
   left: 0px;
   width: 20%;
-  height: 100em;
+  height: 60em;
   border-radius: 0px;
   float: left;
 }
@@ -44,7 +60,7 @@
 #main {
   float: left;
   width: 80%;
-  padding: 40px;
+  padding: 12px;
 }
 
 .display {
@@ -130,6 +146,10 @@
   border: 1px solid #00b5ad;
   font-size: .8em;
   /* margin-bottom: 6px !important;  */
+}
+
+.chat-text-entry {
+  margin: 10px;
 }
 
 .ui.inverted.form input[type=text]{

@@ -57,7 +57,7 @@ class Messages extends Component {
             this.state.showVideoChat ? <VideoChat toggleVideo={this.onHandleVideoChatLeave} shortID={this.props.channelId}/> : null
           }
         </Segment>
-        <div>
+        <div id='message-scroll'>
           <MessageBoard 
             socket={this.props.socket}
             messages={this.props.messages}
@@ -65,13 +65,13 @@ class Messages extends Component {
             profileId={this.props.profile.id}
           />
         </div>
-        <Segment>
+        <div id='message-input'>
           <MessageInput
             socket={this.props.socket}
             channelId={this.props.channelId}
             profile={this.props.profile}
           />
-        </Segment>
+        </div>
       </div>
     );
   }
