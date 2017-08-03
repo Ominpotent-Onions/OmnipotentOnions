@@ -13,11 +13,11 @@ class NewGroup extends Component {
     const { meta: { touched, error, warning }} = field; 
     return (
       <Form.Input 
-                  className='inputForm' 
-                  transparent={true} 
-                  size='large'
-                  placeholder='enter new group name'
-                  type='text' {...field.input}/>
+        className='inputForm' 
+        transparent={true} 
+        size='large'
+        placeholder='enter new group name'
+        type='text' {...field.input}/>
     );
   } 
 
@@ -36,7 +36,7 @@ class NewGroup extends Component {
         let newChannel = {
           name: 'General',
           group_id: groups.payload.data.pop().group_id
-        }
+        };
         this.props.createChannel(newChannel, shortID);
       }); 
   }
@@ -65,14 +65,14 @@ export default reduxForm({
   connect(mapStateToProps, { createGroup, createChannel })(NewGroup)
 );
 
-      // <div>
-      //   <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-      //     <Field
-      //       name='groupName'
-      //       component={this.renderField}
-      //     />
-      //     <button type='submit'>Create Group</button>
-      //   </form>
-      // </div>
+// <div>
+//   <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+//     <Field
+//       name='groupName'
+//       component={this.renderField}
+//     />
+//     <button type='submit'>Create Group</button>
+//   </form>
+// </div>
 
 

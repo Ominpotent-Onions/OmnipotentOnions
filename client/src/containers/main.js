@@ -43,17 +43,15 @@ class Main extends Component {
   componentWillMount() {
     this.props.fetchProfile(window.myUser);
     this.props.fetchGroups(window.myUser)
-    .then((groups) => {
-      this.props.fetchChannels(groups.payload.data[0].group_id).
-      then((channels) => {
-        console.log(groups.payload.data[0].groups.name)
-        console.log(channels.payload.data[0].name)
-        this.props.fetchMessages(channels.payload.data[0].id)
-        this.setState({
-          groupId: groups.payload.data[0].group_id,
-        })
+      .then((groups) => {
+        this.props.fetchChannels(groups.payload.data[0].group_id)
+          .then((channels) => {
+            this.props.fetchMessages(channels.payload.data[0].id);
+            this.setState({
+              groupId: groups.payload.data[0].group_id,
+            });
+          });
       });
-    })
   }
 
   onHandleChannel (groupdId) {
