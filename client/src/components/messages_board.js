@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 
 import { Segment, Label, Image, Header } from 'semantic-ui-react';
-var moment = require('moment');
+import moment from 'moment';
 
 class MessageBoard extends Component {
   constructor(props) {
@@ -10,10 +10,18 @@ class MessageBoard extends Component {
   }
 
   renderMessages () {
+    var colors = ['orange', 'yellow', 'green', 'olive', 'blue', 'pink', 'violet', 'purple'];
+    var tempColors = colors.slice();
+    var colorMap = {};
     return _.map(this.props.messages, (message, i) => {
       var myMessage = this.props.profileId === message.profile.id;
-      const colors = ['red', 'orange', 'yellow', 'green', 'olive', 'blue', 'pink', 'violet', 'purple'];
-      var randColor = colors[Math.floor(Math.random() * colors.length)];
+      if (!tempColors.length) {
+        tempColors = colors.slice();
+      }
+      if (!myMessage && !colorMap[message.profile.id]) {
+        var randColor = tempColors.splice(Math.floor(Math.random() * tempColors.length), 1)[0];
+        colorMap[message.profile.id] = randColor;
+      }
       return myMessage ? (
         <Segment inverted color='teal' tertiary compact key={moment(message.create_at).valueOf()} textAlign='left'> 
           <Label color={'teal'}>
@@ -24,8 +32,8 @@ class MessageBoard extends Component {
           <Header floated='right' size='small'>{message.text}</Header>
         </Segment>
       ) : (
-        <Segment inverted color={randColor} tertiary compact key={moment(message.create_at).valueOf()} textAlign='left'> 
-          <Label color={randColor}>
+        <Segment inverted color={colorMap[message.profile.id]} tertiary compact key={moment(message.create_at).valueOf()} textAlign='left'> 
+          <Label color={colorMap[message.profile.id]}>
             <Image size='medium' avatar floated='right' spaced='left' src={message.profile.profilePic}/>
             {message.profile.display} <br/>
             {moment(message.create_at).format('h:mma')}
