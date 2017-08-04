@@ -18,11 +18,11 @@ export class Channels extends Component {
     this.handleItemClick = this.handleItemClick.bind(this);
   }
 
-  componentWillMount() {{
+  componentWillMount() {
     this.setState({
       activeItem: this.props.channelName
-    })
-  }}
+    });
+  }
 
   handleItemClick(e, {name}) {
     console.log(e);

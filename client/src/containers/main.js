@@ -50,7 +50,6 @@ class Main extends Component {
         this.props.fetchChannels(groups.payload.data[0].group_id)
           .then((channels) => {
             this.props.fetchMessages(channels.payload.data[0].id);
-            console.log(channels.payload.data[0].name)
             this.setState({
               groupId: groups.payload.data[0].group_id,
               channelId: channels.payload.data[0].id,
@@ -60,7 +59,7 @@ class Main extends Component {
       });
   }
 
-  onHandleChannel (groupId, ) {
+  onHandleChannel (groupId) {
     console.log('handle channel ', groupId);
     this.props.fetchChannels(groupId);
     this.setState({

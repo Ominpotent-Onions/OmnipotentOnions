@@ -38,14 +38,14 @@ class Messages extends Component {
   }
   
   onHandleVideoChatJoin() {
-    if(this.props.channelId !== undefined) {
+    if (this.props.channelId !== undefined) {
       this.setState({
         showVideoChat: true
       });
       
       document.getElementById('joinVideoChat').style.display = 'none';
     } else {
-      alert('Join a channel')
+      alert('Join a channel');
     }
     
   }
