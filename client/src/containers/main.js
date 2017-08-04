@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchProfile, fetchChannels, 
-  fetchMessages, fetchEvents, emptyChannels } from '../actions';
+  fetchMessages, fetchEvents, emptyChannels, fetchGroups } from '../actions';
 
 import { Segment, Menu, Header, Image } from 'semantic-ui-react';
 
@@ -25,8 +25,10 @@ class Main extends Component {
       showMain: true,
       groupId: null,
       channelId: null,
+      channelName: null,
       showCreateEvents: false,
       showEventDetails: false
+
     };
 
     this.onHandleChannel = this.onHandleChannel.bind(this);
@@ -48,18 +50,21 @@ class Main extends Component {
         this.props.fetchChannels(groups.payload.data[0].group_id)
           .then((channels) => {
             this.props.fetchMessages(channels.payload.data[0].id);
+            console.log(channels.payload.data[0].name)
             this.setState({
               groupId: groups.payload.data[0].group_id,
-              channelId: channels.payload.data[0].id
+              channelId: channels.payload.data[0].id,
+              channelName: channels.payload.data[0].name
             });
           });
       });
   }
 
-  onHandleChannel (groupdId) {
-    this.props.fetchChannels(groupdId);
+  onHandleChannel (groupId, ) {
+    console.log('handle channel ', groupId);
+    this.props.fetchChannels(groupId);
     this.setState({
-      groupId: groupdId,
+      groupId: groupId,
     });
     console.log(this.props);
   }
@@ -160,6 +165,7 @@ class Main extends Component {
                 profile={window.myUser}
                 groupId={this.state.groupId} 
                 handleMessage={this.onHandleMessage}
+                channelName={this.state.channelName}
               /> 
               :
               <GroupEvents 
@@ -187,4 +193,4 @@ class Main extends Component {
   }  
 }
 
-export default connect(null, { fetchProfile, fetchEvents, fetchChannels, fetchMessages, emptyChannels } )(Main);
+export default connect(null, { fetchProfile, fetchEvents, fetchChannels, fetchMessages, emptyChannels, fetchGroups } )(Main);

@@ -19,9 +19,11 @@ class Groups extends Component {
     this.handleItemClick = this.handleItemClick.bind(this);
   }
 
-  handleItemClick(e, { name }) {
-    this.setState({activeItem: name});
+  handleItemClick(e) {
+    console.log(e);
+    this.setState({activeItem: e});
   }
+
   componentWillMount() {
     this.props.fetchGroups(this.props.profile)
       .then((groups) => {

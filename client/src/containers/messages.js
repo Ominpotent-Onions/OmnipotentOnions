@@ -26,12 +26,10 @@ class Messages extends Component {
         this.props.createMessage(message);
       }
     });
-    console.log(this.props.profile);
     this.props.fetchGroups(this.props.profile)
       .then((groups) => {
         this.props.fetchChannels(groups.payload.data[0].group_id)
           .then((channels) => {
-            console.log(channels.payload.data);
             this.setState({
               channelId: channels.payload.data[0].id
             });
@@ -66,7 +64,7 @@ class Messages extends Component {
         <div id='chat-bg-color'></div>
         <div id='video-chat-fronter'>
           <Segment inverted>
-            <Header inverted color='teal' size='large'> {this.props.channelId ? this.props.channel[this.props.channelId].name : 'Select a Group & Channel...' } </Header>
+            <Header inverted color='teal' size='large'> {this.props.channel[this.props.channelId] ? this.props.channel[this.props.channelId].name : 'Select a Channel!' } </Header> 
             <Button className='ui teal' onClick={this.onHandleVideoChatJoin} id='joinVideoChat'>Join Video Chat</Button>
             {
               this.state.showVideoChat ? <VideoChat toggleVideo={this.onHandleVideoChatLeave} channelId={this.props.channelId}/> : null
