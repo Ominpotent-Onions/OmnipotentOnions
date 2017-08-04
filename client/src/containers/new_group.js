@@ -31,14 +31,14 @@ class NewGroup extends Component {
     let profile_id = this.props.profile.id;
     let shortID = shortid.generate();
     e.groupName = '';
-    this.props.createGroup(newGroupName, profile_id, shortID)
-      // .then((groups) => {
-      //   let newChannel = {
-      //     name: 'General',
-      //     group_id: groups.payload.data.pop().group_id
-      //   };
-      //   this.props.createChannel(newChannel, shortID);
-      // }); 
+    this.props.createGroup(newGroupName, profile_id, shortID);
+    // .then((groups) => {
+    //   let newChannel = {
+    //     name: 'General',
+    //     group_id: groups.payload.data.pop().group_id
+    //   };
+    //   this.props.createChannel(newChannel, shortID);
+    // }); 
   }
 
   render() {
