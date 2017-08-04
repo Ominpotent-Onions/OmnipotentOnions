@@ -41,6 +41,7 @@ class Main extends Component {
   //Once sign on, your information is fetched
   //as we go around the site, this information will be passed to load contents specific for each user
   componentWillMount() {
+    console.log('im mounting');
     this.props.fetchProfile(window.myUser);
     this.props.fetchGroups(window.myUser)
       .then((groups) => {

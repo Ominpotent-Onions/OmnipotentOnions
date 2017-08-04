@@ -27,7 +27,6 @@ export class MessageInput extends Component {
 
   onSubmit(data) {
     console.log(data);
-    console.log(this.state);
     if (data.message !== '' ) {
       var message = {
         text: data.message,

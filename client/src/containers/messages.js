@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchMessages, createMessage, fetchGroups, fetchChannels } from '../actions';
+import { fetchMessages, createMessage, fetchGroups, fetchChannels, fetchOneGroup } from '../actions';
 
 import io from 'socket.io-client';
 
@@ -98,4 +98,4 @@ const mapStateToProps = function(state) {
   return { messages: state.messages, channel: state.channels, profile: state.profile };
 };
 
-export default connect(mapStateToProps, { fetchMessages, createMessage, fetchGroups, fetchChannels })(Messages);
+export default connect(mapStateToProps, { fetchMessages, createMessage, fetchGroups, fetchChannels, fetchOneGroup })(Messages);
