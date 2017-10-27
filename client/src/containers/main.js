@@ -112,8 +112,6 @@ class Main extends Component {
       eventId: eventId
     });
 
-  }
-
   renderEventDetails() {
     if (this.state.eventId) {
       return ( 
